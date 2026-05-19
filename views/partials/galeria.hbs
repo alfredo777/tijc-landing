@@ -1,0 +1,53 @@
+<section id="galeria" class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+            <p class="text-rosa font-bold uppercase tracking-widest text-sm mb-2">Momentos Inolvidables</p>
+            <h2 class="font-display text-4xl font-bold text-gray-900">Galería</h2>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
+            <button class="gallery-filter active bg-rosa text-white px-4 sm:px-6 py-2 font-semibold text-sm transition-colors" data-filter="all">
+                Todos
+            </button>
+            <button class="gallery-filter bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 font-semibold text-sm hover:bg-rosa hover:text-white transition-colors" data-filter="partidos">
+                Partidos
+            </button>
+            <button class="gallery-filter bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 font-semibold text-sm hover:bg-rosa hover:text-white transition-colors" data-filter="premiacion">
+                Premiación
+            </button>
+            <button class="gallery-filter bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 font-semibold text-sm hover:bg-rosa hover:text-white transition-colors" data-filter="equipos">
+                Equipos
+            </button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid">
+            {{#each gallery}}
+            {{#if (eq @index 0)}}
+            <div class="gallery-item overflow-hidden group cursor-pointer col-span-2 row-span-2" data-category="{{this.category}}" onclick="openGalleryLightbox({{this.index}})">
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="w-full h-full min-h-[250px] sm:min-h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            {{else if (eq @index 5)}}
+            <div class="gallery-item overflow-hidden group cursor-pointer col-span-2" data-category="{{this.category}}" onclick="openGalleryLightbox({{this.index}})">
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            {{else if (lt @index 8)}}
+            <div class="gallery-item overflow-hidden group cursor-pointer" data-category="{{this.category}}" onclick="openGalleryLightbox({{this.index}})">
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+
+        <div class="text-center mt-10">
+            <button onclick="openGalleryLightbox(0)" class="bg-rosa text-white px-8 py-3 font-bold uppercase hover:bg-rosa-dark transition-colors inline-flex items-center gap-2">
+                <i class="fas fa-images"></i>
+                Ver Galería Completa ({{gallery.length}} fotos)
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    window.galleryData = {{{json gallery}}};
+</script>

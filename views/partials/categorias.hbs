@@ -1,0 +1,49 @@
+<section id="categorias" class="bg-white text-gray-900 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+            <p class="text-rosa font-bold uppercase tracking-widest text-sm mb-2">Competencia</p>
+            <h2 class="font-display text-4xl font-bold text-gray-900">Categorías</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 categorias-grid">
+            
+            <!-- FEMENIL (2 categorías - ocupan todo el alto) -->
+            <div class="flex flex-col">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-rosa rounded-full flex items-center justify-center">
+                        <i class="fas fa-venus text-xl text-white"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-rosa">Femenil</h3>
+                    <div class="flex-1 h-px bg-rosa/30"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 flex-1">
+                    {{#each categorias.femenil}}
+                    <div class="border-2 border-rosa p-6 text-center hover:bg-rosa hover:text-white transition-colors group flex flex-col justify-center categoria-card-femenil">
+                        <span class="font-display text-3xl lg:text-4xl font-bold group-hover:text-white text-rosa">{{this.nombre}}</span>
+                        <p class="text-sm text-gray-500 group-hover:text-white/80 mt-2">{{this.descripcion}}</p>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- VARONIL (4 categorías - grid 2x2) -->
+            <div class="flex flex-col">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-dorado-dark rounded-full flex items-center justify-center">
+                        <i class="fas fa-mars text-xl text-white"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-dorado-dark">Varonil</h3>
+                    <div class="flex-1 h-px bg-dorado-dark/30"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 flex-1">
+                    {{#each categorias.varonil}}
+                    <div class="border-2 border-dorado-dark p-6 text-center hover:bg-dorado-dark hover:text-white transition-colors group flex flex-col justify-center">
+                        <span class="font-display text-2xl font-bold group-hover:text-white text-dorado-dark">{{this.nombre}}</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

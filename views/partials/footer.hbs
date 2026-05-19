@@ -1,0 +1,59 @@
+<footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <img src="/images/logo.png?v={{timestamp}}" alt="Logo" class="h-16 mb-4">
+                <p class="text-gray-400 text-sm">{{site.description}}</p>
+                <div class="flex gap-4 mt-4">
+                    <a href="{{site.social.facebook}}" target="_blank" class="w-10 h-10 bg-rosa flex items-center justify-center hover:bg-dorado transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="{{site.social.instagram}}" target="_blank" class="w-10 h-10 bg-rosa flex items-center justify-center hover:bg-dorado transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="{{site.social.tiktok}}" target="_blank" class="w-10 h-10 bg-rosa flex items-center justify-center hover:bg-dorado transition-colors">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-4">Enlaces</h4>
+                <ul class="space-y-2 text-gray-400">
+                    {{#each footerLinks.enlaces}}
+                    <li><a href="{{this.href}}" class="hover:text-dorado transition-colors">{{this.texto}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-4">Legal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    {{#each footerLinks.legal}}
+                    <li><a href="{{this.href}}" class="hover:text-dorado transition-colors">{{this.texto}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-4">Contacto</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-rosa"></i>
+                        <span>{{site.contact.email}}</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-rosa"></i>
+                        <span>{{site.contact.phone}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <p>© {{currentYear}} {{site.title}}. Todos los derechos reservados.</p>
+            <p class="mt-2">{{site.url}}</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png?v={{timestamp}}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rosa': '#E6007E',
+                        'rosa-dark': '#C4006A',
+                        'rosa-light': '#FF1493',
+                        'dorado': '#FFD700',
+                        'dorado-dark': '#DAA520',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/main.css?v={{timestamp}}">
+</head>
+<body class="font-body bg-gray-900 text-white">
+
+    {{> navbar}}
+
+    <!-- Hero Inscripción -->
+    <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-rosa via-rosa-dark to-purple-900"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-portrait.png')] bg-cover bg-center opacity-20"></div>
+        
+        <!-- Contenido -->
+        <div class="relative z-10 text-center px-4 py-16">
+            <!-- Logo con link al home -->
+            <a href="/" class="inline-block mb-8 transition-transform hover:scale-105">
+                <img src="/images/logo.png" 
+                     alt="Copa Jorge Campos" 
+                     class="h-24 sm:h-32 lg:h-40 w-auto mx-auto drop-shadow-2xl">
+            </a>
+            
+            <p class="text-dorado font-bold uppercase tracking-widest text-sm mb-4">Copa Jorge Campos 2025</p>
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-4">Inscripción</h1>
+            <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                ¡Únete al mejor torneo infantil de fútbol en México!
+            </p>
+            
+            <!-- Breadcrumb -->
+            <nav class="mt-8" aria-label="Breadcrumb">
+                <ol class="flex items-center justify-center gap-2 text-sm text-white/60">
+                    <li>
+                        <a href="/" class="hover:text-dorado transition-colors flex items-center gap-1">
+                            <i class="fas fa-home"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li><i class="fas fa-chevron-right text-xs"></i></li>
+                    <li class="text-dorado font-semibold">Inscripción</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- Decoración inferior -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-full h-4 bg-dorado transform -skew-y-1"></div>
+            <div class="absolute bottom-4 left-0 w-full h-2 bg-green-500 transform -skew-y-1"></div>
+        </div>
+    </section>
+
+    <!-- Formulario de Inscripción -->
+    <section class="py-16 lg:py-24 bg-white text-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Oferta Especial -->
+            <div class="bg-gradient-to-r from-rosa to-rosa-dark text-white p-6 sm:p-8 rounded-2xl mb-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-dorado/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <p class="text-dorado font-bold uppercase tracking-wider text-sm mb-1">
+                                <i class="fas fa-clock mr-2"></i>Oferta por tiempo limitado
+                            </p>
+                            <h3 class="font-display text-3xl sm:text-4xl font-bold">¡Inscríbete antes de Septiembre!</h3>
+                        </div>
+                        <div class="text-center sm:text-right">
+                            <p class="text-sm text-white/80">Precio especial</p>
+                            <p class="font-display text-4xl sm:text-5xl font-bold text-dorado">$13,000</p>
+                            <p class="text-sm text-white/80">MXN por equipo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información del Torneo -->
+            <div class="grid sm:grid-cols-3 gap-6 mb-12">
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <div class="w-14 h-14 bg-rosa/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-rosa"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-gray-900 mb-2">18 Jugadores</h4>
+                    <p class="text-sm text-gray-600">Máximo por equipo inscrito</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <div class="w-14 h-14 bg-dorado/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-2xl text-dorado-dark"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-gray-900 mb-2">3 Cuerpo Técnico</h4>
+                    <p class="text-sm text-gray-600">Entrenadores y auxiliares</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-signature text-2xl text-green-600"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-gray-900 mb-2">Autorización</h4>
+                    <p class="text-sm text-gray-600">Requerida para menores de edad</p>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <form id="inscripcionForm" class="space-y-8">
+                
+                <!-- Sección: Datos Personales -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-2xl font-bold text-rosa mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-rosa text-white rounded-full flex items-center justify-center text-lg">1</span>
+                        Datos Personales
+                    </h3>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nombre" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Nombre(s) <span class="text-rosa">*</span>
+                            </label>
+                            <input type="text" id="nombre" name="nombre" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: Juan Carlos">
+                        </div>
+                        <div>
+                            <label for="apellidos" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Apellidos <span class="text-rosa">*</span>
+                            </label>
+                            <input type="text" id="apellidos" name="apellidos" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: García López">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Correo Electrónico <span class="text-rosa">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="correo@ejemplo.com">
+                        </div>
+                        <div>
+                            <label for="celular" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Celular <span class="text-rosa">*</span>
+                            </label>
+                            <input type="tel" id="celular" name="celular" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: 55 1234 5678">
+                        </div>
+                        <div>
+                            <label for="edad" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Edad <span class="text-rosa">*</span>
+                            </label>
+                            <input type="number" id="edad" name="edad" required min="5" max="99"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: 35">
+                        </div>
+                        <div>
+                            <label for="relacion" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Relación con el equipo <span class="text-rosa">*</span>
+                            </label>
+                            <select id="relacion" name="relacion" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors bg-white">
+                                <option value="">Selecciona una opción</option>
+                                <option value="jugador">Jugador</option>
+                                <option value="padre">Padre / Madre / Tutor</option>
+                                <option value="entrenador">Entrenador</option>
+                                <option value="auxiliar">Auxiliar técnico</option>
+                                <option value="representante">Representante del equipo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Ubicación -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-2xl font-bold text-rosa mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-rosa text-white rounded-full flex items-center justify-center text-lg">2</span>
+                        Ubicación
+                    </h3>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="pais" class="block text-sm font-semibold text-gray-700 mb-2">
+                                País <span class="text-rosa">*</span>
+                            </label>
+                            <select id="pais" name="pais" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors bg-white">
+                                <option value="">Selecciona un país</option>
+                                <option value="MX" selected>México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="GT">Guatemala</option>
+                                <option value="HN">Honduras</option>
+                                <option value="SV">El Salvador</option>
+                                <option value="CR">Costa Rica</option>
+                                <option value="PA">Panamá</option>
+                                <option value="CO">Colombia</option>
+                                <option value="AR">Argentina</option>
+                                <option value="OTHER">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="estado" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Estado <span class="text-rosa">*</span>
+                            </label>
+                            <input type="text" id="estado" name="estado" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: Jalisco">
+                        </div>
+                        <div>
+                            <label for="ciudad" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Ciudad <span class="text-rosa">*</span>
+                            </label>
+                            <input type="text" id="ciudad" name="ciudad" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: Guadalajara">
+                        </div>
+                        <div>
+                            <label for="cp" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Código Postal <span class="text-rosa">*</span>
+                            </label>
+                            <input type="text" id="cp" name="cp" required
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors"
+                                placeholder="Ej: 44100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Categoría -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-2xl font-bold text-rosa mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-rosa text-white rounded-full flex items-center justify-center text-lg">3</span>
+                        Categoría de Interés
+                    </h3>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Femenil -->
+                        <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-rosa transition-colors categoria-option" data-categoria="femenil">
+                            <label class="flex items-start gap-4 cursor-pointer">
+                                <input type="radio" name="categoria" value="femenil" required
+                                    class="mt-1 w-5 h-5 text-rosa focus:ring-rosa">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 bg-rosa rounded-full flex items-center justify-center">
+                                            <i class="fas fa-venus text-white"></i>
+                                        </div>
+                                        <span class="font-display text-xl font-bold text-rosa">Femenil</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Categorías: 2013-2014</p>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <!-- Varonil -->
+                        <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-dorado-dark transition-colors categoria-option" data-categoria="varonil">
+                            <label class="flex items-start gap-4 cursor-pointer">
+                                <input type="radio" name="categoria" value="varonil" required
+                                    class="mt-1 w-5 h-5 text-dorado-dark focus:ring-dorado-dark">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 bg-dorado-dark rounded-full flex items-center justify-center">
+                                            <i class="fas fa-mars text-white"></i>
+                                        </div>
+                                        <span class="font-display text-xl font-bold text-dorado-dark">Varonil</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Categorías: 2013, 2014, 2015, 2016</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Subcategoría (año) -->
+                    <div class="mt-6">
+                        <label for="año_categoria" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Año de nacimiento de los jugadores <span class="text-rosa">*</span>
+                        </label>
+                        <select id="año_categoria" name="año_categoria" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors bg-white">
+                            <option value="">Selecciona el año</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sección: Normas y Términos -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="font-display text-2xl font-bold text-rosa mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-rosa text-white rounded-full flex items-center justify-center text-lg">4</span>
+                        Normas del Torneo
+                    </h3>
+                    
+                    <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+                        <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-scroll text-rosa"></i>
+                            Reglamento de Inscripción
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Cada equipo puede inscribir un <strong>máximo de 18 jugadores</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Se permite hasta <strong>3 integrantes del cuerpo técnico</strong> (entrenador, auxiliar, preparador físico).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Todos los jugadores <strong>menores de edad</strong> deberán presentar <strong>autorización firmada</strong> por padre, madre o tutor legal.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>Se requiere <strong>identificación oficial</strong> de cada jugador y cuerpo técnico.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                                <span>El costo de inscripción incluye: participación en el torneo, uniformes oficiales y acceso a todas las instalaciones.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Checkboxes de aceptación -->
+                    <div class="space-y-4">
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" name="acepta_normas" required
+                                class="mt-1 w-5 h-5 text-rosa focus:ring-rosa rounded">
+                            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+                                He leído y <strong>acepto las normas del torneo</strong> y el reglamento de inscripción. <span class="text-rosa">*</span>
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" name="acepta_menores" required
+                                class="mt-1 w-5 h-5 text-rosa focus:ring-rosa rounded">
+                            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+                                Entiendo que se requiere <strong>autorización de padres o tutores</strong> para jugadores menores de edad. <span class="text-rosa">*</span>
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" name="acepta_contacto" required
+                                class="mt-1 w-5 h-5 text-rosa focus:ring-rosa rounded">
+                            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+                                Acepto que un <strong>representante de Copa Jorge Campos</strong> me contacte para completar el proceso de inscripción. <span class="text-rosa">*</span>
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" name="acepta_privacidad" required
+                                class="mt-1 w-5 h-5 text-rosa focus:ring-rosa rounded">
+                            <span class="text-sm text-gray-700 group-hover:text-gray-900">
+                                Acepto el <a href="/privacidad" class="text-rosa hover:underline">Aviso de Privacidad</a> y el tratamiento de mis datos personales. <span class="text-rosa">*</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Resumen y Envío -->
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 sm:p-8 rounded-2xl">
+                    <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold mb-2">¿Listo para inscribirte?</h3>
+                            <p class="text-gray-400">Un representante te contactará en las próximas 24-48 horas.</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="text-center sm:text-right">
+                                <p class="text-sm text-gray-400">Precio por equipo</p>
+                                <p class="font-display text-3xl font-bold text-dorado">$13,000 MXN</p>
+                            </div>
+                            <button type="submit" 
+                                class="bg-rosa hover:bg-rosa-dark text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 flex items-center gap-3 text-lg">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar Inscripción
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Mensaje de éxito (oculto por defecto) -->
+            <div id="successMessage" class="hidden bg-green-50 border-2 border-green-500 rounded-2xl p-8 text-center mt-8">
+                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-4xl text-white"></i>
+                </div>
+                <h3 class="font-display text-3xl font-bold text-green-700 mb-2">¡Inscripción Enviada!</h3>
+                <p class="text-gray-600 mb-4">
+                    Hemos recibido tu solicitud de inscripción. Un representante de Copa Jorge Campos te contactará en las próximas 24-48 horas para continuar con el proceso.
+                </p>
+                <a href="/" class="inline-flex items-center gap-2 text-rosa hover:text-rosa-dark font-semibold">
+                    <i class="fas fa-home"></i>
+                    Volver al inicio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto adicional -->
+    <section class="py-12 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-600 mb-4">¿Tienes dudas sobre la inscripción?</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                <a href="https://wa.me/5212345678901" target="_blank" 
+                    class="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    WhatsApp
+                </a>
+                <a href="mailto:info@copajorgecampos.com" 
+                    class="flex items-center gap-2 text-rosa hover:text-rosa-dark font-semibold">
+                    <i class="fas fa-envelope text-xl"></i>
+                    info@copajorgecampos.com
+                </a>
+                <a href="tel:+523312345678" 
+                    class="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-semibold">
+                    <i class="fas fa-phone text-xl"></i>
+                    +52 33 1234 5678
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{> footer}}
+
+    {{!-- Partials flotantes --}}
+    {{> whatsapp-float}}
+    {{> back-to-top}}
+
+    <!-- JavaScript del formulario -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('inscripcionForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Manejar selección de categoría visual
+            const categoriaOptions = document.querySelectorAll('.categoria-option');
+            categoriaOptions.forEach(option => {
+                const radio = option.querySelector('input[type="radio"]');
+                radio.addEventListener('change', function() {
+                    categoriaOptions.forEach(opt => {
+                        opt.classList.remove('border-rosa', 'border-dorado-dark', 'bg-rosa/5', 'bg-dorado/5');
+                        opt.classList.add('border-gray-200');
+                    });
+                    if (this.checked) {
+                        const cat = option.dataset.categoria;
+                        option.classList.remove('border-gray-200');
+                        if (cat === 'femenil') {
+                            option.classList.add('border-rosa', 'bg-rosa/5');
+                        } else {
+                            option.classList.add('border-dorado-dark', 'bg-dorado/5');
+                        }
+                    }
+                });
+            });
+            
+            // Envío del formulario
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                // Estado de carga
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                
+                try {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    
+                    const response = await fetch('/api/inscripcion', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        form.style.display = 'none';
+                        successMessage.classList.remove('hidden');
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error(result.message || 'Error al enviar');
+                    }
+                } catch (error) {
+                    alert('Hubo un error al enviar tu inscripción. Por favor intenta de nuevo.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

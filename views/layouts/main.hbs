@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{site.description}}">
+    <title>{{site.title}}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rosa': '#D91A5B',
+                        'rosa-dark': '#B01550',
+                        'rosa-light': '#FF2D78',
+                        'dorado': '#FFD700',
+                        'dorado-dark': '#E5B800',
+                    },
+                    fontFamily: {
+                        'display': ['Oswald', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="/css/main.css?v={{timestamp}}">
+</head>
+<body class="bg-rosa text-white overflow-x-hidden">
+    
+    {{{body}}}
+    
+    <script src="/js/main.js?v={{timestamp}}"></script>
+    
+    <script>
+        (function() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const ws = new WebSocket(`${protocol}//${window.location.host}`);
+            
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'reload') {
+                    console.log(`[Hot Reload] ${data.fileType} changed:`, data.file);
+                    
+                    if (data.fileType === 'css') {
+                        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                            if (link.href.includes('/css/')) {
+                                link.href = link.href.split('?')[0] + '?v=' + data.timestamp;
+                            }
+                        });
+                    } else if (data.fileType === 'image') {
+                        document.querySelectorAll('img').forEach(img => {
+                            if (img.src.includes('/images/')) {
+                                img.src = img.src.split('?')[0] + '?v=' + data.timestamp;
+                            }
+                        });
+                        if (typeof updateGalleryImages === 'function') {
+                            updateGalleryImages();
+                        }
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            };
+            
+            ws.onclose = function() {
+                console.log('[Hot Reload] Conexión cerrada, reintentando...');
+                setTimeout(() => window.location.reload(), 2000);
+            };
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (!e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                        e.preventDefault();
+                        console.log('[Manual Reload] Recargando...');
+                        window.location.reload();
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

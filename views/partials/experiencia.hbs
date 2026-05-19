@@ -1,0 +1,32 @@
+<section id="experiencia" class="bg-rosa py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-6">
+            <p class="text-dorado font-bold uppercase tracking-widest text-sm mb-2">Actividades Interactivas</p>
+            <h2 class="font-display text-4xl font-bold">La Experiencia Jorge Campos</h2>
+        </div>
+
+        <div class="text-center mb-12">
+            <span class="inline-flex items-center gap-3 bg-dorado text-rosa-dark px-8 py-3 font-bold text-lg shadow-lg">
+                <i class="fas fa-heart text-xl"></i>
+                Evento 100% Familiar
+                <i class="fas fa-heart text-xl"></i>
+            </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            {{#each experiencias}}
+            <div class="text-center group cursor-pointer" onclick="openExpModal('{{this.id}}')">
+                <div class="w-20 h-20 bg-dorado rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform relative shadow-lg">
+                    <i class="fas {{this.icon}} text-3xl text-rosa-dark"></i>
+                    <div class="absolute -bottom-1 -right-1 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                        <i class="fas fa-plus text-rosa text-sm"></i>
+                    </div>
+                </div>
+                <h4 class="font-bold text-lg mb-1">{{this.titulo}}</h4>
+                <p class="text-sm opacity-80">{{this.subtitulo}}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

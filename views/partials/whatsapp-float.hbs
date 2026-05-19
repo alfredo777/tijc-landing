@@ -1,0 +1,38 @@
+<!-- WhatsApp Flotante -->
+<a href="https://wa.me/5212345678901?text=Hola%2C%20me%20interesa%20información%20sobre%20la%20Copa%20Jorge%20Campos%202025" 
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+   aria-label="Contactar por WhatsApp">
+    
+    <!-- Icono WhatsApp -->
+    <i class="fab fa-whatsapp text-3xl"></i>
+    
+    <!-- Tooltip -->
+    <span class="absolute right-full mr-4 bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        ¡Escríbenos por WhatsApp!
+        <span class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full border-8 border-transparent border-l-gray-900"></span>
+    </span>
+    
+    <!-- Pulso animado -->
+    <span class="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-30"></span>
+</a>
+
+<style>
+    .whatsapp-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+    
+    .whatsapp-float:hover {
+        animation: none;
+    }
+</style>

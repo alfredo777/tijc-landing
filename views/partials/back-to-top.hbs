@@ -1,0 +1,31 @@
+<!-- Botón Regresar al Inicio -->
+<button id="backToTop" 
+    class="fixed bottom-6 left-6 z-50 bg-rosa hover:bg-rosa-dark text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 invisible translate-y-4"
+    aria-label="Volver al inicio">
+    <i class="fas fa-chevron-up text-xl"></i>
+</button>
+
+<script>
+    (function() {
+        const backToTop = document.getElementById('backToTop');
+        
+        // Mostrar/ocultar botón según scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+            }
+        });
+        
+        // Scroll suave al inicio
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    })();
+</script>

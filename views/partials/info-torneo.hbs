@@ -1,0 +1,36 @@
+<section id="info" class="bg-rosa py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+            <p class="text-dorado font-bold uppercase tracking-widest text-sm mb-2">Detalles</p>
+            <h2 class="font-display text-4xl font-bold">Información del Torneo</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {{#each infoCards}}
+            <div class="bg-white/10 backdrop-blur p-8 text-center hover:bg-white/20 transition-all cursor-pointer group" onclick="openInfoModal('{{this.id}}')">
+                <div class="w-16 h-16 bg-dorado rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas {{this.icon}} text-2xl text-rosa-dark"></i>
+                </div>
+                <h3 class="font-display text-2xl font-bold mb-2">{{this.titulo}}</h3>
+                {{#if this.valor}}
+                <p class="text-3xl font-bold text-dorado">{{this.valor}}</p>
+                {{/if}}
+                {{#if this.badges}}
+                <div class="flex justify-center gap-2 mb-1">
+                    {{#each this.badges}}
+                    <span class="bg-rosa-dark px-2 py-1 text-xs font-bold rounded">{{this}}</span>
+                    {{/each}}
+                </div>
+                {{/if}}
+                <p class="text-sm opacity-80 mt-1">{{this.subtitulo}}</p>
+                <div class="mt-4">
+                    <span class="inline-flex items-center justify-center w-10 h-10 bg-dorado/20 rounded-full group-hover:bg-dorado transition-colors">
+                        <i class="fas fa-plus text-dorado group-hover:text-rosa-dark transition-colors"></i>
+                    </span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

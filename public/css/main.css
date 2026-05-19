@@ -1,0 +1,338 @@
+/* ========================================
+   TORNEO JORGE CAMPOS 2026 - MAIN CSS
+   ======================================== */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font-display {
+    font-family: 'Oswald', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========================================
+   HERO SECTION - RESPONSIVE BACKGROUNDS
+   ======================================== */
+
+.hero-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+/* === BACKGROUNDS === */
+.hero-bg-portrait,
+.hero-bg-landscape {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.hero-bg-portrait {
+    background-image: url('/images/portrait.jpg');
+    display: block;
+}
+
+.hero-bg-landscape {
+    background-image: url('/images/landscape.jpg');
+    display: none;
+}
+
+/* === HEADER LOGO (PORTRAIT) === */
+/* === HEADER LOGO (PORTRAIT - solo tablets, oculto en móviles) === */
+.hero-header-portrait {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    display: none; /* Oculto por defecto en móviles */
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Mostrar solo en tablets portrait (640px+) */
+@media (orientation: portrait) and (min-width: 640px) {
+    .hero-header-portrait {
+        display: flex;
+    }
+}
+
+
+/* === LOGO LANDSCAPE (dentro del contenido) === */
+.hero-logo-landscape {
+    display: none;
+}
+
+/* === MAIN CONTENT === */
+.hero-main-content {
+    width: 100%;
+}
+
+/* === AÑO CON BORDE === */
+.hero-year {
+    text-shadow: 
+        -2px -2px 0 #FFFFFF, 
+        2px -2px 0 #FFFFFF, 
+        -2px 2px 0 #FFFFFF, 
+        2px 2px 0 #FFFFFF;
+}
+
+/* ========================================
+   LANDSCAPE (Tablets horizontales, Desktop)
+   ======================================== */
+@media (orientation: landscape) {
+    .hero-bg-portrait {
+        display: none;
+    }
+    
+    .hero-bg-landscape {
+        display: block;
+    }
+    
+    .hero-header-portrait {
+        display: none;
+    }
+    
+    .hero-logo-landscape {
+        display: block;
+    }
+}
+
+/* ========================================
+   PORTRAIT (Móviles, Tablets verticales)
+   ======================================== */
+@media (orientation: portrait) {
+    .hero-bg-portrait {
+        display: block;
+    }
+    
+    .hero-bg-landscape {
+        display: none;
+    }
+    
+    .hero-header-portrait {
+        display: flex;
+    }
+    
+    .hero-logo-landscape {
+        display: none;
+    }
+    
+    .hero-main-content {
+        padding-top: 5rem;
+    }
+    
+    /* Ocultar Jorge Campos en portrait móvil */
+    .hero-container .hidden.lg\\:block {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   AJUSTES POR TAMAÑO DE PANTALLA
+   ======================================== */
+
+/* Móviles pequeños */
+@media (max-width: 380px) {
+    .hero-header-portrait img {
+        height: 3rem;
+    }
+    
+    .hero-year {
+        font-size: 4rem !important;
+    }
+}
+
+/* Móviles medianos */
+@media (min-width: 381px) and (max-width: 640px) {
+    .hero-header-portrait img {
+        height: 4rem;
+    }
+}
+
+/* Tablets portrait */
+@media (orientation: portrait) and (min-width: 641px) {
+    .hero-header-portrait img {
+        height: 5rem;
+    }
+    
+    .hero-main-content {
+        padding-top: 7rem;
+    }
+}
+
+/* Desktop / Landscape grande */
+@media (orientation: landscape) and (min-width: 1024px) {
+    .hero-logo-landscape img {
+        height: 7rem;
+    }
+}
+
+
+/* Animations */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+/* Marquee */
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Lightbox */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9998;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* Gallery */
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D91A5B;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF2D78;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .marquee-content {
+        animation-duration: 20s;
+    }
+    
+    #galleryThumbnails {
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* ========================================
+   CATEGORÍAS - IGUALAR ALTURAS
+   ======================================== */
+
+/* En landscape/desktop: igualar alturas de ambas columnas */
+@media (min-width: 1024px) {
+    .categorias-grid {
+        align-items: stretch;
+    }
+    
+    .categorias-grid > div {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .categorias-grid > div > .grid {
+        flex: 1;
+    }
+    
+    /* Femenil: cards más altas para llenar el espacio */
+    .categoria-card-femenil {
+        min-height: 100%;
+    }
+}

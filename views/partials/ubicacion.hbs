@@ -1,0 +1,55 @@
+<section id="ubicacion" class="bg-gray-100 text-gray-900 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-rosa font-bold uppercase tracking-widest text-sm mb-2">Sede Oficial</p>
+                <h2 class="font-display text-4xl font-bold mb-4">
+                    <span class="text-dorado-dark">{{torneo.sede.nombre}}</span> - {{torneo.sede.ciudad}}, {{torneo.sede.estado}}
+                </h2>
+                <p class="text-gray-600 mb-8">Las mejores instalaciones deportivas de Jalisco te esperan para vivir el torneo más importante del año.</p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-rosa/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-rosa"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Dirección</h4>
+                            <p class="text-gray-600">{{torneo.sede.direccion}}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-rosa/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-car text-rosa"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Estacionamiento</h4>
+                            <p class="text-gray-600">Amplio estacionamiento disponible</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-rosa/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane text-rosa"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Desde el Aeropuerto</h4>
+                            <p class="text-gray-600">30 minutos del Aeropuerto de Guadalajara</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-80 sm:h-96 bg-gray-300 shadow-lg">
+                <iframe 
+                    src="{{mapa.embedUrl}}"
+                    class="w-full h-full"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>

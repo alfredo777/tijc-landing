@@ -1,0 +1,19 @@
+<section class="bg-white py-6 border-b-4 border-dorado">
+    <div class="max-w-7xl mx-auto px-4 mb-3">
+        <p class="text-center text-gray-500 text-xs uppercase tracking-widest font-semibold">Patrocinadores Oficiales</p>
+    </div>
+    <div class="marquee-container">
+        <div class="marquee-content" id="sponsorsMarquee">
+            <div class="flex items-center shrink-0">
+                {{#each sponsors}}
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="h-12 w-auto object-contain mx-8 grayscale hover:grayscale-0 transition-all duration-300">
+                {{/each}}
+            </div>
+            <div class="flex items-center shrink-0">
+                {{#each sponsors}}
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="h-12 w-auto object-contain mx-8 grayscale hover:grayscale-0 transition-all duration-300">
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
