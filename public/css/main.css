@@ -112,6 +112,21 @@ html {
     }
 }
 
+/* Animación flotante para el trofeo */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+
 /* ========================================
    PORTRAIT (Móviles, Tablets verticales)
    ======================================== */
@@ -335,4 +350,34 @@ html {
     .categoria-card-femenil {
         min-height: 100%;
     }
+}
+
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay > div {
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active > div {
+    transform: scale(1);
 }

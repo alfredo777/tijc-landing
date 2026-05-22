@@ -267,28 +267,27 @@
         expData: {
             meet: {
                 icon: 'fa-handshake',
-                title: 'Meet & Greet con Jorge Campos',
-                content: '<p class="mb-4 text-gray-600">Una oportunidad única de <strong class="text-gray-900">conocer en persona al legendario portero Jorge Campos</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-camera text-rosa mt-1"></i><span>Sesión de fotos con Jorge Campos</span></li><li class="flex items-start gap-3"><i class="fas fa-pen text-rosa mt-1"></i><span>Firma de autógrafos</span></li><li class="flex items-start gap-3"><i class="fas fa-comments text-rosa mt-1"></i><span>Momento para compartir con el ídolo</span></li></ul>'
+                title: 'Meet & Greet',
+                subtitle: 'Conoce a Cracks Inmortales',
+                content: '<p class="mb-4 text-gray-600">Una oportunidad única de <strong class="text-gray-900">conocer en persona a leyendas del fútbol mexicano e internacional</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-camera text-rosa mt-1"></i><span>Sesión de fotos con los cracks</span></li><li class="flex items-start gap-3"><i class="fas fa-pen text-rosa mt-1"></i><span>Firma de autógrafos</span></li><li class="flex items-start gap-3"><i class="fas fa-comments text-rosa mt-1"></i><span>Momento para compartir con los ídolos</span></li><li class="flex items-start gap-3"><i class="fas fa-star text-rosa mt-1"></i><span>Recuerdos inolvidables para toda la vida</span></li></ul>'
             },
             conferencias: {
                 icon: 'fa-microphone',
-                title: 'Conferencias Motivacionales',
-                content: '<p class="mb-4 text-gray-600">Charlas inspiradoras impartidas por <strong class="text-gray-900">Jorge Campos y deportistas profesionales</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-star text-dorado-dark mt-1"></i><span>Historias de éxito y superación</span></li><li class="flex items-start gap-3"><i class="fas fa-brain text-dorado-dark mt-1"></i><span>Mentalidad ganadora en el deporte</span></li><li class="flex items-start gap-3"><i class="fas fa-heart text-dorado-dark mt-1"></i><span>Valores y disciplina deportiva</span></li></ul>'
+                title: 'Conferencias',
+                subtitle: 'Platica con los Expertos',
+                content: '<p class="mb-4 text-gray-600">Charlas inspiradoras impartidas por <strong class="text-gray-900">deportistas profesionales y expertos en desarrollo deportivo</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-star text-dorado-dark mt-1"></i><span>Historias de éxito y superación</span></li><li class="flex items-start gap-3"><i class="fas fa-brain text-dorado-dark mt-1"></i><span>Mentalidad ganadora en el deporte</span></li><li class="flex items-start gap-3"><i class="fas fa-graduation-cap text-dorado-dark mt-1"></i><span>Consejos de formación profesional</span></li><li class="flex items-start gap-3"><i class="fas fa-users text-dorado-dark mt-1"></i><span>Trabajo en equipo y liderazgo</span></li></ul>'
             },
             interactivas: {
                 icon: 'fa-gamepad',
-                title: 'Experiencias Interactivas',
-                content: '<p class="mb-4 text-gray-600">Actividades para toda la familia que complementan la competencia deportiva.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-futbol text-rosa mt-1"></i><span>Zona de habilidades y retos de puntería</span></li><li class="flex items-start gap-3"><i class="fas fa-vr-cardboard text-rosa mt-1"></i><span>Experiencias de realidad virtual</span></li><li class="flex items-start gap-3"><i class="fas fa-gamepad text-rosa mt-1"></i><span>Torneos de videojuegos de fútbol</span></li></ul>'
+                title: 'Entretenimiento 360°',
+                subtitle: 'Diversión para Todos',
+                content: '<p class="mb-4 text-gray-600">Actividades para toda la familia que complementan la experiencia deportiva.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-futbol text-rosa mt-1"></i><span>Zona de habilidades y retos de puntería</span></li><li class="flex items-start gap-3"><i class="fas fa-vr-cardboard text-rosa mt-1"></i><span>Experiencias de realidad virtual</span></li><li class="flex items-start gap-3"><i class="fas fa-gamepad text-rosa mt-1"></i><span>Torneos de videojuegos de fútbol</span></li><li class="flex items-start gap-3"><i class="fas fa-music text-rosa mt-1"></i><span>Música y animación en vivo</span></li></ul>'
             },
-            kit: {
-                icon: 'fa-gift',
-                title: 'Kit de Bienvenida',
-                content: '<p class="mb-4 text-gray-600">Cada equipo inscrito recibirá un <strong class="text-gray-900">Kit de Bienvenida exclusivo</strong> que incluye:</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-tshirt text-dorado-dark mt-1"></i><span>Playera oficial del torneo para cada jugador</span></li><li class="flex items-start gap-3"><i class="fas fa-id-card text-dorado-dark mt-1"></i><span>Credencial de acreditación personalizada</span></li><li class="flex items-start gap-3"><i class="fas fa-bottle-water text-dorado-dark mt-1"></i><span>Botella de agua reutilizable</span></li></ul>'
-            },
-            premiacion: {
-                icon: 'fa-trophy',
-                title: 'Premiación Especial',
-                content: '<p class="mb-4 text-gray-600">Ceremonia de premiación con <strong class="text-gray-900">reconocimientos exclusivos</strong> para los mejores.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-trophy text-dorado mt-1"></i><span>Trofeo de campeón por categoría</span></li><li class="flex items-start gap-3"><i class="fas fa-medal text-dorado mt-1"></i><span>Medallas para equipos finalistas</span></li><li class="flex items-start gap-3"><i class="fas fa-award text-dorado mt-1"></i><span>Premio al mejor jugador por categoría</span></li></ul>'
+            pasaporte: {
+                icon: 'fa-passport',
+                title: 'Pasaporte Brody',
+                subtitle: 'Llénalo y Gana Increíbles Premios',
+                content: '<p class="mb-4 text-gray-600">Tu <strong class="text-gray-900">pasaporte a la aventura</strong>. Completa las actividades y acumula sellos para ganar.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-stamp text-dorado-dark mt-1"></i><span>Colecciona sellos en cada actividad</span></li><li class="flex items-start gap-3"><i class="fas fa-gift text-dorado-dark mt-1"></i><span>Canjea por premios exclusivos</span></li><li class="flex items-start gap-3"><i class="fas fa-trophy text-dorado-dark mt-1"></i><span>Sorpresas especiales para pasaportes completos</span></li><li class="flex items-start gap-3"><i class="fas fa-medal text-dorado-dark mt-1"></i><span>Reconocimientos únicos del torneo</span></li></ul>'
             }
         },
 
@@ -332,6 +331,7 @@
                         <i class="fas ${data.icon} text-2xl text-rosa-dark"></i>
                     </div>
                     <h3 class="font-display text-2xl font-bold text-gray-900">${data.title}</h3>
+                    <p class="text-rosa font-semibold">${data.subtitle}</p>
                 </div>
                 <div>${data.content}</div>
             `;

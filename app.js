@@ -157,7 +157,7 @@ function getSiteData() {
             },
             contact: {
                 email: 'info@torneojorgecampos.com.mx',
-                phone: '+52 33 1234 5678'
+                phone: '+52 449 469 9962'
             }
         },
         torneo: {
@@ -190,12 +190,12 @@ function getSiteData() {
             ]
         },
         experiencias: [
-            { id: 'meet', icon: 'fa-handshake', titulo: 'Meet & Greet', subtitulo: 'Conoce a Jorge Campos' },
-            { id: 'conferencias', icon: 'fa-microphone', titulo: 'Conferencias', subtitulo: 'Charlas motivacionales' },
-            { id: 'interactivas', icon: 'fa-gamepad', titulo: 'Experiencias Interactivas', subtitulo: 'Dinámicas para todos' },
-            { id: 'kit', icon: 'fa-gift', titulo: 'Kit de Bienvenida', subtitulo: 'Incluido en inscripción' },
-            { id: 'premiacion', icon: 'fa-trophy', titulo: 'Premiación Especial', subtitulo: 'Reconocimientos exclusivos' }
+            { id: 'meet', icon: 'fa-handshake', titulo: 'Meet & Greet', subtitulo: 'Conoce a Cracks Inmortales' },
+            { id: 'conferencias', icon: 'fa-microphone', titulo: 'Conferencias', subtitulo: 'Platica con los Expertos' },
+            { id: 'interactivas', icon: 'fa-gamepad', titulo: 'Entretenimiento 360°', subtitulo: 'Diversión para Todos' },
+            { id: 'pasaporte', icon: 'fa-passport', titulo: 'Pasaporte Brody', subtitulo: 'Llénalo y Gana Increíbles Premios' }
         ],
+
         infoCards: [
             { id: 'sede', icon: 'fa-map-marker-alt', titulo: 'Sede', valor: 'Altium', subtitulo: 'Zapopan, Jalisco' },
             { id: 'fechas', icon: 'fa-calendar-alt', titulo: 'Fechas', valor: '12-15 Nov', subtitulo: 'Noviembre 2026' },

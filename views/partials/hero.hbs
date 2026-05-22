@@ -7,41 +7,43 @@
     <!-- Overlay gradiente -->
     <div class="absolute inset-0 bg-gradient-to-r from-rosa/80 via-rosa/60 to-rosa-dark/80 z-[1]"></div>
 
-    <!-- Barras decorativas inferiores -->
-    <div class="absolute bottom-0 left-0 right-0 h-24 overflow-hidden z-[5]">
-        <div class="absolute bottom-0 left-0 w-full h-8 bg-dorado transform -skew-y-2"></div>
-        <div class="absolute bottom-8 left-0 w-full h-4 bg-green-500 transform -skew-y-2"></div>
-        <div class="absolute bottom-12 left-0 w-full h-4 bg-blue-500 transform -skew-y-2"></div>
-        <div class="absolute bottom-16 left-0 w-full h-4 bg-purple-500 transform -skew-y-2"></div>
+    <!-- Barra decorativa inferior (solo dorado) -->
+    <div class="absolute bottom-0 left-0 right-0 h-12 overflow-hidden z-[5]">
+        <div class="absolute bottom-0 left-0 w-full h-8 bg-dorado transform -skew-y-1"></div>
+        <div class="absolute bottom-6 left-0 w-full h-2 bg-dorado/50 transform -skew-y-1"></div>
     </div>
 
     <!-- Contenido Principal -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 hero-main-content">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             
-            <!-- Columna Izquierda: Jorge Campos + Trofeo (SOLO LANDSCAPE/DESKTOP) -->
-            <div class="hidden lg:block relative">
-                <img src="/images/jorgejump.png?v={{timestamp}}" alt="Jorge Campos" class="w-full max-w-lg mx-auto drop-shadow-2xl">
-                <div class="absolute top-0 right-0 animate-float">
-                    <img src="/images/trofeo.png?v={{timestamp}}" alt="Trofeo" class="w-40">
+            <!-- Columna Izquierda: Solo Trofeo Grande (DESKTOP) -->
+            <div class="hidden lg:flex items-center justify-center relative">
+                <!-- Trofeo grande centrado -->
+                <div class="relative">
+                    <!-- Resplandor detrás del trofeo -->
+                    <div class="absolute inset-0 bg-dorado/20 rounded-full blur-3xl scale-75"></div>
+                    <img src="/images/trofeo.png?v={{timestamp}}" 
+                         alt="Trofeo Copa Jorge Campos" 
+                         class="relative w-72 xl:w-80 drop-shadow-2xl animate-float">
                 </div>
             </div>
 
             <!-- Columna Derecha: Contenido de texto -->
             <div class="text-center lg:text-left">
                 
-                <!-- Frase destacada -->
-                <div class="mb-6 lg:mb-8">
-                    <div class="inline-block bg-black/30 backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4 border-l-4 border-dorado">
-                        <p class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gradient uppercase tracking-wide">
-                            ¡Vive el mejor torneo del mundo mundial!
-                        </p>
-                    </div>
+                <!-- Frase destacada - Nuevo estilo integrado -->
+                <div class="mb-8 lg:mb-10">
+                    <p class="text-dorado font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase tracking-wider leading-tight">
+                        ¡Vive el mejor torneo
+                        <span class="block text-white">del mundo mundial!</span>
+                    </p>
+                    <div class="w-24 h-1 bg-dorado mt-4 mx-auto lg:mx-0"></div>
                 </div>
 
-                <!-- Logo (SOLO LANDSCAPE/DESKTOP - oculto en portrait/móvil) -->
-                <div class="hidden lg:block mb-4 lg:mb-6">
-                    <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-20 sm:h-24 lg:h-28 mx-auto lg:mx-0">
+                <!-- Logo (SOLO LANDSCAPE/DESKTOP) -->
+                <div class="hidden lg:block mb-6">
+                    <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-24 lg:h-28 mx-auto lg:mx-0">
                 </div>
                 
                 <!-- Edición -->
@@ -93,7 +95,7 @@
     </div>
 
     <!-- Flecha scroll -->
-    <div class="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 animate-bounce z-10">
+    <div class="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 animate-bounce z-10">
         <i class="fas fa-chevron-down text-xl sm:text-2xl text-dorado"></i>
     </div>
 </section>
