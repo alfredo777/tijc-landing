@@ -146,7 +146,7 @@ function getSiteData() {
     
     return {
         site: {
-            title: 'Torneo Internacional Jorge Campos 2026',
+            title: 'Torneo Jorge Campos 2026',
             description: 'El torneo de fútbol infantil más importante de México',
             url: 'www.torneojorgecampos.com.mx',
             social: {
@@ -271,7 +271,7 @@ app.get('/api/refresh', (req, res) => {
 // Página de Inscripción
 app.get('/inscripcion', (req, res) => {
     res.render('inscripcion', {
-        title: 'Inscripción - Copa Jorge Campos',
+        title: 'Inscripción - Torneo Jorge Campos',
         timestamp: Date.now(),
         site: {
             social: {
