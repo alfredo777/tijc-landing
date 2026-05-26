@@ -204,7 +204,7 @@ function getSiteData() {
         ],
         video: {
             youtubeId: 'dQw4w9WgXcQ',
-            titulo: 'Video Promocional'
+            titulo: 'Dale Play'
         },
         mapa: {
             embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119421.05584983498!2d-103.43587455!3d20.6737772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb52fd39b%3A0xd63d9302571db8ee!2sZapopan%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1234567890'
