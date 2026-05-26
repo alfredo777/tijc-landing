@@ -6,7 +6,7 @@
             <h2 class="font-display text-4xl font-bold text-gray-900">Galería</h2>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
+       {{!--<div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
             <button class="gallery-filter active bg-rosa text-white px-4 sm:px-6 py-2 font-semibold text-sm transition-colors" data-filter="all">
                 Todos
             </button>
@@ -19,7 +19,7 @@
             <button class="gallery-filter bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 font-semibold text-sm hover:bg-rosa hover:text-white transition-colors" data-filter="equipos">
                 Equipos
             </button>
-        </div>
+        </div>--}} 
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid">
             {{#each gallery}}
@@ -42,7 +42,7 @@
         <div class="text-center mt-10">
             <button onclick="openGalleryLightbox(0)" class="bg-rosa text-white px-8 py-3 font-bold uppercase hover:bg-rosa-dark transition-colors inline-flex items-center gap-2">
                 <i class="fas fa-images"></i>
-                Ver Galería Completa ({{gallery.length}} fotos)
+                Ver Galería Completa 
             </button>
         </div>
     </div>

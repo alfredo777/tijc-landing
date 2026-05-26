@@ -275,14 +275,28 @@ app.get('/inscripcion', (req, res) => {
         timestamp: Date.now(),
         site: {
             social: {
-                whatsapp: '5212345678901',
+                whatsapp: '+52 449 469 9962',
                 handle: '@copajorgecampos'
             },
             contact: {
                 email: 'info@copajorgecampos.com',
-                phone: '+52 33 1234 5678'
+                phone: '++52 449 469 9962'
             }
-        }
+        },
+        footerLinks: {
+            enlaces: [
+                { href: '#info', texto: 'Información' },
+                { href: '#categorias', texto: 'Categorías' },
+                { href: '#experiencia', texto: 'Experiencia' },
+                { href: '#galeria', texto: 'Galería' },
+                { href: '#inscripcion', texto: 'Inscripción' }
+            ],
+            legal: [
+                { href: '#', texto: 'Términos y Condiciones' },
+                { href: '#', texto: 'Aviso de Privacidad' },
+                { href: '#', texto: 'Reglamento' }
+            ]
+        },
     });
 });
 // API para recibir inscripciones (POST)

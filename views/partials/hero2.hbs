@@ -1,0 +1,101 @@
+<section id="inicio" class="hero-container">
+    
+    <!-- Background con imagen responsive -->
+    <div class="hero-bg-portrait"></div>
+    <div class="hero-bg-landscape"></div>
+    
+    <!-- Overlay gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-r from-rosa/80 via-rosa/60 to-rosa-dark/80 z-[1]"></div>
+
+    <!-- Barra decorativa inferior (solo dorado) -->
+    <div class="absolute bottom-0 left-0 right-0 h-12 overflow-hidden z-[5]">
+        <div class="absolute bottom-0 left-0 w-full h-8 bg-dorado transform -skew-y-1"></div>
+        <div class="absolute bottom-6 left-0 w-full h-2 bg-dorado/50 transform -skew-y-1"></div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 hero-main-content">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            
+            <!-- Columna Izquierda: Solo Trofeo Grande (DESKTOP) -->
+            <div class="hidden lg:flex items-center justify-center relative">
+                <!-- Trofeo grande centrado -->
+                <div class="relative">
+                    <!-- Resplandor detrás del trofeo -->
+                    <div class="absolute inset-0 bg-dorado/20 rounded-full blur-3xl scale-75"></div>
+                    <img src="/images/trofeo.png?v={{timestamp}}" 
+                         alt="Trofeo Copa Jorge Campos" 
+                         class="relative w-72 xl:w-80 drop-shadow-2xl animate-float">
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Contenido de texto -->
+            <div class="text-center lg:text-left">
+                
+                <!-- Frase destacada - Nuevo estilo integrado -->
+                <div class="mb-8 lg:mb-10">
+                    <p class="text-dorado font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase tracking-wider leading-tight">
+                        ¡Vive el mejor torneo
+                        <span class="block text-white">del mundo mundial!</span>
+                    </p>
+                    <div class="w-24 h-1 bg-dorado mt-4 mx-auto lg:mx-0"></div>
+                </div>
+
+                <!-- Logo (SOLO LANDSCAPE/DESKTOP) -->
+                <div class="hidden lg:block mb-6">
+                    <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-24 lg:h-28 mx-auto lg:mx-0">
+                </div>
+                
+                <!-- Edición -->
+                <p class="font-display text-lg sm:text-xl tracking-[0.2em] sm:tracking-[0.3em] text-dorado mb-1 sm:mb-2">EDICIÓN</p>
+                
+                <!-- Año grande -->
+                <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold text-dorado leading-none mb-3 sm:mb-4 hero-year">
+                    {{torneo.edicion}}
+                </h1>
+                
+                <!-- Próximamente -->
+                <p class="text-base sm:text-lg tracking-widest mb-1 sm:mb-2 opacity-90">PRÓXIMAMENTE</p>
+                
+                <!-- Mes y Año -->
+                <p class="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6">
+                    {{torneo.mes}} {{torneo.año}}
+                </p>
+
+                <!-- Ubicación -->
+                <div class="flex items-center justify-center lg:justify-start gap-2 text-base sm:text-lg mb-6 sm:mb-8">
+                    <i class="fas fa-map-marker-alt text-dorado"></i>
+                    <span class="font-semibold">{{torneo.sede.ciudad}}, {{torneo.sede.estado}}</span>
+                </div>
+
+                <!-- Categorías -->
+                <div class="flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                    <span class="text-dorado text-lg">◀</span>
+                    <p class="uppercase tracking-wider text-xs sm:text-sm">Categorías Infantiles Femenil y Varonil</p>
+                    <span class="text-dorado text-lg">▶</span>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="flex items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-8 sm:mt-10">
+                    <span class="text-sm font-medium">{{site.social.handle}}</span>
+                    <div class="flex gap-3 sm:gap-4">
+                        <a href="{{site.social.facebook}}" target="_blank" class="text-xl sm:text-2xl hover:text-dorado transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="{{site.social.instagram}}" target="_blank" class="text-xl sm:text-2xl hover:text-dorado transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="{{site.social.tiktok}}" target="_blank" class="text-xl sm:text-2xl hover:text-dorado transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flecha scroll -->
+    <div class="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 animate-bounce z-10">
+        <i class="fas fa-chevron-down text-xl sm:text-2xl text-dorado"></i>
+    </div>
+</section>
