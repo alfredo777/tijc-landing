@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Recibimos tu inscripción!</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
+    
+    <!-- Container principal -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4;">
+        <tr>
+            <td align="center" style="padding: 40px 20px;">
+                
+                <!-- Email container -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header con gradiente -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #9220E1 0%, #F6288D 100%); padding: 40px 40px 60px 40px; text-align: center;">
+                            <!-- Logo -->
+                            <img src="{{logoUrl}}" alt="{{siteName}}" style="height: 80px; width: auto; margin-bottom: 20px;">
+                            
+                            <!-- Icono de check -->
+                            <div style="width: 80px; height: 80px; background-color: #21FF04; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 40px; color: white;">✓</span>
+                            </div>
+                            
+                            <h1 style="color: #FDED07; font-size: 32px; margin: 0 0 10px 0; font-weight: bold;">
+                                ¡Recibimos tu inscripción!
+                            </h1>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0; opacity: 0.9;">
+                                Gracias por tu interés en el Torneo Jorge Campos 2026
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Contenido principal -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            
+                            <p style="color: #333333; font-size: 18px; margin: 0 0 20px 0; line-height: 1.6;">
+                                Hola <strong style="color: #9220E1;">{{nombre}} {{apellidos}}</strong>,
+                            </p>
+                            
+                            <p style="color: #666666; font-size: 16px; margin: 0 0 30px 0; line-height: 1.6;">
+                                Hemos recibido correctamente tu solicitud de inscripción para el <strong>Torneo Jorge Campos 2026</strong>. Uno de nuestros asesores se pondrá en contacto contigo a la brevedad para continuar con el proceso.
+                            </p>
+                            
+                            <!-- Resumen de inscripción -->
+                            <div style="background-color: #f8f4fc; border-radius: 12px; padding: 25px; margin-bottom: 30px; border-left: 4px solid #9220E1;">
+                                <h3 style="color: #9220E1; font-size: 18px; margin: 0 0 15px 0;">
+                                    📋 Resumen de tu inscripción
+                                </h3>
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Categoría:</td>
+                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{categoria}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Año:</td>
+                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{añoCategoria}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Email:</td>
+                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Fecha:</td>
+                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{fechaInscripcion}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <!-- Próximos pasos -->
+                            <h3 style="color: #333333; font-size: 18px; margin: 0 0 15px 0;">
+                                🚀 ¿Qué sigue?
+                            </h3>
+                            
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 30px; height: 30px; background-color: #F6288D; border-radius: 50%; text-align: center; line-height: 30px; color: white; font-weight: bold; font-size: 14px;">1</div>
+                                                </td>
+                                                <td style="padding-left: 15px;">
+                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Revisión de datos</p>
+                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Verificaremos la información proporcionada.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 30px; height: 30px; background-color: #9220E1; border-radius: 50%; text-align: center; line-height: 30px; color: white; font-weight: bold; font-size: 14px;">2</div>
+                                                </td>
+                                                <td style="padding-left: 15px;">
+                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Contacto de asesor</p>
+                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Te contactaremos en las próximas 24-48 horas.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: top;">
+                                                    <div style="width: 30px; height: 30px; background-color: #FDED07; border-radius: 50%; text-align: center; line-height: 30px; color: #333; font-weight: bold; font-size: 14px;">3</div>
+                                                </td>
+                                                <td style="padding-left: 15px;">
+                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Confirmación de pago</p>
+                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Te enviaremos los datos para realizar el pago.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- CTA de contacto -->
+                            <div style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%); border-radius: 12px; padding: 25px; text-align: center;">
+                                <p style="color: #ffffff; font-size: 14px; margin: 0 0 15px 0;">
+                                    ¿Tienes alguna duda? Contáctanos:
+                                </p>
+                                <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="padding: 0 10px;">
+                                            <a href="{{contact.whatsapp}}" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold;">
+                                                💬 WhatsApp
+                                            </a>
+                                        </td>
+                                        <td style="padding: 0 10px;">
+                                            <a href="mailto:{{contact.email}}" style="display: inline-block; background-color: #F6288D; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold;">
+                                                ✉️ Email
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #1a0a2e; padding: 30px 40px; text-align: center;">
+                            <!-- Redes sociales -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto 20px;">
+                                <tr>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.facebook}}" style="display: inline-block; width: 36px; height: 36px; background-color: #9220E1; border-radius: 50%; text-align: center; line-height: 36px; color: white; text-decoration: none; font-size: 16px;">f</a>
+                                    </td>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.instagram}}" style="display: inline-block; width: 36px; height: 36px; background-color: #F6288D; border-radius: 50%; text-align: center; line-height: 36px; color: white; text-decoration: none; font-size: 16px;">📷</a>
+                                    </td>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.tiktok}}" style="display: inline-block; width: 36px; height: 36px; background-color: #000000; border-radius: 50%; text-align: center; line-height: 36px; color: white; text-decoration: none; font-size: 16px;">♪</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="color: #FDED07; font-size: 14px; margin: 0 0 5px 0; font-weight: bold;">
+                                @torneojcampos
+                            </p>
+                            <p style="color: #888888; font-size: 12px; margin: 0 0 15px 0;">
+                                {{siteUrl}}
+                            </p>
+                            <p style="color: #666666; font-size: 11px; margin: 0;">
+                                © {{year}} {{siteName}}. Todos los derechos reservados.
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

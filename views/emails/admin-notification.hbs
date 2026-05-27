@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Inscripción</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
+    
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4;">
+        <tr>
+            <td align="center" style="padding: 40px 20px;">
+                
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%); padding: 30px 40px;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <img src="{{logoUrl}}" alt="{{siteName}}" style="height: 50px; width: auto;">
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span style="display: inline-block; background-color: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">
+                                            🆕 Nueva Inscripción
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Alerta de categoría -->
+                    <tr>
+                        <td style="background-color: {{categoriaColor}}; padding: 20px 40px; text-align: center;">
+                            <h2 style="color: #ffffff; font-size: 24px; margin: 0;">
+                                Categoría: {{categoria}} - {{añoCategoria}}
+                            </h2>
+                        </td>
+                    </tr>
+                    
+                    <!-- Contenido -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            
+                            <p style="color: #666666; font-size: 14px; margin: 0 0 5px 0;">
+                                📅 {{fechaInscripcion}}
+                            </p>
+                            
+                            <h1 style="color: #333333; font-size: 28px; margin: 0 0 30px 0;">
+                                {{nombre}} {{apellidos}}
+                            </h1>
+                            
+                            <!-- Datos Personales -->
+                            <div style="background-color: #f8f8f8; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+                                <h3 style="color: #9220E1; font-size: 16px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+                                    👤 Datos Personales
+                                </h3>
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">Email:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <a href="mailto:{{email}}" style="color: #9220E1; font-size: 14px; font-weight: bold; text-decoration: none;">{{email}}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">Celular:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <a href="tel:{{celular}}" style="color: #333333; font-size: 14px; font-weight: bold; text-decoration: none;">{{celular}}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">Edad:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{edad}} años</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0;">
+                                            <span style="color: #888888; font-size: 13px;">Relación:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{relacion}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <!-- Ubicación -->
+                            <div style="background-color: #f8f8f8; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+                                <h3 style="color: #F6288D; font-size: 16px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+                                    📍 Ubicación
+                                </h3>
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">País:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{pais}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">Estado:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{estado}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+                                            <span style="color: #888888; font-size: 13px;">Ciudad:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{ciudad}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 0;">
+                                            <span style="color: #888888; font-size: 13px;">C.P.:</span>
+                                        </td>
+                                        <td style="padding: 10px 0; text-align: right;">
+                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{cp}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <!-- Botones de acción -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 30px;">
+                                <tr>
+                                    <td style="padding: 5px;" width="50%">
+                                        <a href="https://wa.me/52{{celular}}" style="display: block; background-color: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
+                                            💬 Contactar por WhatsApp
+                                        </a>
+                                    </td>
+                                    <td style="padding: 5px;" width="50%">
+                                        <a href="mailto:{{email}}" style="display: block; background-color: #9220E1; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
+                                            ✉️ Enviar Email
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="padding: 5px;">
+                                        <a href="tel:{{celular}}" style="display: block; background-color: #F6288D; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
+                                            📞 Llamar: {{celular}}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    
+                    <!-- Metadata técnica -->
+                    <tr>
+                        <td style="background-color: #f0f0f0; padding: 20px 40px;">
+                            <p style="color: #888888; font-size: 11px; margin: 0;">
+                                <strong>IP:</strong> {{ip}} | <strong>User Agent:</strong> {{userAgent}}
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #1a0a2e; padding: 20px 40px; text-align: center;">
+                            <p style="color: #888888; font-size: 11px; margin: 0;">
+                                © {{year}} {{siteName}} - Panel de Administración
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>
