@@ -1,41 +1,41 @@
 <section id="inscripcion" class="relative bg-rosa py-20 overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-8 bg-dorado transform -skew-y-1"></div>
+    <div class="absolute top-0 left-0 right-0 h-8 bg-amarillo transform -skew-y-1"></div>
     
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
-        <p class="text-dorado font-bold uppercase tracking-widest text-sm mb-2">Registro</p>
-        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-8">¡Inscribe a tu Equipo!</h2>
+        <p class="text-amarillo font-bold uppercase tracking-widest text-sm mb-2">Registro</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-8 text-white">¡Inscribe a tu Equipo!</h2>
 
         <div class="bg-white/10 backdrop-blur p-8 mb-8">
-            <h3 class="font-display text-2xl font-bold mb-6 text-dorado">Tu inscripción incluye:</h3>
+            <h3 class="font-display text-2xl font-bold mb-6 text-amarillo">Tu inscripción incluye:</h3>
             <div class="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto text-left">
                 {{#each inscripcion.beneficios}}
                 <div class="flex items-center gap-3">
-                    <span class="w-6 h-6 bg-dorado rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-check text-rosa-dark text-sm"></i>
+                    <span class="w-6 h-6 bg-amarillo rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-check text-morado-dark text-sm"></i>
                     </span>
-                    <span>{{this}}</span>
+                    <span class="text-white">{{this}}</span>
                 </div>
                 {{/each}}
             </div>
         </div>
 
         <div class="bg-white/20 inline-block px-8 py-4 mb-8">
-            <p class="flex items-center gap-2 justify-center flex-wrap">
-                <i class="fas fa-exclamation-triangle text-dorado"></i>
+            <p class="flex items-center gap-2 justify-center flex-wrap text-white">
+                <i class="fas fa-exclamation-triangle text-amarillo"></i>
                 <span>Fecha límite de inscripción: <strong>{{torneo.fechaLimiteInscripcion}}</strong></span>
             </p>
         </div>
 
         <div>
-            <a href="/inscripcion" class="bg-dorado text-rosa-dark px-12 py-5 font-bold text-xl uppercase tracking-wider hover:bg-white hover:scale-105 transition-all shadow-lg">
+            <a href="/inscripcion" class="bg-amarillo text-morado-dark px-12 py-5 font-bold text-xl uppercase tracking-wider hover:bg-white hover:scale-105 transition-all shadow-lg inline-block">
                 <i class="fas fa-futbol mr-2"></i> Inscribir Equipo
             </a>
         </div>
 
-        <p class="mt-8 text-sm opacity-80">
+        <p class="mt-8 text-sm opacity-80 text-white">
             ¿Tienes dudas? Contáctanos: 
-            <a href="tel:{{site.contact.phone}}" class="text-dorado underline">{{site.contact.phone}}</a>
+            <a href="tel:{{site.contact.phone}}" class="text-amarillo underline">{{site.contact.phone}}</a>
         </p>
     </div>
 </section>

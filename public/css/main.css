@@ -1,13 +1,17 @@
 /* ========================================
    TORNEO JORGE CAMPOS 2026 - MAIN CSS
+   Colores: Rosa #F6288D, Morado #9220E1, 
+            Amarillo #FDED07, Verde #21FF04, Blanco #FFFFFF
+   Fuente: Barlow / Barlow Condensed
    ======================================== */
 
+/* === BASE === */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 .font-display {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 html {
@@ -15,7 +19,7 @@ html {
 }
 
 /* ========================================
-   HERO SECTION - RESPONSIVE BACKGROUNDS
+   HERO - FONDO Y CAPAS DE IMÁGENES
    ======================================== */
 
 .hero-container {
@@ -30,89 +34,196 @@ html {
     color: #FFFFFF;
 }
 
-/* === BACKGROUNDS === */
-.hero-bg-portrait,
-.hero-bg-landscape {
+/* === FONDO DEGRADADO BASE === */
+.hero-gradient-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     z-index: 0;
+    background: linear-gradient(
+        180deg,
+        #1a0a2e 0%,
+        #9220E1 30%,
+        #F6288D 70%,
+        #C41E70 100%
+    );
 }
 
-.hero-bg-portrait {
-    background-image: url('/images/portrait.jpg');
-    display: block;
-}
-
-.hero-bg-landscape {
-    background-image: url('/images/landscape.jpg');
-    display: none;
-}
-
-/* === HEADER LOGO (PORTRAIT) === */
-/* === HEADER LOGO (PORTRAIT - solo tablets, oculto en móviles) === */
-.hero-header-portrait {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem;
-    display: none; /* Oculto por defecto en móviles */
-    justify-content: center;
-    z-index: 10;
-}
-
-/* Mostrar solo en tablets portrait (640px+) */
-@media (orientation: portrait) and (min-width: 640px) {
-    .hero-header-portrait {
-        display: flex;
+@media (min-width: 1024px) {
+    .hero-gradient-bg {
+        background: linear-gradient(
+            135deg,
+            #1a0a2e 0%,
+            #9220E1 25%,
+            #F6288D 75%,
+            #C41E70 100%
+        );
     }
 }
 
-
-/* === LOGO LANDSCAPE (dentro del contenido) === */
-.hero-logo-landscape {
-    display: none;
+/* === IMÁGENES DEL HERO === */
+.hero-image-back1,
+.hero-image-back2 {
+    position: absolute;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
 }
 
-/* === MAIN CONTENT === */
-.hero-main-content {
+/* MOBILE: Imágenes más centradas con poco espacio */
+.hero-image-back1 {
+    background-image: url('/images/heroback1.png');
     width: 100%;
+    height: 40%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-position: center bottom;
 }
 
-/* === AÑO CON BORDE === */
+.hero-image-back2 {
+    background-image: url('/images/heroback2.png');
+    width: 100%;
+    height: 40%;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-position: center top;
+}
+
+/* Móviles pequeños - aún más juntas */
+@media (max-width: 480px) {
+    .hero-image-back1 {
+        height: 35%;
+        top: 12%;
+        background-position: center bottom;
+    }
+    
+    .hero-image-back2 {
+        height: 35%;
+        bottom: 8%;
+        background-position: center top;
+    }
+}
+
+/* Tablets portrait */
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-image-back1 {
+        width: 90%;
+        height: 38%;
+        top: 8%;
+        background-position: center bottom;
+    }
+    
+    .hero-image-back2 {
+        width: 90%;
+        height: 38%;
+        bottom: 6%;
+        background-position: center top;
+    }
+}
+
+/* DESKTOP: Imágenes a los lados */
+@media (min-width: 1024px) {
+    .hero-image-back1 {
+        width: 35%;
+        height: 85%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-position: left center;
+    }
+    
+    .hero-image-back2 {
+        width: 35%;
+        height: 85%;
+        top: 50%;
+        bottom: auto;
+        left: auto;
+        right: 0;
+        transform: translateY(-50%);
+        background-position: right center;
+    }
+}
+
+/* === OVERLAY SUTIL === */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+/* === BARRA DECORATIVA INFERIOR === */
+.hero-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.hero-bottom-bar::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: #FDED07;
+    transform: skewY(-1deg);
+}
+
+/* === AÑO - Borde blanco limpio === */
 .hero-year {
     text-shadow: 
-        -2px -2px 0 #FFFFFF, 
-        2px -2px 0 #FFFFFF, 
-        -2px 2px 0 #FFFFFF, 
+        -2px -2px 0 #FFFFFF,
+        2px -2px 0 #FFFFFF,
+        -2px 2px 0 #FFFFFF,
         2px 2px 0 #FFFFFF;
 }
 
-/* ========================================
-   LANDSCAPE (Tablets horizontales, Desktop)
-   ======================================== */
-@media (orientation: landscape) {
-    .hero-bg-portrait {
+/* === OVERLAY MOBILE - Capa leve para resaltar texto === */
+.hero-mobile-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(146, 32, 225, 0.15); /* Morado muy sutil */
+    pointer-events: none;
+}
+
+/* Solo visible en mobile, oculto en desktop */
+@media (min-width: 1024px) {
+    .hero-mobile-overlay {
         display: none;
-    }
-    
-    .hero-bg-landscape {
-        display: block;
-    }
-    
-    .hero-header-portrait {
-        display: none;
-    }
-    
-    .hero-logo-landscape {
-        display: block;
     }
 }
 
-/* Animación flotante para el trofeo */
+
+/* Móviles pequeños */
+@media (max-width: 380px) {
+    .hero-year {
+        font-size: 4rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-year {
+        font-size: 4rem !important;
+    }
+}
+
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -126,105 +237,41 @@ html {
     animation: float 4s ease-in-out infinite;
 }
 
-
-/* ========================================
-   PORTRAIT (Móviles, Tablets verticales)
-   ======================================== */
-@media (orientation: portrait) {
-    .hero-bg-portrait {
-        display: block;
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(253, 237, 7, 0.5);
     }
-    
-    .hero-bg-landscape {
-        display: none;
-    }
-    
-    .hero-header-portrait {
-        display: flex;
-    }
-    
-    .hero-logo-landscape {
-        display: none;
-    }
-    
-    .hero-main-content {
-        padding-top: 5rem;
-    }
-    
-    /* Ocultar Jorge Campos en portrait móvil */
-    .hero-container .hidden.lg\\:block {
-        display: none !important;
+    50% {
+        box-shadow: 0 0 40px rgba(253, 237, 7, 0.8);
     }
 }
 
-/* ========================================
-   AJUSTES POR TAMAÑO DE PANTALLA
-   ======================================== */
-
-/* Móviles pequeños */
-@media (max-width: 380px) {
-    .hero-header-portrait img {
-        height: 3rem;
-    }
-    
-    .hero-year {
-        font-size: 4rem !important;
-    }
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Móviles medianos */
-@media (min-width: 381px) and (max-width: 640px) {
-    .hero-header-portrait img {
-        height: 4rem;
-    }
-}
-
-/* Tablets portrait */
-@media (orientation: portrait) and (min-width: 641px) {
-    .hero-header-portrait img {
-        height: 5rem;
-    }
-    
-    .hero-main-content {
-        padding-top: 7rem;
-    }
-}
-
-/* Desktop / Landscape grande */
-@media (orientation: landscape) and (min-width: 1024px) {
-    .hero-logo-landscape img {
-        height: 7rem;
-    }
-}
-
-
-/* Animations */
-.animate-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
+/* Text gradient animado */
 .text-gradient {
-    background: linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700);
-    background-size: 200% auto;
+    background: linear-gradient(90deg, #FDED07, #F6288D, #9220E1, #FDED07);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shine 3s linear infinite;
+    animation: shine 4s linear infinite;
 }
 
 @keyframes shine {
-    to { background-position: 200% center; }
+    to { background-position: 300% center; }
 }
 
-/* Marquee */
+/* ========================================
+   MARQUEE
+   ======================================== */
+
 .marquee-container {
     overflow: hidden;
     width: 100%;
+    background: linear-gradient(90deg, #9220E1, #F6288D);
 }
 
 .marquee-content {
@@ -242,7 +289,104 @@ html {
     100% { transform: translateX(-50%); }
 }
 
-/* Lightbox */
+@media (max-width: 640px) {
+    .marquee-content {
+        animation-duration: 20s;
+    }
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.btn-primary {
+    background: linear-gradient(135deg, #F6288D, #9220E1);
+    color: #FFFFFF;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #9220E1, #F6288D);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(246, 40, 141, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #FDED07;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: 2px solid #FDED07;
+}
+
+.btn-secondary:hover {
+    background: #FDED07;
+    color: #9220E1;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FDED07;
+    transform: translateY(-5px);
+}
+
+.card-rosa {
+    background: linear-gradient(135deg, rgba(246, 40, 141, 0.2), rgba(246, 40, 141, 0.05));
+    border-color: rgba(246, 40, 141, 0.3);
+}
+
+.card-morado {
+    background: linear-gradient(135deg, rgba(146, 32, 225, 0.2), rgba(146, 32, 225, 0.05));
+    border-color: rgba(146, 32, 225, 0.3);
+}
+
+/* ========================================
+   SECCIONES
+   ======================================== */
+
+.section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Línea divisoria SOLO amarilla */
+.section-divider {
+    width: 100px;
+    height: 4px;
+    background: #FDED07;
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+/* ========================================
+   LIGHTBOX
+   ======================================== */
+
 .lightbox-overlay {
     display: none;
     position: fixed;
@@ -260,105 +404,15 @@ html {
     display: flex;
 }
 
-/* Modal */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 9998;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-/* Gallery */
-.gallery-item.hidden {
-    display: none;
-}
-
-.gallery-item img {
-    transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #D91A5B;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #FF2D78;
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-    .marquee-content {
-        animation-duration: 20s;
-    }
-    
-    #galleryThumbnails {
-        justify-content: flex-start;
-        padding-left: 10px;
-    }
-}
-
-.no-scroll {
-    overflow: hidden;
-}
-
 /* ========================================
-   CATEGORÍAS - IGUALAR ALTURAS
+   MODAL
    ======================================== */
 
-/* En landscape/desktop: igualar alturas de ambas columnas */
-@media (min-width: 1024px) {
-    .categorias-grid {
-        align-items: stretch;
-    }
-    
-    .categorias-grid > div {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .categorias-grid > div > .grid {
-        flex: 1;
-    }
-    
-    /* Femenil: cards más altas para llenar el espacio */
-    .categoria-card-femenil {
-        min-height: 100%;
-    }
-}
-
-
-/* Modal Overlay */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -366,6 +420,7 @@ html {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
+    padding: 20px;
 }
 
 .modal-overlay.active {
@@ -380,4 +435,95 @@ html {
 
 .modal-overlay.active > div {
     transform: scale(1);
+}
+
+/* ========================================
+   GALLERY
+   ======================================== */
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a0a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #F6288D, #9220E1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FF4DA6, #B44FFF);
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-rosa {
+    box-shadow: 0 0 30px rgba(246, 40, 141, 0.5);
+}
+
+.glow-morado {
+    box-shadow: 0 0 30px rgba(146, 32, 225, 0.5);
+}
+
+.glow-amarillo {
+    box-shadow: 0 0 30px rgba(253, 237, 7, 0.5);
+}
+
+.glow-verde {
+    box-shadow: 0 0 30px rgba(33, 255, 4, 0.5);
+}
+
+/* ========================================
+   CATEGORÍAS - IGUALAR ALTURAS
+   ======================================== */
+
+@media (min-width: 1024px) {
+    .categorias-grid {
+        align-items: stretch;
+    }
+    
+    .categorias-grid > div {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .categorias-grid > div > .grid {
+        flex: 1;
+    }
+    
+    .categoria-card-femenil {
+        min-height: 100%;
+    }
 }

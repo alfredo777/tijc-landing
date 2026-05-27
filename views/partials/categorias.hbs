@@ -8,7 +8,7 @@
 
         <div class="grid lg:grid-cols-2 gap-12 categorias-grid">
             
-            <!-- FEMENIL (2 categorías - ocupan todo el alto) -->
+            <!-- FEMENIL -->
             <div class="flex flex-col">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-12 h-12 bg-rosa rounded-full flex items-center justify-center">
@@ -27,19 +27,19 @@
                 </div>
             </div>
 
-            <!-- VARONIL (4 categorías - grid 2x2) -->
+            <!-- VARONIL -->
             <div class="flex flex-col">
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-dorado-dark rounded-full flex items-center justify-center">
+                    <div class="w-12 h-12 bg-morado rounded-full flex items-center justify-center">
                         <i class="fas fa-mars text-xl text-white"></i>
                     </div>
-                    <h3 class="font-display text-2xl font-bold text-dorado-dark">Varonil</h3>
-                    <div class="flex-1 h-px bg-dorado-dark/30"></div>
+                    <h3 class="font-display text-2xl font-bold text-morado">Varonil</h3>
+                    <div class="flex-1 h-px bg-morado/30"></div>
                 </div>
                 <div class="grid grid-cols-2 gap-4 flex-1">
                     {{#each categorias.varonil}}
-                    <div class="border-2 border-dorado-dark p-6 text-center hover:bg-dorado-dark hover:text-white transition-colors group flex flex-col justify-center">
-                        <span class="font-display text-2xl font-bold group-hover:text-white text-dorado-dark">{{this.nombre}}</span>
+                    <div class="border-2 border-morado p-6 text-center hover:bg-morado hover:text-white transition-colors group flex flex-col justify-center">
+                        <span class="font-display text-2xl font-bold group-hover:text-white text-morado">{{this.nombre}}</span>
                     </div>
                     {{/each}}
                 </div>

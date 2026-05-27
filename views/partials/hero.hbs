@@ -1,16 +1,22 @@
 <section id="inicio" class="hero-container">
     
-    <!-- Background con imagen responsive -->
-    <div class="hero-bg-portrait"></div>
-    <div class="hero-bg-landscape"></div>
+    <!-- Fondo degradado base -->
+    <div class="hero-gradient-bg"></div>
     
-    <!-- Overlay gradiente -->
-    <div class="absolute inset-0 bg-gradient-to-r from-rosa/80 via-rosa/60 to-rosa-dark/80 z-[1]"></div>
-
-    <!-- Barra decorativa inferior -->
-    <div class="absolute bottom-0 left-0 right-0 h-12 overflow-hidden z-[5]">
-        <div class="absolute bottom-0 left-0 w-full h-8 bg-dorado transform -skew-y-1"></div>
-    </div>
+    <!-- Imagen 1 - Morado/Izquierda -->
+    <div class="hero-image-back1"></div>
+    
+    <!-- Imagen 2 - Colores/Derecha -->
+    <div class="hero-image-back2"></div>
+    
+    <!-- Overlay sutil -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Overlay mobile para resaltar texto -->
+    <div class="hero-mobile-overlay"></div>
+    
+    <!-- Barra decorativa inferior multicolor -->
+    <div class="hero-bottom-bar"></div>
 
     <!-- Contenido Principal -->
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -18,30 +24,30 @@
             
             <!-- Frase destacada -->
             <div class="mb-10">
-                <p class="text-dorado font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight">
+                <p class="text-amarillo font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight">
                     ¡Vive el mejor torneo
                 </p>
                 <p class="text-white font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight">
                     del mundo mundial!
                 </p>
-                <div class="w-32 sm:w-40 h-1.5 bg-dorado mt-6 mx-auto"></div>
+                <div class="w-32 sm:w-40 h-1.5 bg-amarillo mt-6 mx-auto"></div>
             </div>
 
-            <!-- Logo -->
-            <div class="mb-8">
-                <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-20 sm:h-24 lg:h-28 mx-auto">
+            <!-- Logo - OCULTO en mobile, visible desde sm -->
+            <div class="mb-8 hidden sm:block">
+                <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-20 sm:h-24 lg:h-28 mx-auto drop-shadow-2xl">
             </div>
             
             <!-- Edición -->
-            <p class="font-display text-lg sm:text-xl tracking-[0.2em] sm:tracking-[0.3em] text-dorado mb-1">EDICIÓN</p>
+            <p class="font-display text-lg sm:text-xl tracking-[0.2em] sm:tracking-[0.3em] text-amarillo mb-1">EDICIÓN</p>
             
             <!-- Año grande -->
-            <h1 class="font-display text-7xl sm:text-8xl lg:text-9xl font-bold text-dorado leading-none mb-4 hero-year">
+            <h1 class="font-display text-7xl sm:text-8xl lg:text-9xl font-bold text-amarillo leading-none mb-4 hero-year">
                 {{torneo.edicion}}
             </h1>
             
             <!-- Próximamente -->
-            <p class="text-base sm:text-lg tracking-widest mb-2 opacity-90">PRÓXIMAMENTE</p>
+            <p class="text-base sm:text-lg tracking-widest mb-2 text-white">PRÓXIMAMENTE</p>
             
             <!-- Mes y Año -->
             <p class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -50,37 +56,38 @@
 
             <!-- Ubicación -->
             <div class="flex items-center justify-center gap-2 text-base sm:text-lg mb-8">
-                <i class="fas fa-map-marker-alt text-dorado"></i>
+                <i class="fas fa-map-marker-alt text-amarillo"></i>
                 <span class="font-semibold">{{torneo.sede.ciudad}}, {{torneo.sede.estado}}</span>
             </div>
 
             <!-- Categorías -->
             <div class="flex items-center justify-center gap-4">
-                <span class="text-dorado text-lg">◀</span>
-                <p class="uppercase tracking-wider text-xs sm:text-sm">Categorías Infantiles Femenil y Varonil</p>
-                <span class="text-dorado text-lg">▶</span>
+                <span class="text-amarillo text-lg">◀</span>
+                <p class="uppercase tracking-wider text-xs sm:text-sm text-white">Categorías Infantiles Femenil y Varonil</p>
+                <span class="text-amarillo text-lg">▶</span>
             </div>
 
-            <!-- Redes Sociales -->
-            <div class="flex items-center justify-center gap-6 mt-10">
-                <span class="text-sm font-medium">{{site.social.handle}}</span>
+           <!-- Redes Sociales -->
+            <div class="flex items-center justify-center gap-6 mt-10 bg-morado/70 lg:bg-transparent py-3 px-6 ">
+                <span class="text-sm font-medium text-white/80">{{site.social.handle}}</span>
                 <div class="flex gap-4">
-                    <a href="{{site.social.facebook}}" target="_blank" class="text-2xl hover:text-dorado transition-colors">
+                    <a href="{{site.social.facebook}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="{{site.social.instagram}}" target="_blank" class="text-2xl hover:text-dorado transition-colors">
+                    <a href="{{site.social.instagram}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="{{site.social.tiktok}}" target="_blank" class="text-2xl hover:text-dorado transition-colors">
+                    <a href="{{site.social.tiktok}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
                         <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Flecha scroll -->
     <div class="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce z-10">
-        <i class="fas fa-chevron-down text-2xl text-dorado"></i>
+        <i class="fas fa-chevron-down text-2xl text-amarillo"></i>
     </div>
 </section>

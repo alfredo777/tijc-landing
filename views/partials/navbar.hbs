@@ -2,14 +2,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center gap-3">
-              <a href="/">  <img src="/images/logo.png?v={{timestamp}}" alt="Logo" class="h-12 w-auto"></a>
+              <a href="/"><img src="/images/logo.png?v={{timestamp}}" alt="Logo" class="h-12 w-auto"></a>
             </div>
             
             <div class="hidden lg:flex items-center gap-8">
                 {{#each nav}}
-                <a href="/inscripcion" class="text-sm font-medium hover:text-dorado transition-colors">{{this.texto}}</a>
+                <a href="{{this.url}}" class="text-sm font-medium hover:text-amarillo transition-colors">{{this.texto}}</a>
                 {{/each}}
-                <a href="/inscripcion" class="bg-dorado text-rosa-dark px-6 py-2 font-bold uppercase text-sm hover:bg-white transition-colors">
+                <a href="/inscripcion" class="bg-amarillo text-morado-dark px-6 py-2 font-bold uppercase text-sm hover:bg-white transition-colors">
                     Inscríbete
                 </a>
             </div>
@@ -20,12 +20,12 @@
         </div>
     </div>
 
-    <div id="mobileMenu" class="hidden lg:hidden bg-rosa-dark">
+    <div id="mobileMenu" class="hidden lg:hidden bg-morado-dark">
         <div class="px-4 py-4 space-y-3">
             {{#each nav}}
-            <a href="/inscripcion" class="block py-2 hover:text-dorado">{{this.texto}}</a>
+            <a href="{{this.url}}" class="block py-2 hover:text-amarillo">{{this.texto}}</a>
             {{/each}}
-            <a href="/inscripcion" class="block bg-dorado text-rosa-dark text-center py-3 font-bold mt-4">Inscríbete</a>
+            <a href="/inscripcion" class="block bg-amarillo text-morado-dark text-center py-3 font-bold mt-4">Inscríbete</a>
         </div>
     </div>
 </nav>
