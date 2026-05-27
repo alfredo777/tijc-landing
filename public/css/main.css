@@ -41,9 +41,9 @@ html {
     z-index: 0;
     background: linear-gradient(
         180deg,
-        #1a0a2e 0%,
-        #9220E1 30%,
-        #F6288D 70%,
+        #9220E1 0%,
+        #9220E1 25%,
+        #F6288D 60%,
         #C41E70 100%
     );
 }
@@ -60,7 +60,170 @@ html {
     }
 }
 
-/* === IMÁGENES DEL HERO === */
+/* === IMAGEN MOBILE - heroback3.png === */
+.hero-image-mobile {
+    position: absolute;
+    z-index: 1;
+    background-image: url('/images/heroback3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    pointer-events: none;
+    width: 85%;
+    height: 40%;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Ocultar en desktop */
+@media (min-width: 1024px) {
+    .hero-image-mobile {
+        display: none;
+    }
+}
+
+/* Ajuste para móviles pequeños */
+@media (max-width: 380px) {
+    .hero-image-mobile {
+        width: 90%;
+        height: 32%;
+        top: 35%;
+    }
+}
+
+/* Móviles medianos */
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-image-mobile {
+        width: 85%;
+        height: 35%;
+        top: 36%;
+    }
+}
+
+/* Tablets portrait */
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-image-mobile {
+        width: 70%;
+        height: 38%;
+        top: 40%;
+    }
+}
+
+/* === CONTENIDO MOBILE === */
+
+.hero-content-mobile {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    .hero-content-mobile {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-content-mobile {
+        margin-top: 40px;
+    }
+}
+
+/* Espacio para imagen - MÁS GRANDE para empujar texto abajo */
+.hero-image-spacer {
+    height: 300px;
+}
+
+@media (max-width: 380px) {
+    .hero-image-spacer {
+        height: 240px;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-image-spacer {
+        height: 270px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-image-spacer {
+        height: 320px;
+    }
+}
+
+
+/* === CONTENIDO INFERIOR MOBILE === */
+.hero-content-bottom {
+    position: relative;
+    z-index: 10;
+}
+
+/* Año más pequeño en mobile */
+@media (max-width: 480px) {
+    .hero-year {
+        font-size: 3.5rem !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-year {
+        font-size: 3rem !important;
+    }
+}
+
+
+/* === CONTENIDO MOBILE === */
+
+/* Texto superior - más arriba */
+.hero-text-top {
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 1023px) {
+    .hero-text-top {
+        margin-top: -60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text-top {
+        margin-top: -80px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-text-top {
+        margin-top: -100px;
+    }
+}
+
+/* Espacio entre título y contenido inferior */
+.hero-image-spacer {
+    height: 280px;
+}
+
+@media (max-width: 380px) {
+    .hero-image-spacer {
+        height: 220px;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-image-spacer {
+        height: 250px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-image-spacer {
+        height: 300px;
+    }
+}
+
+/* === IMÁGENES DESKTOP - back1 y back2 === */
 .hero-image-back1,
 .hero-image-back2 {
     position: absolute;
@@ -68,64 +231,17 @@ html {
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
+    display: none;
 }
 
-/* MOBILE: Imágenes más centradas con poco espacio */
-.hero-image-back1 {
-    background-image: url('/images/heroback1.png');
-    width: 100%;
-    height: 40%;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-position: center bottom;
-}
-
-.hero-image-back2 {
-    background-image: url('/images/heroback2.png');
-    width: 100%;
-    height: 40%;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-position: center top;
-}
-
-/* Móviles pequeños - aún más juntas */
-@media (max-width: 480px) {
-    .hero-image-back1 {
-        height: 35%;
-        top: 12%;
-        background-position: center bottom;
-    }
-    
-    .hero-image-back2 {
-        height: 35%;
-        bottom: 8%;
-        background-position: center top;
-    }
-}
-
-/* Tablets portrait */
-@media (min-width: 481px) and (max-width: 1023px) {
-    .hero-image-back1 {
-        width: 90%;
-        height: 38%;
-        top: 8%;
-        background-position: center bottom;
-    }
-    
-    .hero-image-back2 {
-        width: 90%;
-        height: 38%;
-        bottom: 6%;
-        background-position: center top;
-    }
-}
-
-/* DESKTOP: Imágenes a los lados */
 @media (min-width: 1024px) {
+    .hero-image-back1,
+    .hero-image-back2 {
+        display: block;
+    }
+    
     .hero-image-back1 {
+        background-image: url('/images/heroback1.png');
         width: 35%;
         height: 85%;
         top: 50%;
@@ -135,11 +251,10 @@ html {
     }
     
     .hero-image-back2 {
+        background-image: url('/images/heroback2.png');
         width: 35%;
         height: 85%;
         top: 50%;
-        bottom: auto;
-        left: auto;
         right: 0;
         transform: translateY(-50%);
         background-position: right center;
@@ -151,11 +266,17 @@ html {
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
+    background: transparent;
+}
+
+@media (min-width: 1024px) {
+    .hero-overlay {
+        background: radial-gradient(
+            ellipse at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.2) 100%
+        );
+    }
 }
 
 /* === BARRA DECORATIVA INFERIOR === */
@@ -180,37 +301,13 @@ html {
     transform: skewY(-1deg);
 }
 
-/* === AÑO - Borde blanco limpio === */
+/* === AÑO - Borde blanco === */
 .hero-year {
     text-shadow: 
         -2px -2px 0 #FFFFFF,
         2px -2px 0 #FFFFFF,
         -2px 2px 0 #FFFFFF,
         2px 2px 0 #FFFFFF;
-}
-
-/* === OVERLAY MOBILE - Capa leve para resaltar texto === */
-.hero-mobile-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background: rgba(146, 32, 225, 0.15); /* Morado muy sutil */
-    pointer-events: none;
-}
-
-/* Solo visible en mobile, oculto en desktop */
-@media (min-width: 1024px) {
-    .hero-mobile-overlay {
-        display: none;
-    }
-}
-
-
-/* Móviles pequeños */
-@media (max-width: 380px) {
-    .hero-year {
-        font-size: 4rem !important;
-    }
 }
 
 @media (max-width: 640px) {

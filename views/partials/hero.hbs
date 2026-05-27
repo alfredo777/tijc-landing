@@ -3,91 +3,152 @@
     <!-- Fondo degradado base -->
     <div class="hero-gradient-bg"></div>
     
-    <!-- Imagen 1 - Morado/Izquierda -->
+    <!-- MOBILE: Imagen única centrada -->
+    <div class="hero-image-mobile"></div>
+    
+    <!-- DESKTOP: Imagen 1 - Izquierda -->
     <div class="hero-image-back1"></div>
     
-    <!-- Imagen 2 - Colores/Derecha -->
+    <!-- DESKTOP: Imagen 2 - Derecha -->
     <div class="hero-image-back2"></div>
     
     <!-- Overlay sutil -->
     <div class="hero-overlay"></div>
     
-    <!-- Overlay mobile para resaltar texto -->
-    <div class="hero-mobile-overlay"></div>
-    
-    <!-- Barra decorativa inferior multicolor -->
+    <!-- Barra decorativa inferior -->
     <div class="hero-bottom-bar"></div>
 
     <!-- Contenido Principal -->
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
         <div class="text-center">
             
             <!-- Frase destacada -->
-            <div class="mb-10">
-                <p class="text-amarillo font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight">
+            <div class="hero-text-top mb-4 lg:mb-10 lg:mt-0">
+                <p class="text-amarillo font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-none">
                     ¡Vive el mejor torneo
                 </p>
-                <p class="text-white font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-tight">
+                <p class="text-white font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wide leading-none">
                     del mundo mundial!
                 </p>
-                <div class="w-32 sm:w-40 h-1.5 bg-amarillo mt-6 mx-auto"></div>
+                <!-- Línea decorativa - Solo desktop -->
+                <div class="hidden lg:block w-40 h-1 bg-amarillo mt-4 mx-auto"></div>
             </div>
 
-            <!-- Logo - OCULTO en mobile, visible desde sm -->
-            <div class="mb-8 hidden sm:block">
-                <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-20 sm:h-24 lg:h-28 mx-auto drop-shadow-2xl">
-            </div>
-            
-            <!-- Edición -->
-            <p class="font-display text-lg sm:text-xl tracking-[0.2em] sm:tracking-[0.3em] text-amarillo mb-1">EDICIÓN</p>
-            
-            <!-- Año grande -->
-            <h1 class="font-display text-7xl sm:text-8xl lg:text-9xl font-bold text-amarillo leading-none mb-4 hero-year">
-                {{torneo.edicion}}
-            </h1>
-            
-            <!-- Próximamente -->
-            <p class="text-base sm:text-lg tracking-widest mb-2 text-white">PRÓXIMAMENTE</p>
-            
-            <!-- Mes y Año -->
-            <p class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                {{torneo.mes}} {{torneo.año}}
-            </p>
+            <!-- Espacio para imagen en mobile -->
+            <div class="hero-image-spacer lg:hidden"></div>
 
-            <!-- Ubicación -->
-            <div class="flex items-center justify-center gap-2 text-base sm:text-lg mb-8">
-                <i class="fas fa-map-marker-alt text-amarillo"></i>
-                <span class="font-semibold">{{torneo.sede.ciudad}}, {{torneo.sede.estado}}</span>
+            <!-- Logo - Solo desktop -->
+            <div class="mb-4 lg:mb-8 hidden lg:block">
+                <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-16 sm:h-20 lg:h-28 mx-auto drop-shadow-2xl">
             </div>
 
-            <!-- Categorías -->
-            <div class="flex items-center justify-center gap-4">
-                <span class="text-amarillo text-lg">◀</span>
-                <p class="uppercase tracking-wider text-xs sm:text-sm text-white">Categorías Infantiles Femenil y Varonil</p>
-                <span class="text-amarillo text-lg">▶</span>
-            </div>
-
-           <!-- Redes Sociales -->
-            <div class="flex items-center justify-center gap-6 mt-10 bg-morado/70 lg:bg-transparent py-3 px-6 ">
-                <span class="text-sm font-medium text-white/80">{{site.social.handle}}</span>
-                <div class="flex gap-4">
-                    <a href="{{site.social.facebook}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="{{site.social.instagram}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="{{site.social.tiktok}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+            <!-- ========== CONTENIDO MOBILE ========== -->
+            <div class="hero-content-mobile lg:hidden">
+                
+                <!-- Flecha amarilla -->
+                <div class="mb-3">
+                    <span class="text-amarillo text-3xl font-bold">▼</span>
                 </div>
+                
+                <!-- Categorías Infantiles -->
+                <p class="font-display text-2xl font-bold uppercase tracking-wider text-amarillo mb-0 leading-tight">
+                    Categorías Infantiles
+                </p>
+                
+                <!-- Femenil y Varonil -->
+                <p class="font-display text-xl uppercase tracking-widest text-white/90 mb-3">
+                    Femenil y Varonil
+                </p>
+                
+                <!-- Mes y Año - Grande -->
+                <p class="font-display text-4xl font-bold text-white mb-1 leading-none">
+                    {{torneo.mes}} {{torneo.año}}
+                </p>
+
+                <!-- Ubicación -->
+                <p class="font-display text-xl font-semibold text-white/90 mb-6">
+                    {{torneo.sede.ciudad}}, {{torneo.sede.estado}}
+                </p>
+
+                <!-- Redes Sociales -->
+                <div class="flex items-center justify-center gap-4 bg-morado/50 py-2 px-4">
+                    <span class="text-xs font-medium text-white/80">{{site.social.handle}}</span>
+                    <div class="flex gap-3">
+                        <a href="{{site.social.facebook}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="{{site.social.instagram}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="{{site.social.tiktok}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="{{site.social.youtube}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- ========== CONTENIDO DESKTOP ========== -->
+            <div class="hero-content-desktop hidden lg:block">
+                
+                <!-- Edición -->
+                <p class="font-display text-xl tracking-[0.3em] text-amarillo mb-1">EDICIÓN</p>
+                
+                <!-- Año grande -->
+                <h1 class="font-display text-9xl font-bold text-amarillo leading-none mb-4 hero-year">
+                    {{torneo.edicion}}
+                </h1>
+                
+                <!-- Próximamente -->
+                <p class="text-lg tracking-widest mb-2 text-verde">PRÓXIMAMENTE</p>
+                
+                <!-- Mes y Año -->
+                <p class="font-display text-5xl font-bold mb-6 text-white">
+                    {{torneo.mes}} {{torneo.año}}
+                </p>
+
+                <!-- Ubicación -->
+                <div class="flex items-center justify-center gap-2 text-lg mb-8">
+                    <i class="fas fa-map-marker-alt text-amarillo"></i>
+                    <span class="font-semibold text-white">{{torneo.sede.ciudad}}, {{torneo.sede.estado}}</span>
+                </div>
+
+                <!-- Categorías -->
+                <div class="flex items-center justify-center gap-4 mb-8">
+                    <span class="text-amarillo text-lg">◀</span>
+                    <p class="uppercase tracking-wider text-sm text-white">Categorías Infantiles Femenil y Varonil</p>
+                    <span class="text-amarillo text-lg">▶</span>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="flex items-center justify-center gap-6">
+                    <span class="text-sm font-medium text-white/80">{{site.social.handle}}</span>
+                    <div class="flex gap-4">
+                        <a href="{{site.social.facebook}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="{{site.social.instagram}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="{{site.social.tiktok}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="{{site.social.youtube}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
 
         </div>
     </div>
 
-    <!-- Flecha scroll -->
-    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce z-10">
+    <!-- Flecha scroll - Solo desktop -->
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce z-10 hidden lg:block">
         <i class="fas fa-chevron-down text-2xl text-amarillo"></i>
     </div>
 </section>
