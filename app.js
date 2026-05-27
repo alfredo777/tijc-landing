@@ -4,6 +4,8 @@ const path = require('path');
 const chokidar = require('chokidar');
 const WebSocket = require('ws');
 const fs = require('fs');
+require('dotenv').config();
+const mailController = require(path.join(__dirname, 'controllers', 'mailController'));
 
 const app = express();
 app.use(express.json());
@@ -300,11 +302,42 @@ app.get('/inscripcion', (req, res) => {
     });
 });
 // API para recibir inscripciones (POST)
-app.post('/api/inscripcion', (req, res) => {
-    // Aquí procesarías el formulario
-    console.log('Nueva inscripción:', req.body);
-    res.json({ success: true, message: 'Inscripción recibida correctamente' });
+
+app.post('/api/inscripcion', async (req, res) => {
+    try {
+        const inscripcionData = {
+            ...req.body,
+            ip: req.ip || req.connection.remoteAddress,
+            userAgent: req.get('User-Agent')
+        };
+        
+        console.log('📝 Nueva inscripción recibida:', inscripcionData.nombre, inscripcionData.apellidos);
+        
+        // Procesar y enviar emails
+        const emailResults = await mailController.processInscripcion(inscripcionData);
+        
+        if (emailResults.errors.length > 0) {
+            console.warn('⚠️ Algunos emails no se enviaron:', emailResults.errors);
+        }
+        
+        res.json({ 
+            success: true, 
+            message: 'Inscripción recibida correctamente',
+            emailsSent: {
+                user: !!emailResults.userEmail,
+                admin: !!emailResults.adminEmail
+            }
+        });
+        
+    } catch (error) {
+        console.error('❌ Error procesando inscripción:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error al procesar la inscripción' 
+        });
+    }
 });
+
 // ========== SERVIDOR HTTP Y WEBSOCKET ==========
 const server = require('http').createServer(app);
 const wss = new WebSocket.Server({ server });

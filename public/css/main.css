@@ -28,7 +28,7 @@ html {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Cambio: empezar desde arriba */
     align-items: center;
     overflow: hidden;
     color: #FFFFFF;
@@ -69,161 +69,185 @@ html {
     background-repeat: no-repeat;
     background-position: center center;
     pointer-events: none;
-    width: 85%;
-    height: 40%;
-    top: 38%;
+    width: 100%;
+    height: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* Ocultar en desktop */
 @media (min-width: 1024px) {
     .hero-image-mobile {
         display: none;
     }
 }
 
-/* Ajuste para móviles pequeños */
+/* Móviles muy pequeños (iPhone SE) */
 @media (max-width: 380px) {
     .hero-image-mobile {
-        width: 90%;
-        height: 32%;
-        top: 35%;
+        width: 110%;
+        height: 38%;
+        top: 48%;
+    }
+}
+
+/* Móviles pequeños */
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-image-mobile {
+        width: 105%;
+        height: 42%;
+        top: 48%;
     }
 }
 
 /* Móviles medianos */
-@media (min-width: 381px) and (max-width: 480px) {
+@media (min-width: 481px) and (max-width: 640px) {
     .hero-image-mobile {
-        width: 85%;
-        height: 35%;
-        top: 36%;
+        width: 100%;
+        height: 45%;
+        top: 48%;
     }
 }
 
 /* Tablets portrait */
-@media (min-width: 481px) and (max-width: 1023px) {
+@media (min-width: 641px) and (max-width: 767px) {
     .hero-image-mobile {
-        width: 70%;
-        height: 38%;
-        top: 40%;
+        width: 85%;
+        height: 48%;
+        top: 48%;
     }
 }
 
-/* === CONTENIDO MOBILE === */
+/* Tablets landscape */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-image-mobile {
+        width: 75%;
+        height: 50%;
+        top: 48%;
+    }
+}
 
-.hero-content-mobile {
+
+/* === CONTENIDO PRINCIPAL MOBILE === */
+.hero-main-content {
     position: relative;
     z-index: 10;
-    margin-top: 20px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px; /* Espacio para navbar */
 }
 
 @media (max-width: 480px) {
-    .hero-content-mobile {
-        margin-top: 30px;
+    .hero-main-content {
+        padding-top: 90px;
     }
 }
 
 @media (max-width: 380px) {
-    .hero-content-mobile {
-        margin-top: 40px;
+    .hero-main-content {
+        padding-top: 80px;
     }
 }
 
-/* Espacio para imagen - MÁS GRANDE para empujar texto abajo */
-.hero-image-spacer {
-    height: 300px;
-}
-
-@media (max-width: 380px) {
-    .hero-image-spacer {
-        height: 240px;
+@media (min-width: 1024px) {
+    .hero-main-content {
+        padding-top: 0;
+        justify-content: center;
+        min-height: 100vh;
     }
 }
 
-@media (min-width: 381px) and (max-width: 480px) {
-    .hero-image-spacer {
-        height: 270px;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 1023px) {
-    .hero-image-spacer {
-        height: 320px;
-    }
-}
-
-
-/* === CONTENIDO INFERIOR MOBILE === */
-.hero-content-bottom {
-    position: relative;
-    z-index: 10;
-}
-
-/* Año más pequeño en mobile */
-@media (max-width: 480px) {
-    .hero-year {
-        font-size: 3.5rem !important;
-    }
-}
-
-@media (max-width: 380px) {
-    .hero-year {
-        font-size: 3rem !important;
-    }
-}
-
-
-/* === CONTENIDO MOBILE === */
-
-/* Texto superior - más arriba */
+/* === TEXTO SUPERIOR === */
 .hero-text-top {
     position: relative;
     z-index: 10;
-}
-
-@media (max-width: 1023px) {
-    .hero-text-top {
-        margin-top: -60px;
-    }
+    text-align: center;
+    flex-shrink: 0;
 }
 
 @media (max-width: 480px) {
-    .hero-text-top {
-        margin-top: -80px;
+    .hero-text-top p {
+        font-size: 1.6rem !important;
+        line-height: 1.1;
     }
 }
 
 @media (max-width: 380px) {
-    .hero-text-top {
-        margin-top: -100px;
+    .hero-text-top p {
+        font-size: 1.4rem !important;
     }
 }
 
-/* Espacio entre título y contenido inferior */
+@media (max-width: 320px) {
+    .hero-text-top p {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* === ESPACIO FLEXIBLE PARA IMAGEN === */
 .hero-image-spacer {
-    height: 280px;
+    flex: 1;
+    min-height: 200px;
 }
 
 @media (max-width: 380px) {
     .hero-image-spacer {
-        height: 220px;
+        min-height: 150px;
     }
 }
 
 @media (min-width: 381px) and (max-width: 480px) {
     .hero-image-spacer {
-        height: 250px;
+        min-height: 180px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 1023px) {
     .hero-image-spacer {
-        height: 300px;
+        min-height: 220px;
     }
 }
 
-/* === IMÁGENES DESKTOP - back1 y back2 === */
+/* === CONTENIDO INFERIOR MOBILE === */
+.hero-content-mobile {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    flex-shrink: 0;
+    padding-bottom: 70px; /* Espacio para la barra amarilla */
+}
+
+@media (max-width: 380px) {
+    .hero-content-mobile {
+        padding-bottom: 60px;
+    }
+    
+    .hero-content-mobile .text-2xl {
+        font-size: 1.1rem !important;
+    }
+    
+    .hero-content-mobile .text-xl {
+        font-size: 0.95rem !important;
+    }
+    
+    .hero-content-mobile .text-4xl {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-content-mobile .text-2xl {
+        font-size: 1.25rem !important;
+    }
+    
+    .hero-content-mobile .text-4xl {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* === IMÁGENES DESKTOP === */
 .hero-image-back1,
 .hero-image-back2 {
     position: absolute;
@@ -261,7 +285,7 @@ html {
     }
 }
 
-/* === OVERLAY SUTIL === */
+/* === OVERLAY === */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -279,7 +303,7 @@ html {
     }
 }
 
-/* === BARRA DECORATIVA INFERIOR === */
+/* === BARRA INFERIOR === */
 .hero-bottom-bar {
     position: absolute;
     bottom: 0;
@@ -301,7 +325,7 @@ html {
     transform: skewY(-1deg);
 }
 
-/* === AÑO - Borde blanco === */
+/* === AÑO DESKTOP === */
 .hero-year {
     text-shadow: 
         -2px -2px 0 #FFFFFF,
@@ -315,6 +339,7 @@ html {
         font-size: 4rem !important;
     }
 }
+
 
 
 /* ========================================
