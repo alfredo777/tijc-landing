@@ -419,6 +419,33 @@ app.get('/inscripcion', (req, res) => {
     });
 });
 
+// Ruta de prueba para emails (SOLO DESARROLLO)
+if (isDevelopment) {
+    app.get('/api/test-email/:email', async (req, res) => {
+        const mailController = require(path.join(__dirname, 'controllers', 'mailController'));
+        
+        try {
+            const result = await mailController.sendTestEmail(req.params.email);
+            res.json({ 
+                success: true, 
+                message: 'Email de prueba enviado',
+                result: {
+                    messageId: result.messageId,
+                    accepted: result.accepted,
+                    rejected: result.rejected
+                }
+            });
+        } catch (error) {
+            res.status(500).json({ 
+                success: false, 
+                error: error.message,
+                details: error.response || error.code
+            });
+        }
+    });
+}
+
+
 // API para recibir inscripciones (POST)
 app.post('/api/inscripcion', async (req, res) => {
     try {

@@ -23,17 +23,24 @@ function initMailer() {
         transporter = nodemailer.createTransport({
             host: host,
             port: parseInt(port),
-            secure: port == 465, // true para 465, false para otros puertos
+            secure: port == 465,
             auth: {
                 user: user,
                 pass: pass
-            }
+            },
+            // Agregar configuración para mejor entrega
+            tls: {
+                rejectUnauthorized: false
+            },
+            debug: true, // Habilitar debug
+            logger: true  // Habilitar logging
         });
         
         // Verificar conexión
         transporter.verify((error, success) => {
             if (error) {
                 console.error('❌ Error verificando SMTP:', error.message);
+                console.error('   Detalles:', error);
             } else {
                 console.log('✅ SMTP configurado correctamente:');
                 console.log('   Host:', host);
@@ -106,7 +113,7 @@ const paisLabels = {
 };
 
 /**
- * Función helper para enviar emails
+ * Función helper para enviar emails con logging detallado
  */
 async function sendEmail(mailOptions) {
     if (!transporter) {
@@ -116,17 +123,31 @@ async function sendEmail(mailOptions) {
         return { messageId: 'simulated', simulated: true };
     }
     
-    console.log('📧 Enviando email:');
+    console.log('═══════════════════════════════════════════');
+    console.log('📧 ENVIANDO EMAIL:');
     console.log('   From:', mailOptions.from);
     console.log('   To:', mailOptions.to);
     console.log('   Subject:', mailOptions.subject);
+    console.log('   Reply-To:', mailOptions.replyTo || 'No configurado');
+    console.log('═══════════════════════════════════════════');
     
     try {
         const info = await transporter.sendMail(mailOptions);
-        console.log('✅ Email enviado:', info.messageId);
+        console.log('✅ Email enviado exitosamente:');
+        console.log('   Message ID:', info.messageId);
+        console.log('   Response:', info.response);
+        console.log('   Accepted:', info.accepted);
+        console.log('   Rejected:', info.rejected);
+        console.log('═══════════════════════════════════════════');
         return info;
     } catch (error) {
-        console.error('❌ Error enviando email:', error.message);
+        console.error('❌ ERROR ENVIANDO EMAIL:');
+        console.error('   Mensaje:', error.message);
+        console.error('   Código:', error.code);
+        console.error('   Comando:', error.command);
+        console.error('   Response:', error.response);
+        console.error('   Stack:', error.stack);
+        console.log('═══════════════════════════════════════════');
         throw error;
     }
 }
@@ -158,11 +179,10 @@ async function sendUserConfirmation(inscripcionData) {
             })
         });
     } else {
-        // Fallback sin template
         htmlContent = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                 <div style="text-align: center; margin-bottom: 30px;">
-                    <img src="https://www.torneojorgecampos.com.mx/images/logo.png" alt="Logo" style="max-height: 80px;">
+                    <img src="https://torneojorgecampos.com.mx/images/logo.png" alt="Logo" style="max-height: 80px;">
                 </div>
                 <h1 style="color: #9220E1; text-align: center;">¡Gracias por tu inscripción!</h1>
                 <p>Hola <strong>${inscripcionData.nombre} ${inscripcionData.apellidos}</strong>,</p>
@@ -175,7 +195,7 @@ async function sendUserConfirmation(inscripcionData) {
                 <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
                 <p style="color: #666; font-size: 12px; text-align: center;">
                     Torneo Jorge Campos<br>
-                    <a href="https://www.torneojorgecampos.com.mx">www.torneojorgecampos.com.mx</a><br>
+                    <a href="https://torneojorgecampos.com.mx">torneojorgecampos.com.mx</a><br>
                     contacto@torneojorgecampos.com.mx | +52 449 469 9962
                 </p>
             </div>
@@ -183,10 +203,17 @@ async function sendUserConfirmation(inscripcionData) {
     }
 
     const mailOptions = {
-        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <non-reply@torneojorgecampos.com.mx>',
+        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
         to: inscripcionData.email,
+        replyTo: 'contacto@torneojorgecampos.com.mx', // Para que las respuestas vayan al contacto
         subject: '¡Recibimos tu inscripción! - Torneo Jorge Campos 2026',
-        html: htmlContent
+        html: htmlContent,
+        // Headers adicionales para mejorar entregabilidad
+        headers: {
+            'X-Priority': '1',
+            'X-Mailer': 'Torneo Jorge Campos Mailer',
+            'List-Unsubscribe': '<mailto:contacto@torneojorgecampos.com.mx?subject=unsubscribe>'
+        }
     };
 
     return sendEmail(mailOptions);
@@ -198,6 +225,11 @@ async function sendUserConfirmation(inscripcionData) {
 async function sendAdminNotification(inscripcionData) {
     const template = loadTemplate('admin-notification');
     const baseData = getBaseEmailData();
+    
+    // Obtener el email de destino
+    const adminEmail = process.env.MAIL_TO || 'contacto@torneojorgecampos.com.mx';
+    
+    console.log('🎯 Email de admin destino:', adminEmail);
     
     let htmlContent;
     
@@ -229,7 +261,6 @@ async function sendAdminNotification(inscripcionData) {
             userAgent: inscripcionData.userAgent || 'No disponible'
         });
     } else {
-        // Fallback sin template
         htmlContent = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                 <h1 style="color: #9220E1;">🆕 Nueva Inscripción</h1>
@@ -265,10 +296,48 @@ async function sendAdminNotification(inscripcionData) {
     }
 
     const mailOptions = {
-        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <contacto@torneojorgecampos.com.mx>',
-        to: process.env.MAIL_TO || 'contacto@torneojorgecampos.com.mx',
+        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
+        to: adminEmail,
+        replyTo: inscripcionData.email, // Para responder directo al usuario
         subject: `🆕 Nueva Inscripción: ${inscripcionData.nombre} ${inscripcionData.apellidos} - ${inscripcionData.categoria}`,
-        html: htmlContent
+        html: htmlContent,
+        headers: {
+            'X-Priority': '1',
+            'X-Mailer': 'Torneo Jorge Campos Mailer'
+        }
+    };
+
+    return sendEmail(mailOptions);
+}
+
+/**
+ * Función de prueba para enviar un email de test
+ */
+async function sendTestEmail(toEmail) {
+    console.log('🧪 Enviando email de prueba a:', toEmail);
+    
+    const mailOptions = {
+        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
+        to: toEmail,
+        subject: '🧪 Test - Torneo Jorge Campos ' + new Date().toISOString(),
+        html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                <h1 style="color: #9220E1;">Email de Prueba</h1>
+                <p>Este es un email de prueba enviado el ${new Date().toLocaleString('es-MX')}</p>
+                <p><strong>Configuración SMTP:</strong></p>
+                <ul>
+                    <li>Host: ${process.env.SMTP_HOST}</li>
+                    <li>Port: ${process.env.SMTP_PORT}</li>
+                    <li>User: ${process.env.SMTP_USER}</li>
+                    <li>From: ${process.env.MAIL_FROM}</li>
+                </ul>
+                <p>Si recibes este email, la configuración está funcionando correctamente.</p>
+            </div>
+        `,
+        headers: {
+            'X-Priority': '1',
+            'X-Mailer': 'Torneo Jorge Campos Test'
+        }
     };
 
     return sendEmail(mailOptions);
@@ -278,7 +347,15 @@ async function sendAdminNotification(inscripcionData) {
  * Procesar inscripción completa
  */
 async function processInscripcion(inscripcionData) {
-    console.log('📬 Procesando inscripción de:', inscripcionData.nombre, inscripcionData.apellidos);
+    console.log('');
+    console.log('╔═══════════════════════════════════════════════════════════╗');
+    console.log('║  📬 PROCESANDO NUEVA INSCRIPCIÓN                          ║');
+    console.log('╠═══════════════════════════════════════════════════════════╣');
+    console.log(`║  Nombre: ${inscripcionData.nombre} ${inscripcionData.apellidos}`);
+    console.log(`║  Email: ${inscripcionData.email}`);
+    console.log(`║  Categoría: ${inscripcionData.categoria} - ${inscripcionData.año_categoria}`);
+    console.log('╚═══════════════════════════════════════════════════════════╝');
+    console.log('');
     
     const results = {
         userEmail: null,
@@ -287,24 +364,35 @@ async function processInscripcion(inscripcionData) {
     };
 
     // Email al usuario
+    console.log('📧 [1/2] Enviando confirmación al usuario...');
     try {
         results.userEmail = await sendUserConfirmation(inscripcionData);
+        console.log('✅ [1/2] Email al usuario enviado');
     } catch (error) {
+        console.error('❌ [1/2] Error enviando al usuario:', error.message);
         results.errors.push({ type: 'user', error: error.message });
     }
 
     // Notificación al admin
+    console.log('📧 [2/2] Enviando notificación al administrador...');
     try {
         results.adminEmail = await sendAdminNotification(inscripcionData);
+        console.log('✅ [2/2] Email al admin enviado');
     } catch (error) {
+        console.error('❌ [2/2] Error enviando al admin:', error.message);
         results.errors.push({ type: 'admin', error: error.message });
     }
 
+    console.log('');
+    console.log('═══════════════════════════════════════════');
     if (results.errors.length > 0) {
-        console.warn('⚠️ Algunos emails no se enviaron:', results.errors);
+        console.warn('⚠️ RESUMEN: Algunos emails no se enviaron');
+        results.errors.forEach(e => console.warn(`   - ${e.type}: ${e.error}`));
     } else {
-        console.log('✅ Todos los emails enviados correctamente');
+        console.log('✅ RESUMEN: Todos los emails enviados correctamente');
     }
+    console.log('═══════════════════════════════════════════');
+    console.log('');
 
     return results;
 }
@@ -312,5 +400,6 @@ async function processInscripcion(inscripcionData) {
 module.exports = {
     sendUserConfirmation,
     sendAdminNotification,
-    processInscripcion
+    processInscripcion,
+    sendTestEmail
 };
