@@ -264,10 +264,10 @@ app.get('/privacidad', (req, res) => {
         site: {
             social: {
                 whatsapp: '+52 449 469 9962',
-                handle: '@copajorgecampos'
+                handle: '@torneojorgecampos'
             },
             contact: {
-                email: 'contacto@copajorgecampos.com',
+                email: 'contacto@torneojorgecampos.com.mx',
                 phone: '+52 449 469 9962'
             }
         },
@@ -330,10 +330,10 @@ app.get('/inscripcion', (req, res) => {
         site: {
             social: {
                 whatsapp: '+52 449 469 9962',
-                handle: '@copajorgecampos'
+                handle: '@torneojorgecampos'
             },
             contact: {
-                email: 'contacto@copajorgecampos.com',
+                email: 'contacto@torneojorgecampos.com.mx',
                 phone: '+52 449 469 9962'
             }
         },
