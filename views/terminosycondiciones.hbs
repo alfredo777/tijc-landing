@@ -1,0 +1,562 @@
+{{!-- views/terminosycondiciones.hbs --}}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png?v={{timestamp}}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rosa': '#E6007E',
+                        'rosa-dark': '#C4006A',
+                        'rosa-light': '#FF1493',
+                        'dorado': '#FFD700',
+                        'dorado-dark': '#DAA520',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/main.css?v={{timestamp}}">
+</head>
+<body class="font-body bg-gray-900 text-white">
+
+    {{> navbar}}
+<main class="pt-20">
+    
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-morado to-rosa py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+                Términos y Condiciones
+            </h1>
+            <p class="text-white/80">
+                Última actualización: {{fechaActualizacion}}
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <div class="prose prose-lg max-w-none text-black">
+                
+                <!-- Introducción -->
+                <div class="bg-gray-50 p-6 rounded-xl mb-8">
+                    <p class="text-black leading-relaxed">
+                        Bienvenido al <strong>Torneo Jorge Campos</strong>. Al acceder y utilizar nuestro sitio web 
+                        <a href="https://torneojorgecampos.com.mx" class="text-morado hover:underline">torneojorgecampos.com.mx</a>, 
+                        así como al inscribirte y participar en el torneo, aceptas cumplir con los siguientes Términos y Condiciones. 
+                        Te recomendamos leerlos cuidadosamente antes de continuar.
+                    </p>
+                </div>
+
+                <!-- 1. Definiciones -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        Definiciones
+                    </h2>
+                    <div class="bg-morado/5 p-6 rounded-xl">
+                        <ul class="space-y-3 text-black">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chevron-right text-morado mt-1"></i>
+                                <span><strong>"Torneo":</strong> El evento deportivo Torneo Jorge Campos organizado para categorías infantiles de fútbol.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chevron-right text-morado mt-1"></i>
+                                <span><strong>"Organizador":</strong> Torneo Jorge Campos y su equipo de trabajo responsable de la planeación y ejecución del evento.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chevron-right text-morado mt-1"></i>
+                                <span><strong>"Participante":</strong> Todo jugador, equipo, padre de familia, tutor, entrenador o persona que se inscriba o participe en el torneo.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chevron-right text-morado mt-1"></i>
+                                <span><strong>"Usuario":</strong> Toda persona que acceda al sitio web del torneo.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chevron-right text-morado mt-1"></i>
+                                <span><strong>"Sitio web":</strong> La página <a href="https://torneojorgecampos.com.mx" class="text-morado hover:underline">torneojorgecampos.com.mx</a> y todos sus subdominios.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Aceptación de términos -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        Aceptación de los Términos
+                    </h2>
+                    <div class="space-y-4 text-black">
+                        <p>Al utilizar nuestro sitio web y/o inscribirte en el torneo, confirmas que:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Has leído, entendido y aceptas estos Términos y Condiciones en su totalidad.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Si actúas en representación de un menor de edad, tienes la autoridad legal para hacerlo.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>La información que proporciones es veraz, completa y actualizada.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Cumplirás con todas las reglas y lineamientos del torneo.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Inscripción -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        Inscripción al Torneo
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-blue-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-clipboard-list mr-2 text-morado"></i>Requisitos
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li>• Completar el formulario de inscripción</li>
+                                <li>• Proporcionar datos verídicos</li>
+                                <li>• Cumplir con la edad de la categoría</li>
+                                <li>• Contar con autorización del tutor (menores)</li>
+                                <li>• Realizar el pago correspondiente</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-file-alt mr-2 text-morado"></i>Documentación
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li>• Identificación oficial del tutor</li>
+                                <li>• Acta de nacimiento del jugador</li>
+                                <li>• Carta responsiva firmada</li>
+                                <li>• Comprobante de pago</li>
+                                <li>• Fotografía reciente del jugador</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <p class="text-sm text-black">
+                            <i class="fas fa-exclamation-triangle mr-2 text-yellow-600"></i>
+                            <strong>Importante:</strong> La inscripción no se considera completa hasta que se verifique la documentación y se confirme el pago. 
+                            El Organizador se reserva el derecho de rechazar inscripciones incompletas o con información falsa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Categorías -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        Categorías y Elegibilidad
+                    </h2>
+                    
+                    <p class="mb-4 text-black">El torneo cuenta con las siguientes categorías:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-3">
+                                <i class="fas fa-mars mr-2"></i>Varonil
+                            </h3>
+                            <p class="text-sm">Categorías por año de nacimiento según convocatoria vigente.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-pink-500 to-rosa text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-3">
+                                <i class="fas fa-venus mr-2"></i>Femenil
+                            </h3>
+                            <p class="text-sm">Categorías por año de nacimiento según convocatoria vigente.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-morado/10 p-6 rounded-xl">
+                        <h3 class="font-bold text-black mb-3">Reglas de Elegibilidad:</h3>
+                        <ul class="space-y-2 text-black text-sm">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-morado mt-1"></i>
+                                <span>Los jugadores deben tener la edad correspondiente a su categoría.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-morado mt-1"></i>
+                                <span>Se verificará la edad mediante acta de nacimiento o documento oficial.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-morado mt-1"></i>
+                                <span>Un jugador solo puede participar en una categoría y un equipo.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-morado mt-1"></i>
+                                <span>No se permiten cambios de categoría una vez iniciado el torneo.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Pagos y Reembolsos -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        Pagos y Política de Reembolsos
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-credit-card mr-2 text-morado"></i>Formas de Pago
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>Transferencia bancaria</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>Depósito en efectivo</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>Pago con tarjeta (cuando esté disponible)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-red-50 border-l-4 border-red-400 p-5 rounded-r-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-undo mr-2 text-red-500"></i>Política de Reembolsos
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-500 mt-1"></i>
+                                    <span><strong>No hay reembolsos</strong> una vez confirmada la inscripción, salvo cancelación del evento por parte del Organizador.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-500 mt-1"></i>
+                                    <span>En caso de cancelación por fuerza mayor, se evaluará caso por caso.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-500 mt-1"></i>
+                                    <span>La no participación del equipo no genera derecho a reembolso.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Reglas del Torneo -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
+                        Reglas y Reglamento del Torneo
+                    </h2>
+                    
+                    <p class="mb-4 text-black">Todos los participantes se comprometen a:</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-futbol text-morado mt-1"></i>
+                            <span>Respetar las reglas oficiales de fútbol y las específicas del torneo.</span>
+                        </div>
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-handshake text-morado mt-1"></i>
+                            <span>Mantener una conducta deportiva, respetuosa y de fair play.</span>
+                        </div>
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-clock text-morado mt-1"></i>
+                            <span>Presentarse puntualmente a los partidos programados.</span>
+                        </div>
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-tshirt text-morado mt-1"></i>
+                            <span>Portar el uniforme completo y equipo de protección requerido.</span>
+                        </div>
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-gavel text-morado mt-1"></i>
+                            <span>Acatar las decisiones de árbitros y organizadores.</span>
+                        </div>
+                        <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg text-black">
+                            <i class="fas fa-ban text-morado mt-1"></i>
+                            <span>Abstenerse de conductas violentas, discriminatorias o antideportivas.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+                        <p class="text-sm text-black">
+                            <i class="fas fa-exclamation-circle mr-2 text-yellow-600"></i>
+                            <strong>Sanciones:</strong> El incumplimiento de las reglas puede resultar en amonestaciones, expulsiones o descalificación del equipo, 
+                            según la gravedad de la falta y a criterio del Comité Organizador.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7. Responsabilidades -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">7</span>
+                        Responsabilidades y Deslinde
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-building mr-2 text-morado"></i>El Organizador se compromete a:
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li>• Proveer instalaciones adecuadas</li>
+                                <li>• Garantizar árbitros capacitados</li>
+                                <li>• Contar con servicios médicos básicos</li>
+                                <li>• Organizar el torneo de manera profesional</li>
+                                <li>• Comunicar cambios oportunamente</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-user mr-2 text-morado"></i>El Participante acepta que:
+                            </h3>
+                            <ul class="text-sm space-y-2 text-black">
+                                <li>• Participa bajo su propia responsabilidad</li>
+                                <li>• Cuenta con seguro médico personal</li>
+                                <li>• El Organizador no es responsable por lesiones</li>
+                                <li>• Custodiará sus pertenencias personales</li>
+                                <li>• Asume riesgos inherentes al deporte</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 border-l-4 border-red-500 p-5 rounded-r-xl mt-4">
+                        <p class="text-black text-sm">
+                            <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>
+                            <strong>Deslinde de Responsabilidad:</strong> El Organizador, sus directivos, empleados y colaboradores no serán responsables por 
+                            lesiones, accidentes, pérdidas o daños que pudieran ocurrir durante el torneo. Al inscribirse, el participante (o su tutor legal) 
+                            acepta este deslinde de responsabilidad.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 8. Imagen y Fotografías -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">8</span>
+                        Uso de Imagen y Fotografías
+                    </h2>
+                    
+                    <div class="bg-morado/10 p-6 rounded-xl">
+                        <p class="mb-4 text-black">Al participar en el torneo, autorizas al Organizador a:</p>
+                        <ul class="space-y-2 text-black">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-camera text-morado mt-1"></i>
+                                <span>Tomar fotografías y videos durante el evento.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-share-alt text-morado mt-1"></i>
+                                <span>Utilizar dicho material en redes sociales, sitio web y medios promocionales.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-newspaper text-morado mt-1"></i>
+                                <span>Compartir con medios de comunicación y patrocinadores.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-infinity text-morado mt-1"></i>
+                                <span>Usar las imágenes sin límite de tiempo y sin compensación económica.</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-black mt-4 italic">
+                            Si no deseas que se utilice la imagen de tu hijo(a), deberás notificarlo por escrito antes del inicio del torneo a 
+                            <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-morado hover:underline">contacto@torneojorgecampos.com.mx</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 9. Propiedad Intelectual -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">9</span>
+                        Propiedad Intelectual
+                    </h2>
+                    
+                    <div class="space-y-4 text-black">
+                        <p>Todo el contenido del sitio web, incluyendo pero no limitado a:</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-image text-2xl text-morado mb-2"></i>
+                                <p class="text-sm">Logotipos</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-palette text-2xl text-morado mb-2"></i>
+                                <p class="text-sm">Diseños</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-font text-2xl text-morado mb-2"></i>
+                                <p class="text-sm">Textos</p>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-photo-video text-2xl text-morado mb-2"></i>
+                                <p class="text-sm">Multimedia</p>
+                            </div>
+                        </div>
+                        <p>
+                            Son propiedad exclusiva del <strong>Torneo Jorge Campos</strong> o sus licenciantes y están protegidos por las leyes de propiedad intelectual. 
+                            Queda prohibida su reproducción, distribución o uso sin autorización previa por escrito.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 10. Modificaciones -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">10</span>
+                        Modificaciones al Torneo
+                    </h2>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl text-black">
+                        <p class="mb-4">El Organizador se reserva el derecho de:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-calendar-alt text-morado mt-1"></i>
+                                <span>Modificar fechas, horarios o sedes por causas justificadas.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-exchange-alt text-morado mt-1"></i>
+                                <span>Cambiar el formato del torneo si es necesario.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-ban text-morado mt-1"></i>
+                                <span>Cancelar o posponer el evento por fuerza mayor.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-user-slash text-morado mt-1"></i>
+                                <span>Descalificar equipos o jugadores que incumplan las reglas.</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm mt-4 italic">
+                            Cualquier cambio será comunicado oportunamente a través de los canales oficiales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 11. Cambios a los términos -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">11</span>
+                        Cambios a estos Términos
+                    </h2>
+                    <p class="text-black">
+                        Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. 
+                        Las modificaciones entrarán en vigor desde su publicación en el sitio web. 
+                        El uso continuado del sitio o la participación en el torneo después de dichos cambios constituye tu aceptación de los mismos.
+                    </p>
+                </div>
+
+                <!-- 12. Ley Aplicable -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">12</span>
+                        Ley Aplicable y Jurisdicción
+                    </h2>
+                    <div class="bg-morado/10 p-6 rounded-xl text-black">
+                        <p>
+                            Estos Términos y Condiciones se rigen por las leyes vigentes en los <strong>Estados Unidos Mexicanos</strong>. 
+                            Para cualquier controversia derivada de estos términos, las partes se someten a la jurisdicción de los tribunales competentes 
+                            en la ciudad de <strong>Aguascalientes, Aguascalientes, México</strong>, renunciando a cualquier otro fuero que pudiera corresponderles.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 13. Contacto -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">13</span>
+                        Contacto
+                    </h2>
+                    <p class="mb-4 text-black">Si tienes dudas sobre estos Términos y Condiciones, contáctanos:</p>
+                    
+                    <div class="bg-gradient-to-r from-morado to-rosa p-6 rounded-xl text-white">
+                        <div class="grid md:grid-cols-3 gap-6 text-center">
+                            <div>
+                                <i class="fas fa-envelope text-2xl mb-2"></i>
+                                <p class="font-bold">Email</p>
+                                <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-amarillo hover:underline text-sm">
+                                    contacto@torneojorgecampos.com.mx
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fas fa-phone text-2xl mb-2"></i>
+                                <p class="font-bold">Teléfono</p>
+                                <a href="tel:+524494699962" class="text-amarillo hover:underline text-sm">
+                                    +52 449 469 9962
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fab fa-whatsapp text-2xl mb-2"></i>
+                                <p class="font-bold">WhatsApp</p>
+                                <a href="https://wa.me/524494699962" target="_blank" class="text-amarillo hover:underline text-sm">
+                                    Enviar mensaje
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aceptación final -->
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <p class="text-black">
+                        Al inscribirte en el <strong>Torneo Jorge Campos</strong> y/o utilizar nuestro sitio web, 
+                        <strong>confirmas que has leído, entendido y aceptado</strong> estos Términos y Condiciones en su totalidad.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Botones de navegación -->
+    <section class="py-8 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="/" class="inline-flex items-center justify-center gap-2 bg-morado hover:bg-morado/90 text-white px-6 py-3 rounded-full font-bold transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                Volver al inicio
+            </a>
+            <a href="/privacidad" class="inline-flex items-center justify-center gap-2 bg-white border-2 border-morado text-morado hover:bg-morado hover:text-white px-6 py-3 rounded-full font-bold transition-colors">
+                <i class="fas fa-shield-alt"></i>
+                Ver Aviso de Privacidad
+            </a>
+        </div>
+    </section>
+
+</main>
+</body>

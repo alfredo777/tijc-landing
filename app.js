@@ -150,7 +150,7 @@ function getSiteData() {
         site: {
             title: 'Torneo Jorge Campos 2026',
             description: 'El torneo de fútbol infantil más importante de México',
-            url: 'www.torneojorgecampos.com.mx',
+            url: 'torneojorgecampos.com.mx',
             social: {
                 handle: '@torneojcampos',
                 facebook: 'https://facebook.com/torneojcampos',
@@ -158,7 +158,7 @@ function getSiteData() {
                 tiktok: 'https://tiktok.com/@torneojcampos'
             },
             contact: {
-                email: 'info@torneojorgecampos.com.mx',
+                email: 'contacto@torneojorgecampos.com.mx',
                 phone: '+52 449 469 9962'
             }
         },
@@ -169,7 +169,7 @@ function getSiteData() {
             mes: 'Noviembre',
             año: '2026',
             fechaCompleta: '12 - 15 de Noviembre 2026',
-            fechaLimiteInscripcion: '01 de Noviembre 2026',
+            fechaLimiteInscripcion: '18 de Septiembre 2026',
             sede: {
                 nombre: 'Altium',
                 ciudad: 'Zapopan',
@@ -235,11 +235,11 @@ function getSiteData() {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '#inscripcion', texto: 'Inscripción' }
+                { href: '/inscripcion', texto: 'Inscripción' }
             ],
             legal: [
-                { href: '#', texto: 'Términos y Condiciones' },
-                { href: '#', texto: 'Aviso de Privacidad' },
+                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
+                { href: '/privacidad', texto: 'Aviso de Privacidad' },
                 { href: '#', texto: 'Reglamento' }
             ]
         },
@@ -254,6 +254,48 @@ app.get('/', (req, res) => {
     const data = getSiteData();
     res.render('index', data);
 });
+
+// Aviso de Privacidad
+app.get('/privacidad', (req, res) => {
+    res.render('privacidad', {
+        title: 'Aviso de Privacidad - Torneo Jorge Campos',
+        currentPage: 'privacidad',
+        timestamp: Date.now(),
+        site: {
+            social: {
+                whatsapp: '+52 449 469 9962',
+                handle: '@copajorgecampos'
+            },
+            contact: {
+                email: 'contacto@copajorgecampos.com',
+                phone: '+52 449 469 9962'
+            }
+        },
+        footerLinks: {
+            enlaces: [
+                { href: '#info', texto: 'Información' },
+                { href: '#categorias', texto: 'Categorías' },
+                { href: '#experiencia', texto: 'Experiencia' },
+                { href: '#galeria', texto: 'Galería' },
+                { href: '/inscripcion', texto: 'Inscripción' }
+            ],
+            legal: [
+                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
+                { href: '/privacidad', texto: 'Aviso de Privacidad' },
+                { href: '#', texto: 'Reglamento' }
+            ]
+        },
+    });
+});
+
+app.get('/terminosycondiciones', (req, res) => {
+    res.render('terminosycondiciones', {
+        title: 'Términos y Condiciones - Torneo Jorge Campos',
+        currentPage: 'terminosycondiciones',
+        fechaActualizacion: '28 de mayo de 2025'
+    });
+});
+
 
 app.get('/api/gallery', (req, res) => {
     const data = getSiteData();
@@ -281,7 +323,7 @@ app.get('/inscripcion', (req, res) => {
                 handle: '@copajorgecampos'
             },
             contact: {
-                email: 'info@copajorgecampos.com',
+                email: 'contacto@copajorgecampos.com',
                 phone: '+52 449 469 9962'
             }
         },
@@ -291,11 +333,11 @@ app.get('/inscripcion', (req, res) => {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '#inscripcion', texto: 'Inscripción' }
+                { href: '/inscripcion', texto: 'Inscripción' }
             ],
             legal: [
-                { href: '#', texto: 'Términos y Condiciones' },
-                { href: '#', texto: 'Aviso de Privacidad' },
+                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
+                { href: '/privacidad', texto: 'Aviso de Privacidad' },
                 { href: '#', texto: 'Reglamento' }
             ]
         },

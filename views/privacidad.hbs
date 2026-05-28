@@ -1,0 +1,448 @@
+{{!-- views/privacidad.hbs --}}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png?v={{timestamp}}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rosa': '#E6007E',
+                        'rosa-dark': '#C4006A',
+                        'rosa-light': '#FF1493',
+                        'dorado': '#FFD700',
+                        'dorado-dark': '#DAA520',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/main.css?v={{timestamp}}">
+</head>
+<body class="font-body bg-gray-900 text-white">
+
+    {{> navbar}}
+<main class="pt-20">
+    
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-morado to-rosa py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+                Aviso de Privacidad
+            </h1>
+            <p class="text-white/80">
+                Última actualización: {{fechaActualizacion}}
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <div class="prose prose-lg max-w-none text-black">
+                
+                <!-- Introducción -->
+                <div class="bg-gray-50 p-6 rounded-xl mb-8">
+                    <p class="text-black leading-relaxed">
+                        En <strong>Torneo Jorge Campos</strong>, nos comprometemos a proteger tu privacidad y tus datos personales. 
+                        Este Aviso de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos tu información 
+                        de acuerdo con la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong> 
+                        y su Reglamento vigentes en México.
+                    </p>
+                </div>
+
+                <!-- 1. Responsable -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        Responsable del Tratamiento de Datos
+                    </h2>
+                    <div class="bg-morado/5 p-6 rounded-xl">
+                        <p class="mb-4 text-black"><strong>Torneo Jorge Campos</strong> es responsable del tratamiento de tus datos personales.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-black">
+                                <i class="fas fa-globe text-morado mt-1"></i>
+                                <span><strong>Sitio web:</strong> <a href="https://torneojorgecampos.com.mx" class="text-morado hover:underline">torneojorgecampos.com.mx</a></span>
+                            </li>
+                            <li class="flex items-start gap-2 text-black">
+                                <i class="fas fa-envelope text-morado mt-1"></i>
+                                <span><strong>Correo electrónico:</strong> <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-morado hover:underline">contacto@torneojorgecampos.com.mx</a></span>
+                            </li>
+                            <li class="flex items-start gap-2 text-black">
+                                <i class="fas fa-phone text-morado mt-1"></i>
+                                <span><strong>Teléfono:</strong> +52 449 469 9962</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Datos que recopilamos -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        Datos Personales que Recopilamos
+                    </h2>
+                    <p class="mb-4 text-black">Para brindarte nuestros servicios y gestionar tu participación en el torneo, podemos recopilar los siguientes datos:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-user mr-2 text-morado"></i>Datos de Identificación
+                            </h3>
+                            <ul class="text-sm space-y-1 text-black">
+                                <li>• Nombre completo</li>
+                                <li>• Apellidos</li>
+                                <li>• Edad</li>
+                                <li>• Fecha de nacimiento</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-address-book mr-2 text-morado"></i>Datos de Contacto
+                            </h3>
+                            <ul class="text-sm space-y-1 text-black">
+                                <li>• Correo electrónico</li>
+                                <li>• Número de teléfono celular</li>
+                                <li>• Dirección (ciudad, estado, país, CP)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-futbol mr-2 text-morado"></i>Datos del Participante
+                            </h3>
+                            <ul class="text-sm space-y-1 text-black">
+                                <li>• Categoría de participación</li>
+                                <li>• Año de categoría</li>
+                                <li>• Relación con el jugador</li>
+                                <li>• Nombre del equipo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3">
+                                <i class="fas fa-server mr-2 text-morado"></i>Datos Técnicos
+                            </h3>
+                            <ul class="text-sm space-y-1 text-black">
+                                <li>• Dirección IP</li>
+                                <li>• Tipo de navegador</li>
+                                <li>• Fecha y hora de acceso</li>
+                                <li>• Cookies (ver sección correspondiente)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Finalidades -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        Finalidades del Tratamiento
+                    </h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-bold text-black mb-3">Finalidades Primarias (necesarias):</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Gestionar y procesar tu inscripción al Torneo Jorge Campos</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Comunicarnos contigo sobre el estado de tu inscripción</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Enviarte información importante sobre el torneo (fechas, ubicaciones, requisitos)</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Verificar la elegibilidad de los participantes según la categoría</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Atender consultas, quejas o solicitudes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-black mb-3">Finalidades Secundarias (opcionales):</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-bullhorn text-morado mt-1"></i>
+                                <span>Enviarte información sobre futuras ediciones del torneo</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-bullhorn text-morado mt-1"></i>
+                                <span>Compartir promociones, noticias y eventos relacionados</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-bullhorn text-morado mt-1"></i>
+                                <span>Realizar encuestas de satisfacción</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-gray-50 p-3 rounded-lg text-black">
+                                <i class="fas fa-bullhorn text-morado mt-1"></i>
+                                <span>Fines estadísticos y de mejora de nuestros servicios</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-black mt-3 italic">
+                            Si no deseas que tus datos sean tratados para finalidades secundarias, puedes indicarlo enviando un correo a 
+                            <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-morado">contacto@torneojorgecampos.com.mx</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Transferencia de datos -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        Transferencia de Datos
+                    </h2>
+                    <p class="mb-4 text-black">Tus datos personales podrán ser transferidos a:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-black">
+                            <i class="fas fa-building text-morado mt-1"></i>
+                            <span><strong>Sedes y organizadores del torneo:</strong> Para coordinar la logística del evento</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-black">
+                            <i class="fas fa-shield-alt text-morado mt-1"></i>
+                            <span><strong>Autoridades competentes:</strong> Cuando sea requerido por ley</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-black">
+                            <i class="fas fa-handshake text-morado mt-1"></i>
+                            <span><strong>Patrocinadores:</strong> Solo con tu consentimiento expreso</span>
+                        </li>
+                    </ul>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+                        <p class="text-sm text-black">
+                            <i class="fas fa-info-circle mr-2 text-yellow-600"></i>
+                            <strong>Nota:</strong> No vendemos, alquilamos ni compartimos tu información personal con terceros para fines comerciales sin tu consentimiento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Derechos ARCO -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        Derechos ARCO
+                    </h2>
+                    <p class="mb-4 text-black">Tienes derecho a ejercer en cualquier momento tus derechos de:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-2">A - Acceso</h3>
+                            <p class="text-sm">Conocer qué datos personales tenemos de ti y cómo los tratamos</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-2">R - Rectificación</h3>
+                            <p class="text-sm">Corregir tus datos si son inexactos o están incompletos</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-2">C - Cancelación</h3>
+                            <p class="text-sm">Solicitar la eliminación de tus datos de nuestras bases</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-5 rounded-xl">
+                            <h3 class="font-bold text-xl mb-2">O - Oposición</h3>
+                            <p class="text-sm">Oponerte al tratamiento de tus datos para ciertas finalidades</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-morado/10 p-6 rounded-xl">
+                        <h3 class="font-bold text-black mb-3">¿Cómo ejercer tus derechos?</h3>
+                        <p class="mb-3 text-black">Envía tu solicitud a <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-morado font-bold hover:underline">contacto@torneojorgecampos.com.mx</a> incluyendo:</p>
+                        <ul class="text-sm space-y-1 text-black">
+                            <li>• Nombre completo y correo electrónico registrado</li>
+                            <li>• Descripción clara del derecho que deseas ejercer</li>
+                            <li>• Cualquier documento que facilite la localización de tus datos</li>
+                        </ul>
+                        <p class="text-sm text-black mt-4">
+                            Responderemos en un plazo máximo de <strong>20 días hábiles</strong> a partir de la recepción de tu solicitud.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Cookies -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
+                        Uso de Cookies
+                    </h2>
+                    <p class="mb-4 text-black">Nuestro sitio web utiliza cookies y tecnologías similares para:</p>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-black">
+                            <i class="fas fa-cookie-bite text-morado mt-1"></i>
+                            <span>Mejorar tu experiencia de navegación</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-black">
+                            <i class="fas fa-cookie-bite text-morado mt-1"></i>
+                            <span>Recordar tus preferencias</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-black">
+                            <i class="fas fa-cookie-bite text-morado mt-1"></i>
+                            <span>Analizar el tráfico del sitio</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-black">
+                            <i class="fas fa-cookie-bite text-morado mt-1"></i>
+                            <span>Garantizar la seguridad del sitio</span>
+                        </li>
+                    </ul>
+                    <p class="text-sm text-black">
+                        Puedes configurar tu navegador para rechazar cookies, aunque esto podría afectar algunas funcionalidades del sitio.
+                    </p>
+                </div>
+
+                <!-- 7. Seguridad -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">7</span>
+                        Medidas de Seguridad
+                    </h2>
+                    <p class="mb-4 text-black">Implementamos medidas de seguridad administrativas, técnicas y físicas para proteger tus datos:</p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <i class="fas fa-lock text-3xl text-morado mb-3"></i>
+                            <h3 class="font-bold mb-2 text-black">Cifrado SSL</h3>
+                            <p class="text-sm text-black">Toda la información viaja encriptada</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <i class="fas fa-database text-3xl text-morado mb-3"></i>
+                            <h3 class="font-bold mb-2 text-black">Bases de Datos Seguras</h3>
+                            <p class="text-sm text-black">Acceso restringido y controlado</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <i class="fas fa-user-shield text-3xl text-morado mb-3"></i>
+                            <h3 class="font-bold mb-2 text-black">Acceso Limitado</h3>
+                            <p class="text-sm text-black">Solo personal autorizado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Menores -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">8</span>
+                        Datos de Menores de Edad
+                    </h2>
+                    <div class="bg-pink-50 border-l-4 border-rosa p-6 rounded-r-xl">
+                        <p class="mb-3 text-black">
+                            Dado que nuestro torneo está dirigido a <strong>categorías infantiles</strong>, recopilamos datos de menores de edad. 
+                            En estos casos:
+                        </p>
+                        <ul class="space-y-2 text-sm text-black">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-rosa mt-1"></i>
+                                <span>Los datos son proporcionados por padres, tutores o representantes legales</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-rosa mt-1"></i>
+                                <span>Se requiere el consentimiento del padre/tutor para el tratamiento</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-rosa mt-1"></i>
+                                <span>Aplicamos medidas de protección adicionales para estos datos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 9. Cambios al aviso -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">9</span>
+                        Cambios al Aviso de Privacidad
+                    </h2>
+                    <p class="text-black">
+                        Nos reservamos el derecho de modificar este Aviso de Privacidad en cualquier momento. 
+                        Cualquier cambio será publicado en esta página con la fecha de actualización correspondiente.
+                        Te recomendamos revisar periódicamente este aviso.
+                    </p>
+                </div>
+
+                <!-- 10. Contacto -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">10</span>
+                        Contacto
+                    </h2>
+                    <p class="mb-4 text-black">Si tienes dudas, comentarios o solicitudes relacionadas con este Aviso de Privacidad, contáctanos:</p>
+                    
+                    <div class="bg-gradient-to-r from-morado to-rosa p-6 rounded-xl text-white">
+                        <div class="grid md:grid-cols-3 gap-6 text-center">
+                            <div>
+                                <i class="fas fa-envelope text-2xl mb-2"></i>
+                                <p class="font-bold">Email</p>
+                                <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-amarillo hover:underline text-sm">
+                                    contacto@torneojorgecampos.com.mx
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fas fa-phone text-2xl mb-2"></i>
+                                <p class="font-bold">Teléfono</p>
+                                <a href="tel:+524494699962" class="text-amarillo hover:underline text-sm">
+                                    +52 449 469 9962
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fab fa-whatsapp text-2xl mb-2"></i>
+                                <p class="font-bold">WhatsApp</p>
+                                <a href="https://wa.me/524494699962" target="_blank" class="text-amarillo hover:underline text-sm">
+                                    Enviar mensaje
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consentimiento -->
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <p class="text-black">
+                        Al proporcionar tus datos personales a través de nuestro sitio web o formularios de inscripción, 
+                        <strong>manifiestas tu consentimiento</strong> para que sean tratados conforme a este Aviso de Privacidad.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Botón volver -->
+    <section class="py-8 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <a href="/" class="inline-flex items-center gap-2 bg-morado hover:bg-morado/90 text-white px-6 py-3 rounded-full font-bold transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                Volver al inicio
+            </a>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
