@@ -296,6 +296,16 @@ app.get('/terminosycondiciones', (req, res) => {
     });
 });
 
+// Reglamento
+app.get('/reglamento', (req, res) => {
+    res.render('reglamento', {
+        title: 'Reglamento - Torneo Jorge Campos',
+        currentPage: 'reglamento',
+        fechaActualizacion: '15 de mayo de 2026'
+    });
+});
+
+
 
 app.get('/api/gallery', (req, res) => {
     const data = getSiteData();
