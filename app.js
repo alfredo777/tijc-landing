@@ -282,7 +282,7 @@ app.get('/inscripcion', (req, res) => {
             },
             contact: {
                 email: 'info@copajorgecampos.com',
-                phone: '++52 449 469 9962'
+                phone: '+52 449 469 9962'
             }
         },
         footerLinks: {
