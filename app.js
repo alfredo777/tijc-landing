@@ -240,7 +240,7 @@ function getSiteData() {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '#', texto: 'Reglamento' }
+                { href: '/reglamento', texto: 'Reglamento' }
             ]
         },
         gallery: getGalleryImages(),
