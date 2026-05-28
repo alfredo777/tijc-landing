@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
+// ========== DETECTAR ENTORNO ==========
+const isDevelopment = process.env.NODE_ENV !== 'production';
+console.log(`🌍 Entorno: ${isDevelopment ? 'DESARROLLO' : 'PRODUCCIÓN'}`);
+
 // ========== CONFIGURACIÓN DE HANDLEBARS ==========
 app.engine('hbs', engine({
     extname: '.hbs',
@@ -47,19 +51,37 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// ========== MIDDLEWARE ==========
+// ========== MIDDLEWARE GLOBAL PARA isDevelopment ==========
 app.use((req, res, next) => {
-    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    res.set('Pragma', 'no-cache');
-    res.set('Expires', '0');
+    // Pasar isDevelopment a todas las vistas
+    res.locals.isDevelopment = isDevelopment;
+    res.locals.timestamp = Date.now();
     next();
 });
 
-app.use(express.static(path.join(__dirname, 'public'), {
-    etag: false,
-    lastModified: false,
-    maxAge: 0
-}));
+// ========== MIDDLEWARE DE CACHE ==========
+// Solo desactivar cache en desarrollo
+if (isDevelopment) {
+    app.use((req, res, next) => {
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
+        next();
+    });
+    
+    app.use(express.static(path.join(__dirname, 'public'), {
+        etag: false,
+        lastModified: false,
+        maxAge: 0
+    }));
+} else {
+    // En producción, permitir cache
+    app.use(express.static(path.join(__dirname, 'public'), {
+        etag: true,
+        lastModified: true,
+        maxAge: '1d' // Cache de 1 día en producción
+    }));
+}
 
 // ========== FUNCIONES PARA OBTENER DATOS ==========
 function getGalleryImages() {
@@ -197,7 +219,6 @@ function getSiteData() {
             { id: 'interactivas', icon: 'fa-gamepad', titulo: 'Entretenimiento 360°', subtitulo: 'Diversión para Todos' },
             { id: 'pasaporte', icon: 'fa-passport', titulo: 'Pasaporte Brody', subtitulo: 'Llénalo y Gana Increíbles Premios' }
         ],
-
         infoCards: [
             { id: 'sede', icon: 'fa-map-marker-alt', titulo: 'Sede', valor: 'Altium', subtitulo: 'Zapopan, Jalisco' },
             { id: 'fechas', icon: 'fa-calendar-alt', titulo: 'Fechas', valor: '12-15 Nov', subtitulo: 'Noviembre 2026' },
@@ -260,7 +281,7 @@ app.get('/privacidad', (req, res) => {
     res.render('privacidad', {
         title: 'Aviso de Privacidad - Torneo Jorge Campos',
         currentPage: 'privacidad',
-        timestamp: Date.now(),
+        fechaActualizacion: '28 de mayo de 2025',
         site: {
             social: {
                 whatsapp: '+52 449 469 9962',
@@ -282,7 +303,7 @@ app.get('/privacidad', (req, res) => {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '#', texto: 'Reglamento' }
+                { href: '/reglamento', texto: 'Reglamento' }
             ]
         },
     });
@@ -292,7 +313,31 @@ app.get('/terminosycondiciones', (req, res) => {
     res.render('terminosycondiciones', {
         title: 'Términos y Condiciones - Torneo Jorge Campos',
         currentPage: 'terminosycondiciones',
-        fechaActualizacion: '28 de mayo de 2025'
+        fechaActualizacion: '28 de mayo de 2025',
+        site: {
+            social: {
+                whatsapp: '+52 449 469 9962',
+                handle: '@torneojorgecampos'
+            },
+            contact: {
+                email: 'contacto@torneojorgecampos.com.mx',
+                phone: '+52 449 469 9962'
+            }
+        },
+        footerLinks: {
+            enlaces: [
+                { href: '#info', texto: 'Información' },
+                { href: '#categorias', texto: 'Categorías' },
+                { href: '#experiencia', texto: 'Experiencia' },
+                { href: '#galeria', texto: 'Galería' },
+                { href: '/inscripcion', texto: 'Inscripción' }
+            ],
+            legal: [
+                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
+                { href: '/privacidad', texto: 'Aviso de Privacidad' },
+                { href: '/reglamento', texto: 'Reglamento' }
+            ]
+        },
     });
 });
 
@@ -301,11 +346,33 @@ app.get('/reglamento', (req, res) => {
     res.render('reglamento', {
         title: 'Reglamento - Torneo Jorge Campos',
         currentPage: 'reglamento',
-        fechaActualizacion: '15 de mayo de 2026'
+        fechaActualizacion: '15 de mayo de 2026',
+        site: {
+            social: {
+                whatsapp: '+52 449 469 9962',
+                handle: '@torneojorgecampos'
+            },
+            contact: {
+                email: 'contacto@torneojorgecampos.com.mx',
+                phone: '+52 449 469 9962'
+            }
+        },
+        footerLinks: {
+            enlaces: [
+                { href: '#info', texto: 'Información' },
+                { href: '#categorias', texto: 'Categorías' },
+                { href: '#experiencia', texto: 'Experiencia' },
+                { href: '#galeria', texto: 'Galería' },
+                { href: '/inscripcion', texto: 'Inscripción' }
+            ],
+            legal: [
+                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
+                { href: '/privacidad', texto: 'Aviso de Privacidad' },
+                { href: '/reglamento', texto: 'Reglamento' }
+            ]
+        },
     });
 });
-
-
 
 app.get('/api/gallery', (req, res) => {
     const data = getSiteData();
@@ -321,12 +388,10 @@ app.get('/api/refresh', (req, res) => {
     res.json({ status: 'ok', timestamp: Date.now() });
 });
 
-
 // Página de Inscripción
 app.get('/inscripcion', (req, res) => {
     res.render('inscripcion', {
         title: 'Inscripción - Torneo Jorge Campos',
-        timestamp: Date.now(),
         site: {
             social: {
                 whatsapp: '+52 449 469 9962',
@@ -348,13 +413,13 @@ app.get('/inscripcion', (req, res) => {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '#', texto: 'Reglamento' }
+                { href: '/reglamento', texto: 'Reglamento' }
             ]
         },
     });
 });
-// API para recibir inscripciones (POST)
 
+// API para recibir inscripciones (POST)
 app.post('/api/inscripcion', async (req, res) => {
     try {
         const inscripcionData = {
@@ -392,30 +457,31 @@ app.post('/api/inscripcion', async (req, res) => {
 
 // ========== SERVIDOR HTTP Y WEBSOCKET ==========
 const server = require('http').createServer(app);
-const wss = new WebSocket.Server({ server });
 
-const clients = new Set();
+// Solo iniciar WebSocket en desarrollo
+if (isDevelopment) {
+    const wss = new WebSocket.Server({ server });
+    const clients = new Set();
 
-wss.on('connection', (ws) => {
-    clients.add(ws);
-    console.log('🔌 Cliente conectado para hot reload');
-    
-    ws.on('close', () => {
-        clients.delete(ws);
-        console.log('🔌 Cliente desconectado');
+    wss.on('connection', (ws) => {
+        clients.add(ws);
+        console.log('🔌 Cliente conectado para hot reload');
+        
+        ws.on('close', () => {
+            clients.delete(ws);
+            console.log('🔌 Cliente desconectado');
+        });
     });
-});
 
-function notifyClients(message) {
-    clients.forEach(client => {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(message));
-        }
-    });
-}
+    function notifyClients(message) {
+        clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify(message));
+            }
+        });
+    }
 
-// ========== WATCH DE ARCHIVOS ==========
-if (process.env.NODE_ENV !== 'production') {
+    // ========== WATCH DE ARCHIVOS (SOLO DESARROLLO) ==========
     const watcher = chokidar.watch([
         path.join(__dirname, 'public'),
         path.join(__dirname, 'views')
@@ -455,6 +521,7 @@ server.listen(PORT, () => {
     console.log(`
     ⚽ Torneo Jorge Campos 2026
     🚀 Servidor corriendo en http://localhost:${PORT}
-    🔄 Hot Reload activo (presiona R en el navegador para recargar)
+    🌍 Entorno: ${isDevelopment ? 'DESARROLLO' : 'PRODUCCIÓN'}
+    ${isDevelopment ? '🔄 Hot Reload activo (presiona R en el navegador para recargar)' : '✅ Modo producción - Sin hot reload'}
     `);
 });

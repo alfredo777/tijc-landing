@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{site.description}}">
-    <title>{{site.title}}</title>
+    <title>{{#if title}}{{title}}{{else}}{{site.title}}{{/if}}</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -67,6 +67,8 @@
     
     <script src="/js/main.js?v={{timestamp}}"></script>
     
+    {{!-- HOT RELOAD - SOLO EN DESARROLLO --}}
+    {{#if isDevelopment}}
     <script>
         (function() {
             const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -100,10 +102,23 @@
             };
             
             ws.onclose = function() {
-                console.log('[Hot Reload] Conexión cerrada, reintentando...');
-                setTimeout(() => window.location.reload(), 2000);
+                console.log('[Hot Reload] Conexión cerrada, reintentando en 3s...');
+                setTimeout(() => {
+                    // Solo reconectar, no recargar la página
+                    try {
+                        const newWs = new WebSocket(`${protocol}//${window.location.host}`);
+                        console.log('[Hot Reload] Reconectando...');
+                    } catch (e) {
+                        console.log('[Hot Reload] No se pudo reconectar');
+                    }
+                }, 3000);
             };
             
+            ws.onerror = function() {
+                console.log('[Hot Reload] Error de conexión');
+            };
+            
+            // Manual reload con tecla R
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'r' || e.key === 'R') {
                     if (!e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
@@ -113,7 +128,10 @@
                     }
                 }
             });
+            
+            console.log('[Hot Reload] Conectado - Presiona R para recargar manualmente');
         })();
     </script>
+    {{/if}}
 </body>
 </html>
