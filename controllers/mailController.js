@@ -183,7 +183,7 @@ async function sendUserConfirmation(inscripcionData) {
     }
 
     const mailOptions = {
-        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <contacto@torneojorgecampos.com.mx>',
+        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <non-reply@torneojorgecampos.com.mx>',
         to: inscripcionData.email,
         subject: '¡Recibimos tu inscripción! - Torneo Jorge Campos 2026',
         html: htmlContent
