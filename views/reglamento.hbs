@@ -1,0 +1,912 @@
+{{!-- views/reglamento.hbs --}}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png?v={{timestamp}}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rosa': '#E6007E',
+                        'rosa-dark': '#C4006A',
+                        'rosa-light': '#FF1493',
+                        'dorado': '#FFD700',
+                        'dorado-dark': '#DAA520',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/main.css?v={{timestamp}}">
+</head>
+<body class="font-body bg-gray-900 text-white">
+
+    {{> navbar}}
+
+
+<main class="pt-20">
+    
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-morado to-rosa py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+                Reglamento del Torneo
+            </h1>
+            <p class="text-white/80">
+                Última actualización: {{fechaActualizacion}}
+            </p>
+            <div class="mt-4 inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                <i class="fas fa-futbol"></i>
+                <span class="font-bold">Fútbol 7 y Fútbol 9</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aviso tentativo -->
+    <section class="bg-amarillo py-3">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-black font-medium">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <strong>Nota:</strong> Este reglamento es tentativo y puede sufrir modificaciones antes del inicio del torneo.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navegación rápida -->
+    <section class="py-6 bg-gray-100 sticky top-16 z-40 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 text-sm">
+                <a href="#general" class="bg-morado text-white px-3 py-1 rounded-full hover:bg-morado/80 transition-colors">General</a>
+                <a href="#categorias" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Categorías</a>
+                <a href="#fut7" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Fut 7</a>
+                <a href="#fut9" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Fut 9</a>
+                <a href="#jugadores" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Jugadores</a>
+                <a href="#partidos" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Partidos</a>
+                <a href="#sanciones" class="bg-white text-morado px-3 py-1 rounded-full hover:bg-morado hover:text-white transition-colors border border-morado">Sanciones</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <div class="prose prose-lg max-w-none text-black">
+
+                <!-- SECCIÓN: DISPOSICIONES GENERALES -->
+                <div id="general" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-morado text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-book text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Disposiciones Generales</h2>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-morado/10 to-rosa/10 p-6 rounded-xl mb-6">
+                        <p class="text-black m-0">
+                            El <strong>Torneo Jorge Campos 2026</strong> es un evento deportivo de fútbol infantil que se rige bajo las reglas 
+                            de la <strong>FIFA</strong> adaptadas para las modalidades de <strong>Fútbol 7</strong> y <strong>Fútbol 9</strong>, 
+                            con las especificaciones particulares establecidas en este reglamento.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3 flex items-center gap-2">
+                                <i class="fas fa-flag text-morado"></i>
+                                Objetivo
+                            </h3>
+                            <p class="text-black text-sm m-0">
+                                Fomentar el desarrollo deportivo, social y humano de los niños y jóvenes a través del fútbol, 
+                                promoviendo valores como el respeto, trabajo en equipo y fair play.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-3 flex items-center gap-2">
+                                <i class="fas fa-users text-morado"></i>
+                                Autoridad
+                            </h3>
+                            <p class="text-black text-sm m-0">
+                                El Comité Organizador es la máxima autoridad del torneo. Sus decisiones son inapelables 
+                                en todos los asuntos relacionados con el evento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: CATEGORÍAS -->
+                <div id="categorias" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-morado text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-layer-group text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Categorías</h2>
+                    </div>
+
+                    <!-- Tabla de categorías -->
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-morado text-white">
+                                    <th class="p-3 text-left rounded-tl-xl">Categoría</th>
+                                    <th class="p-3 text-center">Año Nacimiento</th>
+                                    <th class="p-3 text-center">Modalidad</th>
+                                    <th class="p-3 text-center rounded-tr-xl">Rama</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-black">
+                                <tr class="bg-blue-50">
+                                    <td class="p-3 font-bold">Sub-7</td>
+                                    <td class="p-3 text-center">2019 - 2020</td>
+                                    <td class="p-3 text-center"><span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Fut 7</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="p-3 font-bold">Sub-8</td>
+                                    <td class="p-3 text-center">2018</td>
+                                    <td class="p-3 text-center"><span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Fut 7</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-blue-50">
+                                    <td class="p-3 font-bold">Sub-9</td>
+                                    <td class="p-3 text-center">2017</td>
+                                    <td class="p-3 text-center"><span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Fut 7</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="p-3 font-bold">Sub-10</td>
+                                    <td class="p-3 text-center">2016</td>
+                                    <td class="p-3 text-center"><span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Fut 7</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-blue-50">
+                                    <td class="p-3 font-bold">Sub-11</td>
+                                    <td class="p-3 text-center">2015</td>
+                                    <td class="p-3 text-center"><span class="bg-orange-500 text-white px-2 py-1 rounded text-xs">Fut 9</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="p-3 font-bold">Sub-12</td>
+                                    <td class="p-3 text-center">2014</td>
+                                    <td class="p-3 text-center"><span class="bg-orange-500 text-white px-2 py-1 rounded text-xs">Fut 9</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-blue-50">
+                                    <td class="p-3 font-bold">Sub-13</td>
+                                    <td class="p-3 text-center">2013</td>
+                                    <td class="p-3 text-center"><span class="bg-orange-500 text-white px-2 py-1 rounded text-xs">Fut 9</span></td>
+                                    <td class="p-3 text-center">Varonil / Femenil</td>
+                                </tr>
+                                <tr class="bg-white rounded-b-xl">
+                                    <td class="p-3 font-bold rounded-bl-xl">Sub-14</td>
+                                    <td class="p-3 text-center">2012</td>
+                                    <td class="p-3 text-center"><span class="bg-orange-500 text-white px-2 py-1 rounded text-xs">Fut 9</span></td>
+                                    <td class="p-3 text-center rounded-br-xl">Varonil / Femenil</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <p class="text-black text-sm m-0">
+                            <i class="fas fa-info-circle mr-2 text-yellow-600"></i>
+                            <strong>Nota:</strong> Los jugadores pueden participar en una categoría superior a la que les corresponde por edad, 
+                            pero <strong>nunca en una inferior</strong>. Esto debe solicitarse por escrito al Comité Organizador.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: FÚTBOL 7 -->
+                <div id="fut7" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-green-500 text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <span class="font-bold text-xl">7</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Reglamento Fútbol 7</h2>
+                    </div>
+
+                    <p class="text-black mb-6">Aplica para categorías: <strong>Sub-7, Sub-8, Sub-9 y Sub-10</strong></p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Campo de juego -->
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-expand-arrows-alt text-green-600"></i>
+                                Campo de Juego
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-ruler-horizontal text-green-600 mt-1"></i>
+                                    <span><strong>Largo:</strong> 50 - 65 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-ruler-vertical text-green-600 mt-1"></i>
+                                    <span><strong>Ancho:</strong> 35 - 45 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-square text-green-600 mt-1"></i>
+                                    <span><strong>Área de meta:</strong> 9 x 18 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-circle text-green-600 mt-1"></i>
+                                    <span><strong>Punto penal:</strong> 9 metros</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Portería -->
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-futbol text-green-600"></i>
+                                Portería y Balón
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-arrows-alt-h text-green-600 mt-1"></i>
+                                    <span><strong>Portería ancho:</strong> 5 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-arrows-alt-v text-green-600 mt-1"></i>
+                                    <span><strong>Portería alto:</strong> 2 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-futbol text-green-600 mt-1"></i>
+                                    <span><strong>Balón:</strong> No. 4</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Jugadores -->
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-users text-green-600"></i>
+                                Jugadores
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-600 mt-1"></i>
+                                    <span><strong>En cancha:</strong> 7 (incluido portero)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-600 mt-1"></i>
+                                    <span><strong>Mínimo para iniciar:</strong> 5 jugadores</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-600 mt-1"></i>
+                                    <span><strong>Cambios:</strong> Ilimitados (volantes)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-600 mt-1"></i>
+                                    <span><strong>Roster máximo:</strong> 14 jugadores</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tiempo de juego -->
+                        <div class="bg-green-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-clock text-green-600"></i>
+                                Tiempo de Juego
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-stopwatch text-green-600 mt-1"></i>
+                                    <span><strong>Duración:</strong> 2 tiempos de 20 minutos</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-pause text-green-600 mt-1"></i>
+                                    <span><strong>Descanso:</strong> 5 minutos</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-hourglass-half text-green-600 mt-1"></i>
+                                    <span><strong>Tiempo corrido:</strong> Sí (fase de grupos)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Reglas especiales Fut 7 -->
+                    <div class="mt-6 bg-green-100 p-5 rounded-xl">
+                        <h3 class="font-bold text-black mb-4">
+                            <i class="fas fa-star text-green-600 mr-2"></i>
+                            Reglas Especiales Fut 7
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm text-black">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-ban text-red-500 mt-1"></i>
+                                <span><strong>No hay fuera de lugar (offside)</strong></span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-hand-paper text-green-600 mt-1"></i>
+                                <span>El portero puede tomar el balón con las manos en toda el área</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-undo text-green-600 mt-1"></i>
+                                <span>Saque de banda puede ser con el pie</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-running text-green-600 mt-1"></i>
+                                <span>Barrera a 7 metros en tiros libres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: FÚTBOL 9 -->
+                <div id="fut9" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-orange-500 text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <span class="font-bold text-xl">9</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Reglamento Fútbol 9</h2>
+                    </div>
+
+                    <p class="text-black mb-6">Aplica para categorías: <strong>Sub-11, Sub-12, Sub-13 y Sub-14</strong></p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Campo de juego -->
+                        <div class="bg-orange-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-expand-arrows-alt text-orange-600"></i>
+                                Campo de Juego
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-ruler-horizontal text-orange-600 mt-1"></i>
+                                    <span><strong>Largo:</strong> 70 - 80 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-ruler-vertical text-orange-600 mt-1"></i>
+                                    <span><strong>Ancho:</strong> 45 - 55 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-square text-orange-600 mt-1"></i>
+                                    <span><strong>Área de meta:</strong> 12 x 30 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-circle text-orange-600 mt-1"></i>
+                                    <span><strong>Punto penal:</strong> 10 metros</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Portería -->
+                        <div class="bg-orange-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-futbol text-orange-600"></i>
+                                Portería y Balón
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-arrows-alt-h text-orange-600 mt-1"></i>
+                                    <span><strong>Portería ancho:</strong> 6 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-arrows-alt-v text-orange-600 mt-1"></i>
+                                    <span><strong>Portería alto:</strong> 2.10 metros</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-futbol text-orange-600 mt-1"></i>
+                                    <span><strong>Balón:</strong> No. 4 (Sub-11/12) / No. 5 (Sub-13/14)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Jugadores -->
+                        <div class="bg-orange-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-users text-orange-600"></i>
+                                Jugadores
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-orange-600 mt-1"></i>
+                                    <span><strong>En cancha:</strong> 9 (incluido portero)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-orange-600 mt-1"></i>
+                                    <span><strong>Mínimo para iniciar:</strong> 6 jugadores</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-orange-600 mt-1"></i>
+                                    <span><strong>Cambios:</strong> Ilimitados (volantes)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-orange-600 mt-1"></i>
+                                    <span><strong>Roster máximo:</strong> 18 jugadores</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tiempo de juego -->
+                        <div class="bg-orange-50 p-5 rounded-xl">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <i class="fas fa-clock text-orange-600"></i>
+                                Tiempo de Juego
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-stopwatch text-orange-600 mt-1"></i>
+                                    <span><strong>Duración:</strong> 2 tiempos de 25 minutos</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-pause text-orange-600 mt-1"></i>
+                                    <span><strong>Descanso:</strong> 10 minutos</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-hourglass-half text-orange-600 mt-1"></i>
+                                    <span><strong>Tiempo corrido:</strong> Sí (fase de grupos)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Reglas especiales Fut 9 -->
+                    <div class="mt-6 bg-orange-100 p-5 rounded-xl">
+                        <h3 class="font-bold text-black mb-4">
+                            <i class="fas fa-star text-orange-600 mr-2"></i>
+                            Reglas Especiales Fut 9
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm text-black">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-orange-600 mt-1"></i>
+                                <span><strong>Sí aplica fuera de lugar (offside)</strong></span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-hand-paper text-orange-600 mt-1"></i>
+                                <span>Regla del pase atrás al portero aplica</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-hands text-orange-600 mt-1"></i>
+                                <span>Saque de banda con las manos</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-running text-orange-600 mt-1"></i>
+                                <span>Barrera a 9.15 metros en tiros libres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: JUGADORES Y EQUIPOS -->
+                <div id="jugadores" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-morado text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-tshirt text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Jugadores y Equipos</h2>
+                    </div>
+
+                    <!-- Uniforme -->
+                    <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-tshirt text-morado"></i>
+                            Uniforme Obligatorio
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                <i class="fas fa-tshirt text-3xl text-morado mb-2"></i>
+                                <p class="font-bold text-black">Playera</p>
+                                <p class="text-sm text-black">Numerada (1-99)</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                <i class="fas fa-socks text-3xl text-morado mb-2"></i>
+                                <p class="font-bold text-black">Short y Medias</p>
+                                <p class="text-sm text-black">Del mismo color</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+                                <i class="fas fa-shoe-prints text-3xl text-morado mb-2"></i>
+                                <p class="font-bold text-black">Calzado</p>
+                                <p class="text-sm text-black">Tacos de fútbol (no metálicos)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Equipo de protección -->
+                    <div class="bg-blue-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-shield-alt text-blue-600"></i>
+                            Equipo de Protección
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-black">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <div>
+                                    <p class="font-bold">Espinilleras (OBLIGATORIAS)</p>
+                                    <p class="text-sm">Deben estar cubiertas por las medias</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-ban text-red-500 mt-1"></i>
+                                <div>
+                                    <p class="font-bold">Prohibido</p>
+                                    <p class="text-sm">Joyas, relojes, pulseras, aretes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credenciales -->
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 rounded-r-xl">
+                        <h3 class="font-bold text-black mb-3 flex items-center gap-2">
+                            <i class="fas fa-id-card text-yellow-600"></i>
+                            Credenciales
+                        </h3>
+                        <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-yellow-600 mt-1"></i>
+                                <span>Cada jugador debe contar con credencial oficial del torneo</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-yellow-600 mt-1"></i>
+                                <span>La credencial debe presentarse antes de cada partido</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-yellow-600 mt-1"></i>
+                                <span>Sin credencial, el jugador no podrá participar</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-yellow-600 mt-1"></i>
+                                <span>Costo de reposición por extravío: $150 MXN</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: DESARROLLO DE PARTIDOS -->
+                <div id="partidos" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-morado text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-clipboard-list text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Desarrollo de Partidos</h2>
+                    </div>
+
+                    <!-- Puntualidad -->
+                    <div class="bg-red-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-clock text-red-600"></i>
+                            Puntualidad
+                        </h3>
+                        <div class="space-y-3 text-black">
+                            <div class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-green-500 text-white px-3 py-1 rounded font-bold">0-5 min</span>
+                                <span>Tolerancia sin penalización</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-yellow-500 text-white px-3 py-1 rounded font-bold">5-10 min</span>
+                                <span>Inicia el partido, marcador 1-0 en contra</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-red-500 text-white px-3 py-1 rounded font-bold">+10 min</span>
+                                <span>Partido perdido por default (3-0)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sistema de puntuación -->
+                    <div class="bg-morado/10 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-trophy text-morado"></i>
+                            Sistema de Puntuación (Fase de Grupos)
+                        </h3>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-white p-4 rounded-xl shadow-sm">
+                                <p class="text-3xl font-bold text-green-500">3</p>
+                                <p class="text-black font-medium">Victoria</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm">
+                                <p class="text-3xl font-bold text-yellow-500">1</p>
+                                <p class="text-black font-medium">Empate</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm">
+                                <p class="text-3xl font-bold text-red-500">0</p>
+                                <p class="text-black font-medium">Derrota</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Criterios de desempate -->
+                    <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-balance-scale text-morado"></i>
+                            Criterios de Desempate (en orden)
+                        </h3>
+                        <ol class="space-y-2 text-black m-0 p-0 list-none">
+                            <li class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                                <span>Diferencia de goles</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                                <span>Mayor cantidad de goles a favor</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                                <span>Resultado entre los equipos empatados</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span>
+                                <span>Menor cantidad de tarjetas (amarilla=1, roja=3)</span>
+                            </li>
+                            <li class="flex items-center gap-3 bg-white p-3 rounded-lg">
+                                <span class="bg-morado text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span>
+                                <span>Sorteo</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Fases eliminatorias -->
+                    <div class="bg-gradient-to-r from-morado to-rosa text-white p-6 rounded-xl">
+                        <h3 class="font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-medal"></i>
+                            Fases Eliminatorias
+                        </h3>
+                        <p class="mb-4">En caso de empate en fases eliminatorias:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white/20 p-4 rounded-lg">
+                                <p class="font-bold">Tiempo Extra</p>
+                                <p class="text-sm">2 tiempos de 5 minutos (muerte súbita)</p>
+                            </div>
+                            <div class="bg-white/20 p-4 rounded-lg">
+                                <p class="font-bold">Penales</p>
+                                <p class="text-sm">Series de 3, luego muerte súbita</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: SANCIONES Y DISCIPLINA -->
+                <div id="sanciones" class="mb-12 scroll-mt-32">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-red-500 text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-gavel text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Sanciones y Disciplina</h2>
+                    </div>
+
+                    <!-- Tarjetas -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <span class="bg-yellow-400 w-6 h-8 rounded"></span>
+                                Tarjeta Amarilla
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-exclamation text-yellow-600 mt-1"></i>
+                                    <span>Amonestación (se acumulan)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-exclamation text-yellow-600 mt-1"></i>
+                                    <span>2 amarillas = expulsión del partido</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-exclamation text-yellow-600 mt-1"></i>
+                                    <span>3 amarillas acumuladas = 1 partido suspensión</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-exclamation text-yellow-600 mt-1"></i>
+                                    <span>Se borran en fase eliminatoria</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-red-50 p-6 rounded-xl border-l-4 border-red-500">
+                            <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                                <span class="bg-red-500 w-6 h-8 rounded"></span>
+                                Tarjeta Roja
+                            </h3>
+                            <ul class="space-y-2 text-black text-sm m-0 list-none p-0">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-600 mt-1"></i>
+                                    <span>Expulsión inmediata del partido</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-600 mt-1"></i>
+                                    <span>Mínimo 1 partido de suspensión</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-600 mt-1"></i>
+                                    <span>Agresión física = mínimo 3 partidos</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-times text-red-600 mt-1"></i>
+                                    <span>El Comité puede aumentar la sanción</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Conducta de padres y entrenadores -->
+                    <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold text-black mb-4 flex items-center gap-2">
+                            <i class="fas fa-users text-morado"></i>
+                            Conducta de Padres, Tutores y Entrenadores
+                        </h3>
+                        <div class="space-y-3 text-black">
+                            <div class="flex items-start gap-3 bg-white p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Deben mantener conducta respetuosa en todo momento</span>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Prohibido ingresar al área de juego sin autorización</span>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Prohibido insultar a árbitros, jugadores u otros padres</span>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white p-3 rounded-lg">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Solo el entrenador puede dar indicaciones técnicas</span>
+                            </div>
+                        </div>
+                        <div class="bg-red-100 p-4 rounded-lg mt-4">
+                            <p class="text-black text-sm m-0">
+                                <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                                <strong>Sanción:</strong> La mala conducta de padres o entrenadores puede resultar en su expulsión de la sede, 
+                                sanciones al equipo, o descalificación del torneo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Fair Play -->
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl">
+                        <h3 class="font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-handshake"></i>
+                            Fair Play
+                        </h3>
+                        <p class="mb-4">El Torneo Jorge Campos promueve los valores del fair play:</p>
+                        <div class="grid md:grid-cols-4 gap-4 text-center">
+                            <div class="bg-white/20 p-3 rounded-lg">
+                                <i class="fas fa-heart text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Respeto</p>
+                            </div>
+                            <div class="bg-white/20 p-3 rounded-lg">
+                                <i class="fas fa-users text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Compañerismo</p>
+                            </div>
+                            <div class="bg-white/20 p-3 rounded-lg">
+                                <i class="fas fa-balance-scale text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Honestidad</p>
+                            </div>
+                            <div class="bg-white/20 p-3 rounded-lg">
+                                <i class="fas fa-smile text-2xl mb-2"></i>
+                                <p class="text-sm font-medium">Diversión</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: DISPOSICIONES FINALES -->
+                <div class="mb-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-morado text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-file-signature text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-black m-0">Disposiciones Finales</h2>
+                    </div>
+
+                    <div class="bg-morado/10 p-6 rounded-xl mb-6">
+                        <ul class="space-y-3 text-black m-0 list-none p-0">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-gavel text-morado mt-1"></i>
+                                <span>El Comité Organizador es la máxima autoridad y sus decisiones son <strong>inapelables</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-file-alt text-morado mt-1"></i>
+                                <span>Cualquier situación no contemplada en este reglamento será resuelta por el Comité Organizador.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-edit text-morado mt-1"></i>
+                                <span>El Organizador se reserva el derecho de modificar este reglamento, notificando oportunamente.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-handshake text-morado mt-1"></i>
+                                <span>Al inscribirse, todos los participantes aceptan este reglamento en su totalidad.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="bg-gradient-to-r from-morado to-rosa p-6 rounded-xl text-white">
+                        <h3 class="font-bold mb-4">¿Dudas sobre el reglamento?</h3>
+                        <div class="grid md:grid-cols-3 gap-6 text-center">
+                            <div>
+                                <i class="fas fa-envelope text-2xl mb-2"></i>
+                                <p class="font-bold">Email</p>
+                                <a href="mailto:contacto@torneojorgecampos.com.mx" class="text-amarillo hover:underline text-sm">
+                                    contacto@torneojorgecampos.com.mx
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fas fa-phone text-2xl mb-2"></i>
+                                <p class="font-bold">Teléfono</p>
+                                <a href="tel:+524494699962" class="text-amarillo hover:underline text-sm">
+                                    +52 449 469 9962
+                                </a>
+                            </div>
+                            <div>
+                                <i class="fab fa-whatsapp text-2xl mb-2"></i>
+                                <p class="font-bold">WhatsApp</p>
+                                <a href="https://wa.me/524494699962" target="_blank" class="text-amarillo hover:underline text-sm">
+                                    Enviar mensaje
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aceptación -->
+                <div class="bg-gray-100 p-6 rounded-xl text-center">
+                    <p class="text-black m-0">
+                        Al inscribirse en el <strong>Torneo Jorge Campos 2026</strong>, todos los participantes, padres de familia, 
+                        tutores y entrenadores <strong>aceptan y se comprometen a cumplir</strong> con el presente reglamento.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Botones de navegación -->
+    <section class="py-8 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/" class="inline-flex items-center justify-center gap-2 bg-morado hover:bg-morado/90 text-white px-6 py-3 rounded-full font-bold transition-colors">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al inicio
+                </a>
+                <a href="/inscripcion" class="inline-flex items-center justify-center gap-2 bg-amarillo hover:bg-amarillo/90 text-black px-6 py-3 rounded-full font-bold transition-colors">
+                    <i class="fas fa-edit"></i>
+                    Inscribirse ahora
+                </a>
+                <a href="/terminosycondiciones" class="inline-flex items-center justify-center gap-2 bg-white border-2 border-morado text-morado hover:bg-morado hover:text-white px-6 py-3 rounded-full font-bold transition-colors">
+                    <i class="fas fa-file-contract"></i>
+                    Términos y Condiciones
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Descarga PDF (opcional) -->
+    <section class="py-6 bg-white border-t">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-black mb-4">¿Necesitas el reglamento en formato impreso?</p>
+            <a href="#" class="inline-flex items-center gap-2 text-morado hover:underline font-medium">
+                <i class="fas fa-file-pdf text-red-500"></i>
+                Descargar PDF del Reglamento (Próximamente)
+            </a>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
