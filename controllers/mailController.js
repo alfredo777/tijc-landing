@@ -74,6 +74,7 @@ function getBaseEmailData() {
         siteName: 'Torneo Jorge Campos',
         siteUrl: 'https://torneojorgecampos.com.mx',
         logoUrl: 'https://torneojorgecampos.com.mx/images/logo.png',
+        logoBlackUrl: 'https://torneojorgecampos.com.mx/images/logo-black.png',
         year: new Date().getFullYear(),
         social: {
             facebook: 'https://facebook.com/torneojcampos',
