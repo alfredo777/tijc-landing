@@ -28,25 +28,23 @@ function initMailer() {
                 user: user,
                 pass: pass
             },
-            // Agregar configuración para mejor entrega
             tls: {
                 rejectUnauthorized: false
             },
-            debug: true, // Habilitar debug
-            logger: true  // Habilitar logging
+            debug: true,
+            logger: true
         });
         
-        // Verificar conexión
         transporter.verify((error, success) => {
             if (error) {
                 console.error('❌ Error verificando SMTP:', error.message);
-                console.error('   Detalles:', error);
             } else {
                 console.log('✅ SMTP configurado correctamente:');
                 console.log('   Host:', host);
                 console.log('   Port:', port);
                 console.log('   User:', user);
                 console.log('   From:', process.env.MAIL_FROM || user);
+                console.log('   Admin emails:', process.env.MAIL_TO);
             }
         });
         
@@ -113,6 +111,22 @@ const paisLabels = {
 };
 
 /**
+ * Obtener lista de emails de administrador
+ * Soporta múltiples emails separados por coma
+ */
+function getAdminEmails() {
+    const mailTo = process.env.MAIL_TO || 'contacto@torneojorgecampos.com.mx';
+    
+    // Separar por coma y limpiar espacios
+    const emails = mailTo
+        .split(',')
+        .map(email => email.trim())
+        .filter(email => email.length > 0);
+    
+    return emails;
+}
+
+/**
  * Función helper para enviar emails con logging detallado
  */
 async function sendEmail(mailOptions) {
@@ -146,7 +160,6 @@ async function sendEmail(mailOptions) {
         console.error('   Código:', error.code);
         console.error('   Comando:', error.command);
         console.error('   Response:', error.response);
-        console.error('   Stack:', error.stack);
         console.log('═══════════════════════════════════════════');
         throw error;
     }
@@ -205,10 +218,9 @@ async function sendUserConfirmation(inscripcionData) {
     const mailOptions = {
         from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
         to: inscripcionData.email,
-        replyTo: 'contacto@torneojorgecampos.com.mx', // Para que las respuestas vayan al contacto
+        replyTo: 'contacto@torneojorgecampos.com.mx',
         subject: '¡Recibimos tu inscripción! - Torneo Jorge Campos 2026',
         html: htmlContent,
-        // Headers adicionales para mejorar entregabilidad
         headers: {
             'X-Priority': '1',
             'X-Mailer': 'Torneo Jorge Campos Mailer',
@@ -220,21 +232,11 @@ async function sendUserConfirmation(inscripcionData) {
 }
 
 /**
- * Enviar notificación al administrador
+ * Generar contenido HTML para notificación admin
  */
-async function sendAdminNotification(inscripcionData) {
-    const template = loadTemplate('admin-notification');
-    const baseData = getBaseEmailData();
-    
-    // Obtener el email de destino
-    const adminEmail = process.env.MAIL_TO || 'contacto@torneojorgecampos.com.mx';
-    
-    console.log('🎯 Email de admin destino:', adminEmail);
-    
-    let htmlContent;
-    
+function generateAdminHtmlContent(inscripcionData, baseData, template) {
     if (template) {
-        htmlContent = template({
+        return template({
             ...baseData,
             nombre: inscripcionData.nombre,
             apellidos: inscripcionData.apellidos,
@@ -260,54 +262,98 @@ async function sendAdminNotification(inscripcionData) {
             ip: inscripcionData.ip || 'No disponible',
             userAgent: inscripcionData.userAgent || 'No disponible'
         });
-    } else {
-        htmlContent = `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-                <h1 style="color: #9220E1;">🆕 Nueva Inscripción</h1>
-                <p style="color: #666;">Recibida el ${new Date().toLocaleString('es-MX')}</p>
-                
-                <div style="background: ${inscripcionData.categoria === 'femenil' ? '#FFF0F5' : '#FFF8DC'}; padding: 15px; border-radius: 10px; border-left: 4px solid ${inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520'}; margin: 20px 0;">
-                    <strong style="font-size: 18px;">${inscripcionData.categoria === 'femenil' ? 'FEMENIL' : 'VARONIL'} ${inscripcionData.año_categoria}</strong>
-                </div>
-                
-                <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px;">Datos Personales</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>Nombre:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.nombre} ${inscripcionData.apellidos}</td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Email:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="mailto:${inscripcionData.email}">${inscripcionData.email}</a></td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Celular:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="tel:${inscripcionData.celular}">${inscripcionData.celular}</a></td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Edad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.edad} años</td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Relación:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${relacionLabels[inscripcionData.relacion] || inscripcionData.relacion}</td></tr>
-                </table>
-                
-                <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px; margin-top: 30px;">Ubicación</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>País:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${paisLabels[inscripcionData.pais] || inscripcionData.pais}</td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Estado:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.estado}</td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Ciudad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.ciudad}</td></tr>
-                    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>CP:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.cp}</td></tr>
-                </table>
-                
-                <div style="margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
-                    <a href="https://wa.me/${inscripcionData.celular.replace(/\D/g, '')}" style="display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;">💬 WhatsApp</a>
-                    <a href="mailto:${inscripcionData.email}" style="display: inline-block; background: #9220E1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">✉️ Email</a>
-                </div>
-            </div>
-        `;
     }
+    
+    return `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h1 style="color: #9220E1;">🆕 Nueva Inscripción</h1>
+            <p style="color: #666;">Recibida el ${new Date().toLocaleString('es-MX')}</p>
+            
+            <div style="background: ${inscripcionData.categoria === 'femenil' ? '#FFF0F5' : '#FFF8DC'}; padding: 15px; border-radius: 10px; border-left: 4px solid ${inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520'}; margin: 20px 0;">
+                <strong style="font-size: 18px;">${inscripcionData.categoria === 'femenil' ? 'FEMENIL' : 'VARONIL'} ${inscripcionData.año_categoria}</strong>
+            </div>
+            
+            <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px;">Datos Personales</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>Nombre:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.nombre} ${inscripcionData.apellidos}</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Email:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="mailto:${inscripcionData.email}">${inscripcionData.email}</a></td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Celular:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="tel:${inscripcionData.celular}">${inscripcionData.celular}</a></td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Edad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.edad} años</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Relación:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${relacionLabels[inscripcionData.relacion] || inscripcionData.relacion}</td></tr>
+            </table>
+            
+            <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px; margin-top: 30px;">Ubicación</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>País:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${paisLabels[inscripcionData.pais] || inscripcionData.pais}</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Estado:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.estado}</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Ciudad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.ciudad}</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>CP:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.cp}</td></tr>
+            </table>
+            
+            <div style="margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
+                <a href="https://wa.me/${(inscripcionData.celular || '').replace(/\D/g, '')}" style="display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;">💬 WhatsApp</a>
+                <a href="mailto:${inscripcionData.email}" style="display: inline-block; background: #9220E1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">✉️ Email</a>
+            </div>
+        </div>
+    `;
+}
 
-    const mailOptions = {
-        from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
-        to: adminEmail,
-        replyTo: inscripcionData.email, // Para responder directo al usuario
-        subject: `🆕 Nueva Inscripción: ${inscripcionData.nombre} ${inscripcionData.apellidos} - ${inscripcionData.categoria}`,
-        html: htmlContent,
-        headers: {
-            'X-Priority': '1',
-            'X-Mailer': 'Torneo Jorge Campos Mailer'
+/**
+ * Enviar notificación a TODOS los administradores
+ * Envía emails individuales a cada admin para mejor entrega
+ */
+async function sendAdminNotification(inscripcionData) {
+    const template = loadTemplate('admin-notification');
+    const baseData = getBaseEmailData();
+    const adminEmails = getAdminEmails();
+    
+    console.log('🎯 Emails de admin destino:', adminEmails.join(', '));
+    console.log('📊 Total de admins:', adminEmails.length);
+    
+    const htmlContent = generateAdminHtmlContent(inscripcionData, baseData, template);
+    const subject = `🆕 Nueva Inscripción: ${inscripcionData.nombre} ${inscripcionData.apellidos} - ${inscripcionData.categoria}`;
+    
+    const results = [];
+    const errors = [];
+    
+    // Enviar a cada admin individualmente para mejor entrega
+    for (const adminEmail of adminEmails) {
+        console.log(`📧 Enviando a admin: ${adminEmail}`);
+        
+        const mailOptions = {
+            from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
+            to: adminEmail,
+            replyTo: inscripcionData.email,
+            subject: subject,
+            html: htmlContent,
+            headers: {
+                'X-Priority': '1',
+                'X-Mailer': 'Torneo Jorge Campos Mailer'
+            }
+        };
+        
+        try {
+            const result = await sendEmail(mailOptions);
+            results.push({ email: adminEmail, success: true, messageId: result.messageId });
+            console.log(`✅ Enviado a ${adminEmail}`);
+        } catch (error) {
+            errors.push({ email: adminEmail, error: error.message });
+            console.error(`❌ Error enviando a ${adminEmail}:`, error.message);
         }
+    }
+    
+    // Resumen
+    console.log('');
+    console.log('📊 RESUMEN ENVÍO A ADMINS:');
+    console.log(`   ✅ Exitosos: ${results.length}`);
+    console.log(`   ❌ Fallidos: ${errors.length}`);
+    
+    return {
+        sent: results,
+        errors: errors,
+        totalSent: results.length,
+        totalFailed: errors.length
     };
-
-    return sendEmail(mailOptions);
 }
 
 /**
@@ -315,6 +361,8 @@ async function sendAdminNotification(inscripcionData) {
  */
 async function sendTestEmail(toEmail) {
     console.log('🧪 Enviando email de prueba a:', toEmail);
+    
+    const adminEmails = getAdminEmails();
     
     const mailOptions = {
         from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
@@ -330,6 +378,10 @@ async function sendTestEmail(toEmail) {
                     <li>Port: ${process.env.SMTP_PORT}</li>
                     <li>User: ${process.env.SMTP_USER}</li>
                     <li>From: ${process.env.MAIL_FROM}</li>
+                </ul>
+                <p><strong>Emails de Admin configurados:</strong></p>
+                <ul>
+                    ${adminEmails.map(e => `<li>${e}</li>`).join('')}
                 </ul>
                 <p>Si recibes este email, la configuración está funcionando correctamente.</p>
             </div>
@@ -347,6 +399,8 @@ async function sendTestEmail(toEmail) {
  * Procesar inscripción completa
  */
 async function processInscripcion(inscripcionData) {
+    const adminEmails = getAdminEmails();
+    
     console.log('');
     console.log('╔═══════════════════════════════════════════════════════════╗');
     console.log('║  📬 PROCESANDO NUEVA INSCRIPCIÓN                          ║');
@@ -354,12 +408,17 @@ async function processInscripcion(inscripcionData) {
     console.log(`║  Nombre: ${inscripcionData.nombre} ${inscripcionData.apellidos}`);
     console.log(`║  Email: ${inscripcionData.email}`);
     console.log(`║  Categoría: ${inscripcionData.categoria} - ${inscripcionData.año_categoria}`);
+    console.log('╠═══════════════════════════════════════════════════════════╣');
+    console.log(`║  📧 Admins a notificar: ${adminEmails.length}`);
+    adminEmails.forEach((email, i) => {
+        console.log(`║     ${i + 1}. ${email}`);
+    });
     console.log('╚═══════════════════════════════════════════════════════════╝');
     console.log('');
     
     const results = {
         userEmail: null,
-        adminEmail: null,
+        adminEmails: null,
         errors: []
     };
 
@@ -373,13 +432,20 @@ async function processInscripcion(inscripcionData) {
         results.errors.push({ type: 'user', error: error.message });
     }
 
-    // Notificación al admin
-    console.log('📧 [2/2] Enviando notificación al administrador...');
+    // Notificación a TODOS los admins
+    console.log(`📧 [2/2] Enviando notificación a ${adminEmails.length} administrador(es)...`);
     try {
-        results.adminEmail = await sendAdminNotification(inscripcionData);
-        console.log('✅ [2/2] Email al admin enviado');
+        results.adminEmails = await sendAdminNotification(inscripcionData);
+        console.log(`✅ [2/2] Emails a admins: ${results.adminEmails.totalSent} enviados, ${results.adminEmails.totalFailed} fallidos`);
+        
+        // Agregar errores de admin al array general
+        if (results.adminEmails.errors.length > 0) {
+            results.adminEmails.errors.forEach(err => {
+                results.errors.push({ type: `admin-${err.email}`, error: err.error });
+            });
+        }
     } catch (error) {
-        console.error('❌ [2/2] Error enviando al admin:', error.message);
+        console.error('❌ [2/2] Error enviando a admins:', error.message);
         results.errors.push({ type: 'admin', error: error.message });
     }
 
@@ -401,5 +467,6 @@ module.exports = {
     sendUserConfirmation,
     sendAdminNotification,
     processInscripcion,
-    sendTestEmail
+    sendTestEmail,
+    getAdminEmails
 };
