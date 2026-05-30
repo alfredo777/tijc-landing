@@ -11,19 +11,19 @@
         <tr>
             <td align="center" style="padding: 40px 20px;">
                 
-                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
                     
                     <!-- Header -->
                     <tr>
-                        <td style="background: #9220E1; padding: 30px 40px;">
+                        <td style="background-color: #9220E1; padding: 24px 32px;">
                             <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td>
-                                        <img src="{{logoUrl}}" alt="{{siteName}}" style="height: 50px; width: auto;">
+                                    <td style="vertical-align: middle;">
+                                        <img src="{{logoUrl}}" alt="{{siteName}}" style="height: 44px; width: auto; display: block;">
                                     </td>
-                                    <td style="text-align: right;">
-                                        <span style="display: inline-block; background-color: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase;">
-                                            🆕 Nueva Inscripción
+                                    <td style="text-align: right; vertical-align: middle;">
+                                        <span style="display: inline-block; background-color: #21FF04; color: #1a1a2e; padding: 6px 14px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            Nueva Inscripción
                                         </span>
                                     </td>
                                 </tr>
@@ -31,127 +31,186 @@
                         </td>
                     </tr>
                     
-                    <!-- Alerta de categoría -->
+                    <!-- Barra de categoría -->
                     <tr>
-                        <td style="background-color: {{categoriaColor}}; padding: 20px 40px; text-align: center;">
-                            <h2 style="color: #ffffff; font-size: 24px; margin: 0;">
-                                Categoría: {{categoria}} - {{añoCategoria}}
-                            </h2>
+                        <td style="background-color: {{categoriaColor}}; padding: 16px 32px;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <span style="color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px;">
+                                            {{categoria}} — {{añoCategoria}}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     
-                    <!-- Contenido -->
+                    <!-- Contenido principal -->
                     <tr>
-                        <td style="padding: 40px;">
+                        <td style="padding: 32px;">
                             
-                            <p style="color: #666666; font-size: 14px; margin: 0 0 5px 0;">
-                                📅 {{fechaInscripcion}}
+                            <!-- Fecha -->
+                            <p style="color: #888888; font-size: 13px; margin: 0 0 24px 0;">
+                                {{fechaInscripcion}}
                             </p>
                             
-                            <h1 style="color: #333333; font-size: 28px; margin: 0 0 30px 0;">
+                            <!-- EQUIPO - Diseño flat -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 24px;">
+                                <tr>
+                                    <td style="background-color: #1a1a2e; border-radius: 8px; padding: 24px; border-left: 4px solid #FDED07;">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width: 48px; vertical-align: top;">
+                                                    <div style="width: 40px; height: 40px; background-color: #FDED07; border-radius: 6px; text-align: center; line-height: 40px; color: #1a1a2e; font-size: 18px; font-weight: bold;">E</div>
+                                                </td>
+                                                <td style="padding-left: 16px; vertical-align: middle;">
+                                                    <p style="color: #888888; font-size: 11px; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">Equipo</p>
+                                                    <p style="color: #ffffff; font-size: 24px; margin: 0; font-weight: bold;">{{equipo}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Nombre del contacto -->
+                            <h1 style="color: #1a1a2e; font-size: 26px; margin: 0 0 28px 0; font-weight: bold;">
                                 {{nombre}} {{apellidos}}
                             </h1>
                             
                             <!-- Datos Personales -->
-                            <div style="background-color: #f8f8f8; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-                                <h3 style="color: #9220E1; font-size: 16px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
-                                    👤 Datos Personales
-                                </h3>
-                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">Email:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <a href="mailto:{{email}}" style="color: #9220E1; font-size: 14px; font-weight: bold; text-decoration: none;">{{email}}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">Celular:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <a href="tel:{{celular}}" style="color: #333333; font-size: 14px; font-weight: bold; text-decoration: none;">{{celular}}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">Edad:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{edad}} años</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0;">
-                                            <span style="color: #888888; font-size: 13px;">Relación:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{relacion}}</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="background-color: #f8f8f8; border-radius: 8px; padding: 20px;">
+                                        
+                                        <!-- Título sección -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 16px;">
+                                            <tr>
+                                                <td style="width: 32px; vertical-align: middle;">
+                                                    <div style="width: 28px; height: 28px; background-color: #9220E1; border-radius: 4px; text-align: center; line-height: 28px; color: #ffffff; font-size: 12px; font-weight: bold;">D</div>
+                                                </td>
+                                                <td style="padding-left: 10px; vertical-align: middle;">
+                                                    <span style="color: #9220E1; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">Datos Personales</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Datos -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">Email</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <a href="mailto:{{email}}" style="color: #9220E1; font-size: 14px; font-weight: 600; text-decoration: none;">{{email}}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">Celular</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <a href="tel:{{celular}}" style="color: #1a1a2e; font-size: 14px; font-weight: 600; text-decoration: none;">{{celular}}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">Edad</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{edad}} años</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0;">
+                                                    <span style="color: #666666; font-size: 13px;">Relación</span>
+                                                </td>
+                                                <td style="padding: 10px 0; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{relacion}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
                             
                             <!-- Ubicación -->
-                            <div style="background-color: #f8f8f8; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-                                <h3 style="color: #F6288D; font-size: 16px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
-                                    📍 Ubicación
-                                </h3>
-                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">País:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{pais}}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">Estado:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{estado}}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                                            <span style="color: #888888; font-size: 13px;">Ciudad:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{ciudad}}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 0;">
-                                            <span style="color: #888888; font-size: 13px;">C.P.:</span>
-                                        </td>
-                                        <td style="padding: 10px 0; text-align: right;">
-                                            <span style="color: #333333; font-size: 14px; font-weight: bold;">{{cp}}</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            
-                            <!-- Botones de acción -->
-                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 30px;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 24px;">
                                 <tr>
-                                    <td style="padding: 5px;" width="50%">
-                                        <a href="https://wa.me/52{{celular}}" style="display: block; background-color: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
-                                            💬 Contactar por WhatsApp
+                                    <td style="background-color: #f8f8f8; border-radius: 8px; padding: 20px;">
+                                        
+                                        <!-- Título sección -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 16px;">
+                                            <tr>
+                                                <td style="width: 32px; vertical-align: middle;">
+                                                    <div style="width: 28px; height: 28px; background-color: #F6288D; border-radius: 4px; text-align: center; line-height: 28px; color: #ffffff; font-size: 12px; font-weight: bold;">U</div>
+                                                </td>
+                                                <td style="padding-left: 10px; vertical-align: middle;">
+                                                    <span style="color: #F6288D; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">Ubicación</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Datos -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">País</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{pais}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">Estado</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{estado}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8;">
+                                                    <span style="color: #666666; font-size: 13px;">Ciudad</span>
+                                                </td>
+                                                <td style="padding: 10px 0; border-bottom: 1px solid #e8e8e8; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{ciudad}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0;">
+                                                    <span style="color: #666666; font-size: 13px;">C.P.</span>
+                                                </td>
+                                                <td style="padding: 10px 0; text-align: right;">
+                                                    <span style="color: #1a1a2e; font-size: 14px; font-weight: 600;">{{cp}}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Acciones rápidas -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="padding: 4px;" width="50%">
+                                        <a href="https://wa.me/52{{celular}}" style="display: block; background-color: #25D366; color: #ffffff; padding: 14px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center;">
+                                            WhatsApp
                                         </a>
                                     </td>
-                                    <td style="padding: 5px;" width="50%">
-                                        <a href="mailto:{{email}}" style="display: block; background-color: #9220E1; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
-                                            ✉️ Enviar Email
+                                    <td style="padding: 4px;" width="50%">
+                                        <a href="mailto:{{email}}" style="display: block; background-color: #9220E1; color: #ffffff; padding: 14px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center;">
+                                            Email
                                         </a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" style="padding: 5px;">
-                                        <a href="tel:{{celular}}" style="display: block; background-color: #F6288D; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold; text-align: center;">
-                                            📞 Llamar: {{celular}}
+                                    <td colspan="2" style="padding: 4px;">
+                                        <a href="tel:{{celular}}" style="display: block; background-color: #F6288D; color: #ffffff; padding: 14px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center;">
+                                            Llamar: {{celular}}
                                         </a>
                                     </td>
                                 </tr>
@@ -160,20 +219,27 @@
                         </td>
                     </tr>
                     
-                    <!-- Metadata técnica -->
+                    <!-- Metadata -->
                     <tr>
-                        <td style="background-color: #f0f0f0; padding: 20px 40px;">
-                            <p style="color: #888888; font-size: 11px; margin: 0;">
-                                <strong>IP:</strong> {{ip}} | <strong>User Agent:</strong> {{userAgent}}
-                            </p>
+                        <td style="background-color: #f4f4f4; padding: 16px 32px; border-top: 1px solid #e8e8e8;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <p style="color: #999999; font-size: 11px; margin: 0; line-height: 1.5;">
+                                            <strong style="color: #666666;">IP:</strong> {{ip}}<br>
+                                            <strong style="color: #666666;">UA:</strong> {{userAgent}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     
                     <!-- Footer -->
                     <tr>
-                        <td style="background-color: #9220E1; padding: 20px 40px; text-align: center;">
-                            <p style="color: #ffffff; font-size: 11px; margin: 0;">
-                                © {{year}} {{siteName}} - Panel de Administración
+                        <td style="background-color: #1a1a2e; padding: 20px 32px; text-align: center;">
+                            <p style="color: #888888; font-size: 11px; margin: 0;">
+                                © {{year}} {{siteName}} · Panel de Administración
                             </p>
                         </td>
                     </tr>

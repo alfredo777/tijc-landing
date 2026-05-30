@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>¡Recibimos tu inscripción!</title>
+    <!--[if mso]>
+    <style type="text/css">
+        table {border-collapse: collapse;}
+        .fallback-font {font-family: Arial, sans-serif;}
+    </style>
+    <![endif]-->
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; -webkit-font-smoothing: antialiased;">
     
-    <!-- Container principal -->
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f4f4f4;">
+    <!-- Wrapper con ancho mínimo -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4; min-width: 320px;">
         <tr>
             <td align="center" style="padding: 40px 20px;">
                 
-                <!-- Email container -->
-                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <!-- Container principal con ancho fijo -->
+                <!--[if mso]>
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tr>
+                <td>
+                <![endif]-->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 600px; min-width: 600px;">
                     
-                    <!-- Header con gradiente -->
+                    <!-- Header -->
                     <tr>
-                        <td style="background: #9220E1; padding: 40px 40px 60px 40px; text-align: center;">
-                            <!-- Logo -->
-                            <img src="{{logoUrl}}" alt="{{siteName}}" style="height: 80px; width: auto; margin-bottom: 20px;">
+                        <td width="600" style="background-color: #9220E1; padding: 40px; text-align: center;">
+                            <img src="{{logoUrl}}" alt="{{siteName}}" width="120" height="auto" style="display: block; margin: 0 auto 20px auto; max-width: 120px;">
                             
-                            <h1 style="color: #FDED07; font-size: 32px; margin: 0 0 10px 0; font-weight: bold;">
+                            <h1 style="color: #FDED07; font-size: 28px; margin: 0 0 10px 0; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                 ¡Recibimos tu inscripción!
                             </h1>
-                            <p style="color: #ffffff; font-size: 16px; margin: 0; opacity: 0.9;">
+                            <p style="color: #ffffff; font-size: 16px; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                 Gracias por tu interés en el Torneo Jorge Campos 2026
                             </p>
                         </td>
@@ -32,87 +43,296 @@
                     
                     <!-- Contenido principal -->
                     <tr>
-                        <td style="padding: 40px;">
+                        <td width="600" style="padding: 40px;">
                             
-                            <p style="color: #333333; font-size: 18px; margin: 0 0 20px 0; line-height: 1.6;">
+                            <p style="color: #333333; font-size: 18px; margin: 0 0 20px 0; line-height: 1.6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                 Hola <strong style="color: #9220E1;">{{nombre}} {{apellidos}}</strong>,
                             </p>
                             
-                            <p style="color: #666666; font-size: 16px; margin: 0 0 30px 0; line-height: 1.6;">
-                                Hemos recibido correctamente tu solicitud de inscripción para el <strong>Torneo Jorge Campos 2026</strong>. Uno de nuestros asesores se pondrá en contacto contigo a la brevedad para continuar con el proceso.
+                            <p style="color: #666666; font-size: 16px; margin: 0 0 30px 0; line-height: 1.6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                Hemos recibido correctamente tu solicitud de inscripción para el <strong>Torneo Jorge Campos 2026</strong>. Para completar tu registro, por favor realiza el pago correspondiente y notifícanos.
                             </p>
                             
                             <!-- Resumen de inscripción -->
-                            <div style="background-color: #f8f4fc; border-radius: 12px; padding: 25px; margin-bottom: 30px; border-left: 4px solid #9220E1;">
-                                <h3 style="color: #9220E1; font-size: 18px; margin: 0 0 15px 0;">
-                                    📋 Resumen de tu inscripción
-                                </h3>
-                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Categoría:</td>
-                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{categoria}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Año:</td>
-                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{añoCategoria}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Email:</td>
-                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 8px 0; color: #666666; font-size: 14px;">Fecha:</td>
-                                        <td style="padding: 8px 0; color: #333333; font-size: 14px; font-weight: bold; text-align: right;">{{fechaInscripcion}}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            
-                            <!-- Próximos pasos -->
-                            <h3 style="color: #333333; font-size: 18px; margin: 0 0 15px 0;">
-                                🚀 ¿Qué sigue?
-                            </h3>
-                            
-                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 30px;">
                                 <tr>
-                                    <td style="padding: 12px 0;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                    <td style="background-color: #f8f4fc; border-radius: 8px; padding: 24px; border-left: 4px solid #9220E1;">
+                                        
+                                        <!-- Título -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 16px;">
                                             <tr>
-                                                <td style="width: 40px; vertical-align: top;">
-                                                    <div style="width: 30px; height: 30px; background-color: #F6288D; border-radius: 50%; text-align: center; line-height: 30px; color: white; font-weight: bold; font-size: 14px;">1</div>
+                                                <td width="32" valign="middle">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="28" height="28" style="background-color: #9220E1; border-radius: 4px; text-align: center; color: #ffffff; font-size: 14px; font-weight: bold;">R</td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
-                                                <td style="padding-left: 15px;">
-                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Revisión de datos</p>
-                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Verificaremos la información proporcionada.</p>
+                                                <td style="padding-left: 12px;">
+                                                    <span style="color: #9220E1; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Resumen de tu inscripción</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Datos del resumen -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; color: #666666; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Equipo:</td>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; text-align: right; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{equipo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; color: #666666; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Categoría:</td>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; text-align: right; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{categoria}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; color: #666666; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Año:</td>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; text-align: right; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{añoCategoria}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; color: #666666; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Email:</td>
+                                                <td width="50%" style="padding: 10px 0; border-bottom: 1px solid #e8e0f0; text-align: right; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding: 10px 0; color: #666666; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Fecha:</td>
+                                                <td width="50%" style="padding: 10px 0; text-align: right; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{fechaInscripcion}}</td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- DATOS DE PAGO -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td style="background-color: #1a1a2e; border-radius: 8px; padding: 24px; border: 2px solid #FDED07;">
+                                        
+                                        <!-- Título pago -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td align="center">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="32" height="32" style="background-color: #FDED07; border-radius: 4px; text-align: center; color: #1a1a2e; font-size: 16px; font-weight: bold;">$</td>
+                                                            <td style="padding-left: 12px;">
+                                                                <span style="color: #FDED07; font-size: 18px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Datos para realizar tu pago</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Datos bancarios -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #252545; border-radius: 6px;">
+                                            <!-- Banco -->
+                                            <tr>
+                                                <td style="padding: 16px; border-bottom: 1px solid #3a3a5a;">
+                                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="28" valign="top">
+                                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td width="24" height="24" style="background-color: #3a3a5a; border-radius: 4px; text-align: center; color: #FDED07; font-size: 11px; font-weight: bold;">B</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td style="padding-left: 12px;">
+                                                                <p style="margin: 0 0 4px 0; color: #888888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Banco</p>
+                                                                <p style="margin: 0; color: #ffffff; font-size: 16px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">BanBajío</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- Cuenta -->
+                                            <tr>
+                                                <td style="padding: 16px; border-bottom: 1px solid #3a3a5a;">
+                                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="28" valign="top">
+                                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td width="24" height="24" style="background-color: #3a3a5a; border-radius: 4px; text-align: center; color: #FDED07; font-size: 11px; font-weight: bold;">#</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td style="padding-left: 12px;">
+                                                                <p style="margin: 0 0 4px 0; color: #888888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Número de Cuenta</p>
+                                                                <p style="margin: 0; color: #FDED07; font-size: 20px; font-weight: bold; font-family: 'Courier New', Courier, monospace; letter-spacing: 2px;">387104710202</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- CLABE -->
+                                            <tr>
+                                                <td style="padding: 16px;">
+                                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="28" valign="top">
+                                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td width="24" height="24" style="background-color: #3a3a5a; border-radius: 4px; text-align: center; color: #FDED07; font-size: 11px; font-weight: bold;">C</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td style="padding-left: 12px;">
+                                                                <p style="margin: 0 0 4px 0; color: #888888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">CLABE Interbancaria</p>
+                                                                <p style="margin: 0; color: #FDED07; font-size: 18px; font-weight: bold; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px;">030010900043613530</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Nota importante -->
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 16px;">
+                                            <tr>
+                                                <td style="background-color: #2a2a4a; border-radius: 6px; padding: 14px; border-left: 3px solid #FDED07;">
+                                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="24" valign="top">
+                                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td width="20" height="20" style="background-color: #FDED07; border-radius: 10px; text-align: center; color: #1a1a2e; font-size: 12px; font-weight: bold;">!</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td style="padding-left: 10px;">
+                                                                <p style="margin: 0; color: #ffffff; font-size: 13px; line-height: 1.5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                                                    <strong style="color: #FDED07;">Importante:</strong> Al realizar la transferencia, incluye tu nombre completo como referencia para identificar tu pago.
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Próximos pasos - Título -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td>
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td width="28" height="28" style="background-color: #333333; border-radius: 4px; text-align: center; color: #ffffff; font-size: 14px; font-weight: bold;">→</td>
+                                                <td style="padding-left: 12px;">
+                                                    <span style="color: #333333; font-size: 18px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">¿Qué sigue?</span>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
+                            </table>
+                            
+                            <!-- Pasos -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 30px;">
+                                <!-- Paso 1 -->
                                 <tr>
                                     <td style="padding: 12px 0;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <tr>
-                                                <td style="width: 40px; vertical-align: top;">
-                                                    <div style="width: 30px; height: 30px; background-color: #9220E1; border-radius: 50%; text-align: center; line-height: 30px; color: white; font-weight: bold; font-size: 14px;">2</div>
+                                                <td width="40" valign="top">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="36" height="36" style="background-color: #F6288D; border-radius: 6px; text-align: center; color: #ffffff; font-size: 16px; font-weight: bold;">1</td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
-                                                <td style="padding-left: 15px;">
-                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Contacto de asesor</p>
-                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Te contactaremos en las próximas 24-48 horas.</p>
+                                                <td style="padding-left: 14px;">
+                                                    <p style="margin: 0 0 4px 0; color: #333333; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Realiza tu pago</p>
+                                                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Transfiere a la cuenta BanBajío indicada arriba.</p>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
+                                <!-- Paso 2 -->
                                 <tr>
                                     <td style="padding: 12px 0;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <tr>
-                                                <td style="width: 40px; vertical-align: top;">
-                                                    <div style="width: 30px; height: 30px; background-color: #FDED07; border-radius: 50%; text-align: center; line-height: 30px; color: #333; font-weight: bold; font-size: 14px;">3</div>
+                                                <td width="40" valign="top">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="36" height="36" style="background-color: #9220E1; border-radius: 6px; text-align: center; color: #ffffff; font-size: 16px; font-weight: bold;">2</td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
-                                                <td style="padding-left: 15px;">
-                                                    <p style="margin: 0; color: #333333; font-size: 14px; font-weight: bold;">Confirmación de pago</p>
-                                                    <p style="margin: 5px 0 0 0; color: #666666; font-size: 13px;">Te enviaremos los datos para realizar el pago.</p>
+                                                <td style="padding-left: 14px;">
+                                                    <p style="margin: 0 0 4px 0; color: #333333; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Envíanos tu comprobante</p>
+                                                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Comunícate con nosotros por WhatsApp o email y envíanos tu comprobante de pago.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- Paso 3 -->
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td width="40" valign="top">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="36" height="36" style="background-color: #FDED07; border-radius: 6px; text-align: center; color: #333333; font-size: 16px; font-weight: bold;">3</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="padding-left: 14px;">
+                                                    <p style="margin: 0 0 4px 0; color: #333333; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Confirmamos tu pago</p>
+                                                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Verificaremos tu pago y te confirmaremos la recepción.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- Paso 4 -->
+                                <tr>
+                                    <td style="padding: 12px 0;">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td width="40" valign="top">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="36" height="36" style="background-color: #25D366; border-radius: 6px; text-align: center; color: #ffffff; font-size: 16px; font-weight: bold;">✓</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="padding-left: 14px;">
+                                                    <p style="margin: 0 0 4px 0; color: #333333; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">¡Inscripción confirmada!</p>
+                                                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Una vez confirmado el pago, tu inscripción quedará registrada oficialmente.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Aviso de datos adicionales -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td style="background-color: #fff8e1; border-radius: 8px; padding: 20px; border-left: 4px solid #ffc107;">
+                                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td width="36" valign="top">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td width="32" height="32" style="background-color: #ffc107; border-radius: 4px; text-align: center; color: #333333; font-size: 16px; font-weight: bold;">?</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="padding-left: 14px;">
+                                                    <p style="margin: 0 0 6px 0; color: #333333; font-size: 14px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">¿Necesitamos más información?</p>
+                                                    <p style="margin: 0; color: #666666; font-size: 13px; line-height: 1.5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                                        En caso de requerir datos adicionales para completar tu inscripción, nos comunicaremos contigo por <strong>email</strong> o <strong>WhatsApp</strong>. Por favor mantente atento a nuestros mensajes.
+                                                    </p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -121,74 +341,81 @@
                             </table>
                             
                             <!-- CTA de contacto -->
-                            <div style="background: #9220E1; border-radius: 12px; padding: 25px; text-align: center;">
-                                <p style="color: #ffffff; font-size: 14px; margin: 0 0 15px 0;">
-                                    ¿Tienes alguna duda? Contáctanos:
-                                </p>
-                                <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto;">
-                                    <tr>
-                                        <td style="padding: 0 10px;">
-                                            <a href="{{contact.whatsapp}}" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold;">
-                                                💬 WhatsApp
-                                            </a>
-                                        </td>
-                                        <td style="padding: 0 10px;">
-                                            <a href="mailto:{{contact.email}}" style="display: inline-block; background-color: #F6288D; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: bold;">
-                                                ✉️ Email
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td style="background-color: #9220E1; border-radius: 8px; padding: 28px; text-align: center;">
+                                        
+                                        <p style="margin: 0 0 6px 0; color: #FDED07; font-size: 16px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">¿Ya realizaste tu pago?</p>
+                                        <p style="margin: 0 0 20px 0; color: #ffffff; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Envíanos tu comprobante para confirmar tu inscripción:</p>
+                                        
+                                        <!-- Botones -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+                                            <tr>
+                                                <td style="padding: 0 6px;">
+                                                    <a href="{{contact.whatsapp}}" style="display: inline-block; background-color: #25D366; color: #ffffff; padding: 14px 28px; border-radius: 6px; text-decoration: none; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">WhatsApp</a>
+                                                </td>
+                                                <td style="padding: 0 6px;">
+                                                    <a href="mailto:{{contact.email}}?subject=Comprobante%20de%20Pago%20-%20{{nombre}}%20{{apellidos}}" style="display: inline-block; background-color: #F6288D; color: #ffffff; padding: 14px 28px; border-radius: 6px; text-decoration: none; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Email</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p style="margin: 20px 0 0 0; color: rgba(255,255,255,0.8); font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                                            También puedes llamarnos: <strong style="color: #ffffff;">{{contact.phone}}</strong>
+                                        </p>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
                             
                         </td>
                     </tr>
                     
                     <!-- Footer -->
                     <tr>
-                        <td style="background-color: #9220E1; padding: 30px 40px; text-align: center;">
+                        <td width="600" style="background-color: #9220E1; padding: 30px 40px; text-align: center;">
+                            
                             <!-- Redes sociales -->
-                            <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto 20px;">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-bottom: 20px;">
                                 <tr>
-                                    <!-- Facebook - Color oficial #1877F2 -->
-                                    <td style="padding: 0 10px;">
-                                        <a href="{{social.facebook}}" style="display: inline-block; width: 42px; height: 42px; background-color: #1877F2; border-radius: 50%; text-align: center; line-height: 42px; color: white; text-decoration: none; font-size: 20px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">f</a>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.facebook}}" style="display: inline-block; width: 40px; height: 40px; background-color: #1877F2; border-radius: 6px; text-align: center; line-height: 40px; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: bold;">f</a>
                                     </td>
-                                    <!-- Instagram - Gradiente oficial -->
-                                    <td style="padding: 0 10px;">
-                                        <a href="{{social.instagram}}" style="display: inline-block; width: 42px; height: 42px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); background-color: #E4405F; border-radius: 50%; text-align: center; line-height: 42px; color: white; text-decoration: none; font-size: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">📷</a>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.instagram}}" style="display: inline-block; width: 40px; height: 40px; background-color: #E4405F; border-radius: 6px; text-align: center; line-height: 40px; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold;">IG</a>
                                     </td>
-                                    <!-- TikTok - Negro con acentos cyan/rosa -->
-                                    <td style="padding: 0 10px;">
-                                        <a href="{{social.tiktok}}" style="display: inline-block; width: 42px; height: 42px; background-color: #000000; border-radius: 50%; text-align: center; line-height: 42px; color: #00f2ea; text-decoration: none; font-size: 20px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">♪</a>
+                                    <td style="padding: 0 8px;">
+                                        <a href="{{social.tiktok}}" style="display: inline-block; width: 40px; height: 40px; background-color: #000000; border-radius: 6px; text-align: center; line-height: 40px; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold;">TK</a>
                                     </td>
                                 </tr>
                             </table>
                             
-                            <!-- Handle de redes -->
-                            <p style="color: #FDED07; font-size: 15px; margin: 0 0 8px 0; font-weight: bold; letter-spacing: 0.5px;">
-                                @torneojcampos
-                            </p>
+                            <p style="margin: 0 0 6px 0; color: #FDED07; font-size: 15px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">@torneojcampos</p>
                             
-                            <!-- URL del sitio -->
-                            <p style="color: rgba(255,255,255,0.85); font-size: 13px; margin: 0 0 20px 0;">
+                            <p style="margin: 0 0 20px 0; color: rgba(255,255,255,0.85); font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                 <a href="https://{{siteUrl}}" style="color: rgba(255,255,255,0.85); text-decoration: none;">{{siteUrl}}</a>
                             </p>
                             
                             <!-- Línea divisora -->
-                            <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto 15px; width: 50%;">
+                            <table role="presentation" width="200" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-bottom: 15px;">
                                 <tr>
-                                    <td style="border-top: 1px solid rgba(255,255,255,0.3); height: 1px;"></td>
+                                    <td style="border-top: 1px solid rgba(255,255,255,0.3); height: 1px; font-size: 1px; line-height: 1px;">&nbsp;</td>
                                 </tr>
                             </table>
                             
-                            <!-- Copyright -->
-                            <p style="color: rgba(255,255,255,0.7); font-size: 11px; margin: 0;">
+                            <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 11px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                 © {{year}} {{siteName}}. Todos los derechos reservados.
                             </p>
+                            
                         </td>
                     </tr>
+                    
                 </table>
+                <!--[if mso]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
                 
             </td>
         </tr>

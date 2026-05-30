@@ -72,7 +72,7 @@ function loadTemplate(templateName) {
 function getBaseEmailData() {
     return {
         siteName: 'Torneo Jorge Campos',
-        siteUrl: 'https://torneojorgecampos.com.mx',
+        siteUrl: 'torneojorgecampos.com.mx',
         logoUrl: 'https://torneojorgecampos.com.mx/images/logo.png',
         logoBlackUrl: 'https://torneojorgecampos.com.mx/images/logo-black.png',
         year: new Date().getFullYear(),
@@ -85,6 +85,12 @@ function getBaseEmailData() {
             email: 'contacto@torneojorgecampos.com.mx',
             phone: '+52 449 469 9962',
             whatsapp: 'https://wa.me/524494699962'
+        },
+        // Datos de pago
+        pago: {
+            banco: 'BanBajío',
+            cuenta: '387104710202',
+            clabe: '030010900043613530'
         }
     };
 }
@@ -113,22 +119,18 @@ const paisLabels = {
 
 /**
  * Obtener lista de emails de administrador
- * Soporta múltiples emails separados por coma
  */
 function getAdminEmails() {
     const mailTo = process.env.MAIL_TO || 'contacto@torneojorgecampos.com.mx';
-    
-    // Separar por coma y limpiar espacios
     const emails = mailTo
         .split(',')
         .map(email => email.trim())
         .filter(email => email.length > 0);
-    
     return emails;
 }
 
 /**
- * Función helper para enviar emails con logging detallado
+ * Función helper para enviar emails
  */
 async function sendEmail(mailOptions) {
     if (!transporter) {
@@ -143,25 +145,16 @@ async function sendEmail(mailOptions) {
     console.log('   From:', mailOptions.from);
     console.log('   To:', mailOptions.to);
     console.log('   Subject:', mailOptions.subject);
-    console.log('   Reply-To:', mailOptions.replyTo || 'No configurado');
     console.log('═══════════════════════════════════════════');
     
     try {
         const info = await transporter.sendMail(mailOptions);
         console.log('✅ Email enviado exitosamente:');
         console.log('   Message ID:', info.messageId);
-        console.log('   Response:', info.response);
         console.log('   Accepted:', info.accepted);
-        console.log('   Rejected:', info.rejected);
-        console.log('═══════════════════════════════════════════');
         return info;
     } catch (error) {
-        console.error('❌ ERROR ENVIANDO EMAIL:');
-        console.error('   Mensaje:', error.message);
-        console.error('   Código:', error.code);
-        console.error('   Comando:', error.command);
-        console.error('   Response:', error.response);
-        console.log('═══════════════════════════════════════════');
+        console.error('❌ ERROR ENVIANDO EMAIL:', error.message);
         throw error;
     }
 }
@@ -173,39 +166,81 @@ async function sendUserConfirmation(inscripcionData) {
     const template = loadTemplate('user-confirmation');
     const baseData = getBaseEmailData();
     
+    const templateData = {
+        ...baseData,
+        nombre: inscripcionData.nombre,
+        apellidos: inscripcionData.apellidos,
+        email: inscripcionData.email,
+        equipo: inscripcionData.equipo || 'No especificado',
+        categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
+        añoCategoria: inscripcionData.año_categoria,
+        fechaInscripcion: new Date().toLocaleDateString('es-MX', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+    
     let htmlContent;
     
     if (template) {
-        htmlContent = template({
-            ...baseData,
-            nombre: inscripcionData.nombre,
-            apellidos: inscripcionData.apellidos,
-            email: inscripcionData.email,
-            categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
-            añoCategoria: inscripcionData.año_categoria,
-            fechaInscripcion: new Date().toLocaleDateString('es-MX', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        });
+        htmlContent = template(templateData);
     } else {
+        // Fallback HTML con datos de pago
         htmlContent = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                 <div style="text-align: center; margin-bottom: 30px;">
-                    <img src="https://torneojorgecampos.com.mx/images/logo.png" alt="Logo" style="max-height: 80px;">
+                    <img src="${baseData.logoUrl}" alt="Logo" style="max-height: 80px;">
                 </div>
                 <h1 style="color: #9220E1; text-align: center;">¡Gracias por tu inscripción!</h1>
                 <p>Hola <strong>${inscripcionData.nombre} ${inscripcionData.apellidos}</strong>,</p>
                 <p>Hemos recibido tu solicitud de inscripción al <strong>Torneo Jorge Campos 2026</strong>.</p>
+                
                 <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p style="margin: 5px 0;"><strong>Equipo:</strong> ${inscripcionData.equipo || 'No especificado'}</p>
                     <p style="margin: 5px 0;"><strong>Categoría:</strong> ${inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil'}</p>
                     <p style="margin: 5px 0;"><strong>Año:</strong> ${inscripcionData.año_categoria}</p>
                 </div>
-                <p>Nos pondremos en contacto contigo pronto con más información sobre el torneo.</p>
+                
+                <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #FDED07;">
+                    <h3 style="color: #FDED07; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
+                    <table style="width: 100%; color: white;">
+                        <tr>
+                            <td style="padding: 8px 0; color: #aaa;">Banco:</td>
+                            <td style="padding: 8px 0; font-weight: bold;">BanBajío</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #aaa;">Cuenta:</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">387104710202</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #aaa;">CLABE:</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">030010900043613530</td>
+                        </tr>
+                    </table>
+                    <p style="color: #FDED07; font-size: 13px; margin: 15px 0 0 0; padding: 10px; background: rgba(253,237,7,0.1); border-radius: 5px;">
+                        <strong>Importante:</strong> Al realizar la transferencia, incluye tu nombre completo y nombre del equipo como referencia.
+                    </p>
+                </div>
+                
+                <h3 style="color: #333;">¿Qué sigue?</h3>
+                <ol style="color: #666; line-height: 1.8;">
+                    <li>Realiza tu pago a la cuenta indicada</li>
+                    <li>Envíanos tu comprobante por WhatsApp o email</li>
+                    <li>Confirmaremos tu pago</li>
+                    <li>¡Tu inscripción quedará confirmada!</li>
+                </ol>
+                
+                <div style="background: #9220E1; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+                    <p style="color: #FDED07; margin: 0 0 10px 0; font-weight: bold;">¿Ya realizaste tu pago?</p>
+                    <p style="color: white; margin: 0 0 15px 0;">Envíanos tu comprobante:</p>
+                    <a href="https://wa.me/524494699962" style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">WhatsApp</a>
+                    <a href="mailto:contacto@torneojorgecampos.com.mx" style="display: inline-block; background: #F6288D; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">Email</a>
+                </div>
+                
                 <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
                 <p style="color: #666; font-size: 12px; text-align: center;">
                     Torneo Jorge Campos<br>
@@ -220,12 +255,11 @@ async function sendUserConfirmation(inscripcionData) {
         from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
         to: inscripcionData.email,
         replyTo: 'contacto@torneojorgecampos.com.mx',
-        subject: '¡Recibimos tu inscripción! - Torneo Jorge Campos 2026',
+        subject: `¡Recibimos tu inscripción! - ${inscripcionData.equipo || 'Torneo Jorge Campos 2026'}`,
         html: htmlContent,
         headers: {
             'X-Priority': '1',
-            'X-Mailer': 'Torneo Jorge Campos Mailer',
-            'List-Unsubscribe': '<mailto:contacto@torneojorgecampos.com.mx?subject=unsubscribe>'
+            'X-Mailer': 'Torneo Jorge Campos Mailer'
         }
     };
 
@@ -236,64 +270,138 @@ async function sendUserConfirmation(inscripcionData) {
  * Generar contenido HTML para notificación admin
  */
 function generateAdminHtmlContent(inscripcionData, baseData, template) {
+    const templateData = {
+        ...baseData,
+        nombre: inscripcionData.nombre,
+        apellidos: inscripcionData.apellidos,
+        email: inscripcionData.email,
+        celular: inscripcionData.celular,
+        edad: inscripcionData.edad,
+        equipo: inscripcionData.equipo || 'No especificado',
+        relacion: relacionLabels[inscripcionData.relacion] || inscripcionData.relacion,
+        pais: paisLabels[inscripcionData.pais] || inscripcionData.pais,
+        estado: inscripcionData.estado,
+        ciudad: inscripcionData.ciudad,
+        cp: inscripcionData.cp,
+        categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
+        categoriaColor: inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520',
+        añoCategoria: inscripcionData.año_categoria,
+        fechaInscripcion: new Date().toLocaleDateString('es-MX', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        }),
+        ip: inscripcionData.ip || 'No disponible',
+        userAgent: inscripcionData.userAgent || 'No disponible'
+    };
+    
     if (template) {
-        return template({
-            ...baseData,
-            nombre: inscripcionData.nombre,
-            apellidos: inscripcionData.apellidos,
-            email: inscripcionData.email,
-            celular: inscripcionData.celular,
-            edad: inscripcionData.edad,
-            relacion: relacionLabels[inscripcionData.relacion] || inscripcionData.relacion,
-            pais: paisLabels[inscripcionData.pais] || inscripcionData.pais,
-            estado: inscripcionData.estado,
-            ciudad: inscripcionData.ciudad,
-            cp: inscripcionData.cp,
-            categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
-            categoriaColor: inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520',
-            añoCategoria: inscripcionData.año_categoria,
-            fechaInscripcion: new Date().toLocaleDateString('es-MX', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            }),
-            ip: inscripcionData.ip || 'No disponible',
-            userAgent: inscripcionData.userAgent || 'No disponible'
-        });
+        return template(templateData);
     }
     
+    // Fallback HTML para admin
     return `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h1 style="color: #9220E1;">🆕 Nueva Inscripción</h1>
-            <p style="color: #666;">Recibida el ${new Date().toLocaleString('es-MX')}</p>
-            
-            <div style="background: ${inscripcionData.categoria === 'femenil' ? '#FFF0F5' : '#FFF8DC'}; padding: 15px; border-radius: 10px; border-left: 4px solid ${inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520'}; margin: 20px 0;">
-                <strong style="font-size: 18px;">${inscripcionData.categoria === 'femenil' ? 'FEMENIL' : 'VARONIL'} ${inscripcionData.año_categoria}</strong>
+            <div style="background: #9220E1; padding: 20px; border-radius: 10px 10px 0 0;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td><img src="${baseData.logoUrl}" alt="Logo" style="height: 50px;"></td>
+                        <td style="text-align: right;">
+                            <span style="background: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
+                        </td>
+                    </tr>
+                </table>
             </div>
             
-            <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px;">Datos Personales</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>Nombre:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.nombre} ${inscripcionData.apellidos}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Email:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="mailto:${inscripcionData.email}">${inscripcionData.email}</a></td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Celular:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><a href="tel:${inscripcionData.celular}">${inscripcionData.celular}</a></td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Edad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.edad} años</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Relación:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${relacionLabels[inscripcionData.relacion] || inscripcionData.relacion}</td></tr>
-            </table>
+            <div style="background: ${templateData.categoriaColor}; padding: 15px; text-align: center;">
+                <h2 style="color: white; margin: 0;">${templateData.categoria} - ${templateData.añoCategoria}</h2>
+            </div>
             
-            <h3 style="color: #333; border-bottom: 2px solid #9220E1; padding-bottom: 10px; margin-top: 30px;">Ubicación</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 40%;"><strong>País:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${paisLabels[inscripcionData.pais] || inscripcionData.pais}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Estado:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.estado}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Ciudad:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.ciudad}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>CP:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">${inscripcionData.cp}</td></tr>
-            </table>
+            <div style="background: white; padding: 30px; border: 1px solid #eee;">
+                <p style="color: #666; font-size: 14px; margin: 0 0 5px 0;">📅 ${templateData.fechaInscripcion}</p>
+                
+                <!-- EQUIPO DESTACADO -->
+                <div style="background: linear-gradient(135deg, #9220E1, #F6288D); padding: 20px; border-radius: 10px; margin: 15px 0; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.8); margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase;">Equipo</p>
+                    <h2 style="color: #FDED07; margin: 0; font-size: 28px;">${templateData.equipo}</h2>
+                </div>
+                
+                <h1 style="color: #333; font-size: 24px; margin: 20px 0 10px 0;">
+                    ${templateData.nombre} ${templateData.apellidos}
+                </h1>
+                
+                <div style="background: #f8f8f8; border-radius: 10px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #9220E1; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">👤 Datos Personales</h3>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Email:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee;"><a href="mailto:${templateData.email}" style="color: #9220E1; font-weight: bold;">${templateData.email}</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Celular:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee;"><a href="tel:${templateData.celular}" style="color: #333; font-weight: bold;">${templateData.celular}</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Edad:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee; font-weight: bold;">${templateData.edad} años</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888;">Relación:</td>
+                            <td style="padding: 8px 0; text-align: right; font-weight: bold;">${templateData.relacion}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="background: #f8f8f8; border-radius: 10px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #F6288D; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">📍 Ubicación</h3>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">País:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee; font-weight: bold;">${templateData.pais}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Estado:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee; font-weight: bold;">${templateData.estado}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Ciudad:</td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee; font-weight: bold;">${templateData.ciudad}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #888;">C.P.:</td>
+                            <td style="padding: 8px 0; text-align: right; font-weight: bold;">${templateData.cp}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <table style="width: 100%; margin-top: 20px;">
+                    <tr>
+                        <td style="padding: 5px; width: 50%;">
+                            <a href="https://wa.me/52${(templateData.celular || '').replace(/\D/g, '')}" style="display: block; background: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">💬 WhatsApp</a>
+                        </td>
+                        <td style="padding: 5px; width: 50%;">
+                            <a href="mailto:${templateData.email}" style="display: block; background: #9220E1; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">✉️ Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 5px;">
+                            <a href="tel:${templateData.celular}" style="display: block; background: #F6288D; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">📞 Llamar: ${templateData.celular}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             
-            <div style="margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 5px;">
-                <a href="https://wa.me/${(inscripcionData.celular || '').replace(/\D/g, '')}" style="display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;">💬 WhatsApp</a>
-                <a href="mailto:${inscripcionData.email}" style="display: inline-block; background: #9220E1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">✉️ Email</a>
+            <div style="background: #f0f0f0; padding: 15px 20px;">
+                <p style="color: #888; font-size: 11px; margin: 0;">
+                    <strong>IP:</strong> ${templateData.ip} | <strong>User Agent:</strong> ${templateData.userAgent}
+                </p>
+            </div>
+            
+            <div style="background: #9220E1; padding: 15px; text-align: center; border-radius: 0 0 10px 10px;">
+                <p style="color: white; font-size: 11px; margin: 0;">© ${templateData.year} ${templateData.siteName} - Panel de Administración</p>
             </div>
         </div>
     `;
@@ -301,7 +409,6 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
 
 /**
  * Enviar notificación a TODOS los administradores
- * Envía emails individuales a cada admin para mejor entrega
  */
 async function sendAdminNotification(inscripcionData) {
     const template = loadTemplate('admin-notification');
@@ -309,15 +416,14 @@ async function sendAdminNotification(inscripcionData) {
     const adminEmails = getAdminEmails();
     
     console.log('🎯 Emails de admin destino:', adminEmails.join(', '));
-    console.log('📊 Total de admins:', adminEmails.length);
     
     const htmlContent = generateAdminHtmlContent(inscripcionData, baseData, template);
-    const subject = `🆕 Nueva Inscripción: ${inscripcionData.nombre} ${inscripcionData.apellidos} - ${inscripcionData.categoria}`;
+    const equipoNombre = inscripcionData.equipo || 'Sin equipo';
+    const subject = `🆕 Nueva Inscripción: ${equipoNombre} - ${inscripcionData.nombre} ${inscripcionData.apellidos} (${inscripcionData.categoria})`;
     
     const results = [];
     const errors = [];
     
-    // Enviar a cada admin individualmente para mejor entrega
     for (const adminEmail of adminEmails) {
         console.log(`📧 Enviando a admin: ${adminEmail}`);
         
@@ -336,61 +442,27 @@ async function sendAdminNotification(inscripcionData) {
         try {
             const result = await sendEmail(mailOptions);
             results.push({ email: adminEmail, success: true, messageId: result.messageId });
-            console.log(`✅ Enviado a ${adminEmail}`);
         } catch (error) {
             errors.push({ email: adminEmail, error: error.message });
-            console.error(`❌ Error enviando a ${adminEmail}:`, error.message);
         }
     }
     
-    // Resumen
-    console.log('');
-    console.log('📊 RESUMEN ENVÍO A ADMINS:');
-    console.log(`   ✅ Exitosos: ${results.length}`);
-    console.log(`   ❌ Fallidos: ${errors.length}`);
+    console.log(`📊 RESUMEN: ✅ ${results.length} enviados, ❌ ${errors.length} fallidos`);
     
-    return {
-        sent: results,
-        errors: errors,
-        totalSent: results.length,
-        totalFailed: errors.length
-    };
+    return { sent: results, errors: errors, totalSent: results.length, totalFailed: errors.length };
 }
 
 /**
- * Función de prueba para enviar un email de test
+ * Función de prueba
  */
 async function sendTestEmail(toEmail) {
     console.log('🧪 Enviando email de prueba a:', toEmail);
-    
-    const adminEmails = getAdminEmails();
     
     const mailOptions = {
         from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
         to: toEmail,
         subject: '🧪 Test - Torneo Jorge Campos ' + new Date().toISOString(),
-        html: `
-            <div style="font-family: Arial, sans-serif; padding: 20px;">
-                <h1 style="color: #9220E1;">Email de Prueba</h1>
-                <p>Este es un email de prueba enviado el ${new Date().toLocaleString('es-MX')}</p>
-                <p><strong>Configuración SMTP:</strong></p>
-                <ul>
-                    <li>Host: ${process.env.SMTP_HOST}</li>
-                    <li>Port: ${process.env.SMTP_PORT}</li>
-                    <li>User: ${process.env.SMTP_USER}</li>
-                    <li>From: ${process.env.MAIL_FROM}</li>
-                </ul>
-                <p><strong>Emails de Admin configurados:</strong></p>
-                <ul>
-                    ${adminEmails.map(e => `<li>${e}</li>`).join('')}
-                </ul>
-                <p>Si recibes este email, la configuración está funcionando correctamente.</p>
-            </div>
-        `,
-        headers: {
-            'X-Priority': '1',
-            'X-Mailer': 'Torneo Jorge Campos Test'
-        }
+        html: `<div style="font-family: Arial; padding: 20px;"><h1 style="color: #9220E1;">Email de Prueba</h1><p>Enviado: ${new Date().toLocaleString('es-MX')}</p></div>`
     };
 
     return sendEmail(mailOptions);
@@ -406,22 +478,15 @@ async function processInscripcion(inscripcionData) {
     console.log('╔═══════════════════════════════════════════════════════════╗');
     console.log('║  📬 PROCESANDO NUEVA INSCRIPCIÓN                          ║');
     console.log('╠═══════════════════════════════════════════════════════════╣');
+    console.log(`║  Equipo: ${inscripcionData.equipo || 'No especificado'}`);
     console.log(`║  Nombre: ${inscripcionData.nombre} ${inscripcionData.apellidos}`);
     console.log(`║  Email: ${inscripcionData.email}`);
     console.log(`║  Categoría: ${inscripcionData.categoria} - ${inscripcionData.año_categoria}`);
     console.log('╠═══════════════════════════════════════════════════════════╣');
     console.log(`║  📧 Admins a notificar: ${adminEmails.length}`);
-    adminEmails.forEach((email, i) => {
-        console.log(`║     ${i + 1}. ${email}`);
-    });
     console.log('╚═══════════════════════════════════════════════════════════╝');
-    console.log('');
     
-    const results = {
-        userEmail: null,
-        adminEmails: null,
-        errors: []
-    };
+    const results = { userEmail: null, adminEmails: null, errors: [] };
 
     // Email al usuario
     console.log('📧 [1/2] Enviando confirmación al usuario...');
@@ -429,37 +494,19 @@ async function processInscripcion(inscripcionData) {
         results.userEmail = await sendUserConfirmation(inscripcionData);
         console.log('✅ [1/2] Email al usuario enviado');
     } catch (error) {
-        console.error('❌ [1/2] Error enviando al usuario:', error.message);
+        console.error('❌ [1/2] Error:', error.message);
         results.errors.push({ type: 'user', error: error.message });
     }
 
-    // Notificación a TODOS los admins
-    console.log(`📧 [2/2] Enviando notificación a ${adminEmails.length} administrador(es)...`);
+    // Notificación a admins
+    console.log(`📧 [2/2] Enviando notificación a ${adminEmails.length} admin(s)...`);
     try {
         results.adminEmails = await sendAdminNotification(inscripcionData);
-        console.log(`✅ [2/2] Emails a admins: ${results.adminEmails.totalSent} enviados, ${results.adminEmails.totalFailed} fallidos`);
-        
-        // Agregar errores de admin al array general
-        if (results.adminEmails.errors.length > 0) {
-            results.adminEmails.errors.forEach(err => {
-                results.errors.push({ type: `admin-${err.email}`, error: err.error });
-            });
-        }
+        console.log(`✅ [2/2] Emails a admins: ${results.adminEmails.totalSent} enviados`);
     } catch (error) {
-        console.error('❌ [2/2] Error enviando a admins:', error.message);
+        console.error('❌ [2/2] Error:', error.message);
         results.errors.push({ type: 'admin', error: error.message });
     }
-
-    console.log('');
-    console.log('═══════════════════════════════════════════');
-    if (results.errors.length > 0) {
-        console.warn('⚠️ RESUMEN: Algunos emails no se enviaron');
-        results.errors.forEach(e => console.warn(`   - ${e.type}: ${e.error}`));
-    } else {
-        console.log('✅ RESUMEN: Todos los emails enviados correctamente');
-    }
-    console.log('═══════════════════════════════════════════');
-    console.log('');
 
     return results;
 }
