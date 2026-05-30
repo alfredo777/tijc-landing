@@ -68,6 +68,47 @@ function loadTemplate(templateName) {
     return handlebars.compile(templateSource);
 }
 
+/**
+ * Obtener fecha formateada en hora de México (Centro)
+ * Zona horaria: America/Mexico_City (UTC-6 en invierno, UTC-5 en verano)
+ */
+function getFechaMexico() {
+    const ahora = new Date();
+    
+    // Formatear con zona horaria de México
+    const opciones = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'America/Mexico_City'
+    };
+    
+    return ahora.toLocaleDateString('es-MX', opciones);
+}
+
+/**
+ * Obtener fecha corta en hora de México
+ */
+function getFechaCorta() {
+    const ahora = new Date();
+    
+    const opciones = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: 'America/Mexico_City'
+    };
+    
+    return ahora.toLocaleDateString('es-MX', opciones);
+}
+
 // Datos base para todos los emails
 function getBaseEmailData() {
     return {
@@ -86,7 +127,6 @@ function getBaseEmailData() {
             phone: '+52 449 469 9962',
             whatsapp: 'https://wa.me/524494699962'
         },
-        // Datos de pago
         pago: {
             banco: 'BanBajío',
             cuenta: '387104710202',
@@ -145,6 +185,7 @@ async function sendEmail(mailOptions) {
     console.log('   From:', mailOptions.from);
     console.log('   To:', mailOptions.to);
     console.log('   Subject:', mailOptions.subject);
+    console.log('   Hora México:', getFechaMexico());
     console.log('═══════════════════════════════════════════');
     
     try {
@@ -166,6 +207,9 @@ async function sendUserConfirmation(inscripcionData) {
     const template = loadTemplate('user-confirmation');
     const baseData = getBaseEmailData();
     
+    // Usar fecha de México
+    const fechaInscripcion = getFechaMexico();
+    
     const templateData = {
         ...baseData,
         nombre: inscripcionData.nombre,
@@ -174,14 +218,7 @@ async function sendUserConfirmation(inscripcionData) {
         equipo: inscripcionData.equipo || 'No especificado',
         categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
         añoCategoria: inscripcionData.año_categoria,
-        fechaInscripcion: new Date().toLocaleDateString('es-MX', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        })
+        fechaInscripcion: fechaInscripcion
     };
     
     let htmlContent;
@@ -203,9 +240,10 @@ async function sendUserConfirmation(inscripcionData) {
                     <p style="margin: 5px 0;"><strong>Equipo:</strong> ${inscripcionData.equipo || 'No especificado'}</p>
                     <p style="margin: 5px 0;"><strong>Categoría:</strong> ${inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil'}</p>
                     <p style="margin: 5px 0;"><strong>Año:</strong> ${inscripcionData.año_categoria}</p>
+                    <p style="margin: 5px 0;"><strong>Fecha:</strong> ${fechaInscripcion}</p>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #FDED07;">
+                <div style="background: #1a1a2e; padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #FDED07;">
                     <h3 style="color: #FDED07; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
                     <table style="width: 100%; color: white;">
                         <tr>
@@ -270,6 +308,9 @@ async function sendUserConfirmation(inscripcionData) {
  * Generar contenido HTML para notificación admin
  */
 function generateAdminHtmlContent(inscripcionData, baseData, template) {
+    // Usar fecha de México
+    const fechaInscripcion = getFechaMexico();
+    
     const templateData = {
         ...baseData,
         nombre: inscripcionData.nombre,
@@ -286,14 +327,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
         categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
         categoriaColor: inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520',
         añoCategoria: inscripcionData.año_categoria,
-        fechaInscripcion: new Date().toLocaleDateString('es-MX', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        }),
+        fechaInscripcion: fechaInscripcion,
         ip: inscripcionData.ip || 'No disponible',
         userAgent: inscripcionData.userAgent || 'No disponible'
     };
@@ -310,7 +344,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                     <tr>
                         <td><img src="${baseData.logoUrl}" alt="Logo" style="height: 50px;"></td>
                         <td style="text-align: right;">
-                            <span style="background: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
+                            <span style="background: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
                         </td>
                     </tr>
                 </table>
@@ -321,20 +355,22 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
             </div>
             
             <div style="background: white; padding: 30px; border: 1px solid #eee;">
-                <p style="color: #666; font-size: 14px; margin: 0 0 5px 0;">📅 ${templateData.fechaInscripcion}</p>
+                <p style="color: #666; font-size: 14px; margin: 0 0 15px 0;">
+                    <strong>Fecha:</strong> ${fechaInscripcion}
+                </p>
                 
                 <!-- EQUIPO DESTACADO -->
-                <div style="background: linear-gradient(135deg, #9220E1, #F6288D); padding: 20px; border-radius: 10px; margin: 15px 0; text-align: center;">
-                    <p style="color: rgba(255,255,255,0.8); margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase;">Equipo</p>
-                    <h2 style="color: #FDED07; margin: 0; font-size: 28px;">${templateData.equipo}</h2>
+                <div style="background: #1a1a2e; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #FDED07;">
+                    <p style="color: #888; margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase;">Equipo</p>
+                    <h2 style="color: #FDED07; margin: 0; font-size: 24px;">${templateData.equipo}</h2>
                 </div>
                 
                 <h1 style="color: #333; font-size: 24px; margin: 20px 0 10px 0;">
                     ${templateData.nombre} ${templateData.apellidos}
                 </h1>
                 
-                <div style="background: #f8f8f8; border-radius: 10px; padding: 20px; margin: 20px 0;">
-                    <h3 style="color: #9220E1; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">👤 Datos Personales</h3>
+                <div style="background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #9220E1; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Datos Personales</h3>
                     <table style="width: 100%;">
                         <tr>
                             <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Email:</td>
@@ -355,8 +391,8 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                     </table>
                 </div>
                 
-                <div style="background: #f8f8f8; border-radius: 10px; padding: 20px; margin: 20px 0;">
-                    <h3 style="color: #F6288D; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">📍 Ubicación</h3>
+                <div style="background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #F6288D; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Ubicación</h3>
                     <table style="width: 100%;">
                         <tr>
                             <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">País:</td>
@@ -380,15 +416,15 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 <table style="width: 100%; margin-top: 20px;">
                     <tr>
                         <td style="padding: 5px; width: 50%;">
-                            <a href="https://wa.me/52${(templateData.celular || '').replace(/\D/g, '')}" style="display: block; background: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">💬 WhatsApp</a>
+                            <a href="https://wa.me/52${(templateData.celular || '').replace(/\D/g, '')}" style="display: block; background: #25D366; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">WhatsApp</a>
                         </td>
                         <td style="padding: 5px; width: 50%;">
-                            <a href="mailto:${templateData.email}" style="display: block; background: #9220E1; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">✉️ Email</a>
+                            <a href="mailto:${templateData.email}" style="display: block; background: #9220E1; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Email</a>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding: 5px;">
-                            <a href="tel:${templateData.celular}" style="display: block; background: #F6288D; color: white; padding: 15px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: bold;">📞 Llamar: ${templateData.celular}</a>
+                            <a href="tel:${templateData.celular}" style="display: block; background: #F6288D; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Llamar: ${templateData.celular}</a>
                         </td>
                     </tr>
                 </table>
@@ -396,12 +432,13 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
             
             <div style="background: #f0f0f0; padding: 15px 20px;">
                 <p style="color: #888; font-size: 11px; margin: 0;">
-                    <strong>IP:</strong> ${templateData.ip} | <strong>User Agent:</strong> ${templateData.userAgent}
+                    <strong>IP:</strong> ${templateData.ip}<br>
+                    <strong>User Agent:</strong> ${templateData.userAgent}
                 </p>
             </div>
             
-            <div style="background: #9220E1; padding: 15px; text-align: center; border-radius: 0 0 10px 10px;">
-                <p style="color: white; font-size: 11px; margin: 0;">© ${templateData.year} ${templateData.siteName} - Panel de Administración</p>
+            <div style="background: #1a1a2e; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
+                <p style="color: #888; font-size: 11px; margin: 0;">© ${templateData.year} ${templateData.siteName} - Panel de Administración</p>
             </div>
         </div>
     `;
@@ -416,10 +453,11 @@ async function sendAdminNotification(inscripcionData) {
     const adminEmails = getAdminEmails();
     
     console.log('🎯 Emails de admin destino:', adminEmails.join(', '));
+    console.log('🕐 Hora México:', getFechaMexico());
     
     const htmlContent = generateAdminHtmlContent(inscripcionData, baseData, template);
     const equipoNombre = inscripcionData.equipo || 'Sin equipo';
-    const subject = `🆕 Nueva Inscripción: ${equipoNombre} - ${inscripcionData.nombre} ${inscripcionData.apellidos} (${inscripcionData.categoria})`;
+    const subject = `Nueva Inscripción: ${equipoNombre} - ${inscripcionData.nombre} ${inscripcionData.apellidos} (${inscripcionData.categoria})`;
     
     const results = [];
     const errors = [];
@@ -457,12 +495,20 @@ async function sendAdminNotification(inscripcionData) {
  */
 async function sendTestEmail(toEmail) {
     console.log('🧪 Enviando email de prueba a:', toEmail);
+    console.log('🕐 Hora México:', getFechaMexico());
     
     const mailOptions = {
         from: process.env.MAIL_FROM || 'Torneo Jorge Campos <no-reply@torneojorgecampos.com.mx>',
         to: toEmail,
-        subject: '🧪 Test - Torneo Jorge Campos ' + new Date().toISOString(),
-        html: `<div style="font-family: Arial; padding: 20px;"><h1 style="color: #9220E1;">Email de Prueba</h1><p>Enviado: ${new Date().toLocaleString('es-MX')}</p></div>`
+        subject: '🧪 Test - Torneo Jorge Campos',
+        html: `
+            <div style="font-family: Arial; padding: 20px;">
+                <h1 style="color: #9220E1;">Email de Prueba</h1>
+                <p><strong>Hora del servidor (UTC):</strong> ${new Date().toISOString()}</p>
+                <p><strong>Hora México (Centro):</strong> ${getFechaMexico()}</p>
+                <p><strong>Hora México (corta):</strong> ${getFechaCorta()}</p>
+            </div>
+        `
     };
 
     return sendEmail(mailOptions);
@@ -473,11 +519,13 @@ async function sendTestEmail(toEmail) {
  */
 async function processInscripcion(inscripcionData) {
     const adminEmails = getAdminEmails();
+    const horaMexico = getFechaMexico();
     
     console.log('');
     console.log('╔═══════════════════════════════════════════════════════════╗');
     console.log('║  📬 PROCESANDO NUEVA INSCRIPCIÓN                          ║');
     console.log('╠═══════════════════════════════════════════════════════════╣');
+    console.log(`║  🕐 Hora México: ${horaMexico}`);
     console.log(`║  Equipo: ${inscripcionData.equipo || 'No especificado'}`);
     console.log(`║  Nombre: ${inscripcionData.nombre} ${inscripcionData.apellidos}`);
     console.log(`║  Email: ${inscripcionData.email}`);
@@ -516,5 +564,7 @@ module.exports = {
     sendAdminNotification,
     processInscripcion,
     sendTestEmail,
-    getAdminEmails
+    getAdminEmails,
+    getFechaMexico,
+    getFechaCorta
 };
