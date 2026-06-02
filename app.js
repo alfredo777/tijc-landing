@@ -186,11 +186,11 @@ function getSiteData() {
         },
         torneo: {
             edicion: '2026',
-            fechaInicio: '12',
+            fechaInicio: '13',
             fechaFin: '15',
             mes: 'Noviembre',
             año: '2026',
-            fechaCompleta: '12 - 15 de Noviembre 2026',
+            fechaCompleta: '13 - 15 de Noviembre 2026',
             fechaLimiteInscripcion: '18 de Septiembre 2026',
             sede: {
                 nombre: 'Altium',
