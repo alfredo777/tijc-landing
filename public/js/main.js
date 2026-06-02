@@ -6,7 +6,7 @@
     'use strict';
 
     const CONFIG = {
-        countdownDate: new Date('November 12, 2026 08:00:00').getTime(),
+        countdownDate: new Date('November 13, 2026 08:00:00').getTime(),
         galleryPath: '/images/gallery/',
         timestamp: Date.now()
     };
@@ -250,7 +250,7 @@
             fechas: {
                 icon: 'fa-calendar-alt',
                 title: 'Fechas del Torneo',
-                content: '<p class="mb-4 text-gray-600">El Torneo Jorge Campos 2026 se llevará a cabo del <strong class="text-gray-900">12 al 15 de Noviembre de 2026</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>12 Nov:</strong> Inauguración y primeros partidos</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>13 Nov:</strong> Fase de grupos</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>14 Nov:</strong> Cuartos y semifinales</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>15 Nov:</strong> Finales y premiación</span></li></ul>'
+                content: '<p class="mb-4 text-gray-600">El Torneo Jorge Campos 2026 se llevará a cabo del <strong class="text-gray-900">13 al 15 de Noviembre de 2026</strong>.</p><ul class="space-y-3 text-gray-600"><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>12 Nov:</strong> Inauguración y primeros partidos</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>13 Nov:</strong> Fase de grupos</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>14 Nov:</strong> Cuartos y semifinales</span></li><li class="flex items-start gap-3"><i class="fas fa-calendar-day text-dorado-dark mt-1"></i><span><strong>15 Nov:</strong> Finales y premiación</span></li></ul>'
             },
             jugadores: {
                 icon: 'fa-users',

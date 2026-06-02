@@ -92,7 +92,7 @@
     <section class="py-16 lg:py-24 bg-white text-gray-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-             <div class="bg-gradient-to-r from-rosa to-rosa-dark text-white p-8 sm:p-10 rounded-2xl mb-12 relative overflow-hidden">
+           <div class="bg-gradient-to-r from-rosa to-rosa-dark text-white p-8 sm:p-10 rounded-2xl mb-12 relative overflow-hidden">
                 <!-- Decoración -->
                 <div class="absolute top-0 right-0 w-40 h-40 bg-dorado/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                 
@@ -139,8 +139,18 @@
                             Fecha límite para la inscripción <strong class="text-dorado">18 de Septiembre 2026</strong>
                         </p>
                     </div>
+                    
+                    <!-- Leyenda inscripción temprana -->
+                    <div class="mt-8 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-dorado/30">
+                        <p class="text-center text-base sm:text-lg">
+                            <i class="fas fa-clock text-dorado mr-2"></i>
+                            La inscripción temprana con precio de <strong class="text-dorado text-xl sm:text-2xl">$13,000 MXN</strong> termina el <strong class="text-dorado text-xl sm:text-2xl">31 de Julio 2026</strong>
+                        </p>
+                    </div>
                 </div>
             </div>
+
+
 
             <!-- Información del Torneo -->
             <div class="grid sm:grid-cols-3 gap-6 mb-12">
@@ -440,7 +450,6 @@
                     </div>
                 </div>
 
-                <!-- Resumen y Envío -->
                 <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 sm:p-8 rounded-2xl">
                     <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
                         <div>
@@ -459,7 +468,21 @@
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Fechas límite -->
+                    <div class="mt-5 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-gray-400">
+                        <p>
+                            <i class="fas fa-clock text-dorado/70 mr-1.5"></i>
+                            Precio especial válido hasta <span class="text-white/80">31 de Julio 2026</span>
+                        </p>
+                        <span class="hidden sm:inline text-gray-600">|</span>
+                        <p>
+                            <i class="fas fa-calendar-alt text-dorado/70 mr-1.5"></i>
+                            Inscripciones cierran <span class="text-white/80">18 de Septiembre 2026</span>
+                        </p>
+                    </div>
                 </div>
+
             </form>
 
             <!-- Mensaje de éxito (oculto por defecto) -->
