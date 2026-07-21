@@ -186,11 +186,11 @@ function getSiteData() {
         },
         torneo: {
             edicion: '2026',
-            fechaInicio: '13',
+            fechaInicio: '12',
             fechaFin: '16',
             mes: 'Noviembre',
             año: '2026',
-            fechaCompleta: '13 - 16 de Noviembre 2026',
+            fechaCompleta: '12 - 16 de Noviembre 2026',
             fechaLimiteInscripcion: '18 de Septiembre 2026',
             sede: {
                 nombre: 'Altium',
@@ -221,7 +221,7 @@ function getSiteData() {
         ],
         infoCards: [
             { id: 'sede', icon: 'fa-map-marker-alt', titulo: 'Sede', valor: 'Altium', subtitulo: 'Zapopan, Jalisco' },
-            { id: 'fechas', icon: 'fa-calendar-alt', titulo: 'Fechas', valor: '13-16 Nov', subtitulo: 'Noviembre 2026' },
+            { id: 'fechas', icon: 'fa-calendar-alt', titulo: 'Fechas', valor: '12-16 Nov', subtitulo: 'Noviembre 2026' },
             { id: 'jugadores', icon: 'fa-users', titulo: 'Jugadores', valor: '18', subtitulo: 'Por equipo' },
             { id: 'categorias', icon: 'fa-futbol', titulo: 'Categorías', valor: null, subtitulo: 'Múltiples edades', badges: ['Varonil', 'Femenil'] }
         ],
