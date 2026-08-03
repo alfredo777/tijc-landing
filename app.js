@@ -217,7 +217,9 @@ function getSiteData() {
             { id: 'meet', icon: 'fa-handshake', titulo: 'Meet & Greet', subtitulo: 'Conoce a Cracks Inmortales' },
             { id: 'conferencias', icon: 'fa-microphone', titulo: 'Conferencias', subtitulo: 'Platica con los Expertos' },
             { id: 'interactivas', icon: 'fa-gamepad', titulo: 'Entretenimiento 360°', subtitulo: 'Diversión para Todos' },
-            { id: 'pasaporte', icon: 'fa-passport', titulo: 'Pasaporte Brody', subtitulo: 'Llénalo y Gana Increíbles Premios' }
+            { id: 'pasaporte', icon: 'fa-passport', titulo: 'Pasaporte Brody', subtitulo: 'Llénalo y Gana Increíbles Premios' },
+            { id: 'viaje', icon: 'fa-plane', titulo: 'Personaliza tu Viaje', subtitulo: 'Séptimo Cielo Travel' }
+
         ],
         infoCards: [
             { id: 'sede', icon: 'fa-map-marker-alt', titulo: 'Sede', valor: 'Altium', subtitulo: 'Zapopan, Jalisco' },
