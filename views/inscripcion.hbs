@@ -100,51 +100,26 @@
                     <!-- Encabezado centrado -->
                     <div class="text-center mb-10">
                         <span class="inline-flex items-center gap-2 bg-dorado text-rosa-dark px-5 py-2 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
-                            <i class="fas fa-fire"></i>
-                            Oferta por tiempo limitado
+                            <i class="fas fa-futbol"></i>
+                            Inscripciones abiertas
                         </span>
                         <h3 class="font-display text-3xl sm:text-4xl font-bold">
-                            ¡Inscríbete antes del 18 de Septiembre!
+                            ¡Inscríbete antes del 16 de Octubre!
                         </h3>
                     </div>
-                    
-                    <!-- Precios -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
-                        <!-- Precio original -->
-                        <div class="text-center">
-                            <p class="text-sm uppercase tracking-wide mb-2 opacity-70">Precio regular</p>
-                            <p class="text-4xl sm:text-5xl line-through decoration-double decoration-white/80 opacity-50">$15,500</p>
-                        </div>
-                        
-                        <!-- Flecha -->
-                        <div class="hidden sm:block">
-                            <i class="fas fa-arrow-right text-dorado text-3xl"></i>
-                        </div>
-                        <div class="sm:hidden">
-                            <i class="fas fa-arrow-down text-dorado text-2xl"></i>
-                        </div>
-                        
-                        <!-- Precio oferta -->
-                        <div class="text-center">
-                            <p class="text-dorado text-sm uppercase tracking-wide font-bold mb-2">Precio especial</p>
-                            <p class="font-display text-6xl sm:text-7xl font-bold text-dorado">$13,000</p>
-                            <p class="text-sm opacity-80 mt-1">MXN por equipo</p>
-                        </div>
+
+                    <!-- Precio -->
+                    <div class="text-center">
+                        <p class="text-dorado text-sm uppercase tracking-wide font-bold mb-2">Precio por equipo</p>
+                        <p class="font-display text-6xl sm:text-7xl font-bold text-dorado">$15,500</p>
+                        <p class="text-sm opacity-80 mt-1">MXN por equipo</p>
                     </div>
-                    
+
                     <!-- Fecha límite -->
                     <div class="text-center mt-10">
                         <p class="text-white/80">
                             <i class="fas fa-calendar-alt text-dorado mr-2"></i>
-                            Fecha límite para la inscripción <strong class="text-dorado">18 de Septiembre 2026</strong>
-                        </p>
-                    </div>
-                    
-                    <!-- Leyenda inscripción temprana -->
-                    <div class="mt-8 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-dorado/30">
-                        <p class="text-center text-base sm:text-lg">
-                            <i class="fas fa-clock text-dorado mr-2"></i>
-                            La inscripción temprana con precio de <strong class="text-dorado text-xl sm:text-2xl">$13,000 MXN</strong> termina el <strong class="text-dorado text-xl sm:text-2xl">31 de Julio 2026</strong>
+                            Fecha límite para la inscripción <strong class="text-dorado">16 de Octubre 2026</strong>
                         </p>
                     </div>
                 </div>
@@ -339,7 +314,7 @@
                                         </div>
                                         <span class="font-display text-xl font-bold text-rosa">Femenil</span>
                                     </div>
-                                    <p class="text-sm text-gray-600">Categorías: 2013-2014</p>
+                                    <p class="text-sm text-gray-600">Categorías: Sub 12, Sub 15</p>
                                 </div>
                             </label>
                         </div>
@@ -356,24 +331,20 @@
                                         </div>
                                         <span class="font-display text-xl font-bold text-dorado-dark">Varonil</span>
                                     </div>
-                                    <p class="text-sm text-gray-600">Categorías: 2013, 2014, 2015, 2016</p>
+                                    <p class="text-sm text-gray-600">Categorías: 2013-2014, 2015-2016, 2017-2018, 2019-2020</p>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Subcategoría (año) -->
+                    <!-- Subcategoría (categoría / año) -->
                     <div class="mt-6">
                         <label for="año_categoria" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Año de nacimiento de los jugadores <span class="text-rosa">*</span>
+                            Categoría de los jugadores <span class="text-rosa">*</span>
                         </label>
                         <select id="año_categoria" name="año_categoria" required
                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-rosa focus:ring-2 focus:ring-rosa/20 transition-colors bg-white">
-                            <option value="">Selecciona el año</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
+                            <option value="">Primero selecciona Femenil o Varonil</option>
                         </select>
                     </div>
                 </div>
@@ -459,7 +430,7 @@
                         <div class="flex flex-col sm:flex-row items-center gap-4">
                             <div class="text-center sm:text-right">
                                 <p class="text-sm text-gray-400">Precio por equipo</p>
-                                <p class="font-display text-3xl font-bold text-dorado">$13,000 MXN</p>
+                                <p class="font-display text-3xl font-bold text-dorado">$15,500 MXN</p>
                             </div>
                             <button type="submit" 
                                 class="bg-rosa hover:bg-rosa-dark text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 flex items-center gap-3 text-lg">
@@ -469,16 +440,11 @@
                         </div>
                     </div>
                     
-                    <!-- Fechas límite -->
-                    <div class="mt-5 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-gray-400">
-                        <p>
-                            <i class="fas fa-clock text-dorado/70 mr-1.5"></i>
-                            Precio especial válido hasta <span class="text-white/80">31 de Julio 2026</span>
-                        </p>
-                        <span class="hidden sm:inline text-gray-600">|</span>
+                    <!-- Fecha límite -->
+                    <div class="mt-5 pt-5 border-t border-white/10 flex items-center justify-center text-sm text-gray-400">
                         <p>
                             <i class="fas fa-calendar-alt text-dorado/70 mr-1.5"></i>
-                            Inscripciones cierran <span class="text-white/80">18 de Septiembre 2026</span>
+                            Inscripciones cierran <span class="text-white/80">16 de Octubre 2026</span>
                         </p>
                     </div>
                 </div>
@@ -538,6 +504,18 @@
             const form = document.getElementById('inscripcionForm');
             const successMessage = document.getElementById('successMessage');
             
+            // Opciones de categoría según género
+            const categoriasPorGenero = {
+                femenil: ['Sub 12', 'Sub 15'],
+                varonil: ['2013 - 2014', '2015 - 2016', '2017 - 2018', '2019 - 2020']
+            };
+            const anoCategoriaSelect = document.getElementById('año_categoria');
+            function actualizarCategorias(cat) {
+                const opciones = categoriasPorGenero[cat] || [];
+                anoCategoriaSelect.innerHTML = '<option value="">Selecciona la categoría</option>' +
+                    opciones.map(op => `<option value="${op}">${op}</option>`).join('');
+            }
+
             // Manejar selección de categoría visual
             const categoriaOptions = document.querySelectorAll('.categoria-option');
             categoriaOptions.forEach(option => {
@@ -555,6 +533,7 @@
                         } else {
                             option.classList.add('border-dorado-dark', 'bg-dorado/5');
                         }
+                        actualizarCategorias(cat);
                     }
                 });
             });

@@ -191,7 +191,7 @@ function getSiteData() {
             mes: 'Noviembre',
             año: '2026',
             fechaCompleta: '12 - 16 de Noviembre 2026',
-            fechaLimiteInscripcion: '18 de Septiembre 2026',
+            fechaLimiteInscripcion: '16 de Octubre 2026',
             sede: {
                 nombre: 'Altium',
                 ciudad: 'Zapopan',
@@ -263,7 +263,7 @@ function getSiteData() {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '/reglamento', texto: 'Reglamento' }
+                { href: '#', texto: 'Reglamento (Próximamente)' }
             ]
         },
         gallery: getGalleryImages(),
@@ -305,7 +305,7 @@ app.get('/privacidad', (req, res) => {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '/reglamento', texto: 'Reglamento' }
+                { href: '#', texto: 'Reglamento (Próximamente)' }
             ]
         },
     });
@@ -337,43 +337,15 @@ app.get('/terminosycondiciones', (req, res) => {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '/reglamento', texto: 'Reglamento' }
+                { href: '#', texto: 'Reglamento (Próximamente)' }
             ]
         },
     });
 });
 
-// Reglamento
+// Reglamento (temporalmente deshabilitado - Próximamente)
 app.get('/reglamento', (req, res) => {
-    res.render('reglamento', {
-        title: 'Reglamento - Torneo Jorge Campos',
-        currentPage: 'reglamento',
-        fechaActualizacion: '15 de mayo de 2026',
-        site: {
-            social: {
-                whatsapp: '+52 449 469 9962',
-                handle: '@torneojorgecampos'
-            },
-            contact: {
-                email: 'contacto@torneojorgecampos.com.mx',
-                phone: '+52 449 469 9962'
-            }
-        },
-        footerLinks: {
-            enlaces: [
-                { href: '#info', texto: 'Información' },
-                { href: '#categorias', texto: 'Categorías' },
-                { href: '#experiencia', texto: 'Experiencia' },
-                { href: '#galeria', texto: 'Galería' },
-                { href: '/inscripcion', texto: 'Inscripción' }
-            ],
-            legal: [
-                { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
-                { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '/reglamento', texto: 'Reglamento' }
-            ]
-        },
-    });
+    res.redirect('/');
 });
 
 app.get('/api/gallery', (req, res) => {
@@ -415,7 +387,7 @@ app.get('/inscripcion', (req, res) => {
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
                 { href: '/privacidad', texto: 'Aviso de Privacidad' },
-                { href: '/reglamento', texto: 'Reglamento' }
+                { href: '#', texto: 'Reglamento (Próximamente)' }
             ]
         },
     });
