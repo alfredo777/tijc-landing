@@ -232,7 +232,7 @@ async function sendUserConfirmation(inscripcionData) {
                 <div style="text-align: center; margin-bottom: 30px;">
                     <img src="${baseData.logoUrl}" alt="Logo" style="max-height: 80px;">
                 </div>
-                <h1 style="color: #9220E1; text-align: center;">¡Gracias por tu inscripción!</h1>
+                <h1 style="color: #261B88; text-align: center;">¡Gracias por tu inscripción!</h1>
                 <p>Hola <strong>${inscripcionData.nombre} ${inscripcionData.apellidos}</strong>,</p>
                 <p>Hemos recibido tu solicitud de inscripción al <strong>Torneo Jorge Campos 2026</strong>.</p>
                 
@@ -243,8 +243,8 @@ async function sendUserConfirmation(inscripcionData) {
                     <p style="margin: 5px 0;"><strong>Fecha:</strong> ${fechaInscripcion}</p>
                 </div>
                 
-                <div style="background: #1a1a2e; padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #FDED07;">
-                    <h3 style="color: #FDED07; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
+                <div style="background: #0A1250; padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #2DE515;">
+                    <h3 style="color: #2DE515; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
                     <table style="width: 100%; color: white;">
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">Banco:</td>
@@ -252,14 +252,14 @@ async function sendUserConfirmation(inscripcionData) {
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">Cuenta:</td>
-                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">387104710202</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #2DE515; font-family: monospace; font-size: 16px;">387104710202</td>
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">CLABE:</td>
-                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">030010900043613530</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #2DE515; font-family: monospace; font-size: 16px;">030010900043613530</td>
                         </tr>
                     </table>
-                    <p style="color: #FDED07; font-size: 13px; margin: 15px 0 0 0; padding: 10px; background: rgba(253,237,7,0.1); border-radius: 5px;">
+                    <p style="color: #2DE515; font-size: 13px; margin: 15px 0 0 0; padding: 10px; background: rgba(45, 229, 21,0.1); border-radius: 5px;">
                         <strong>Importante:</strong> Al realizar la transferencia, incluye tu nombre completo y nombre del equipo como referencia.
                     </p>
                 </div>
@@ -272,11 +272,11 @@ async function sendUserConfirmation(inscripcionData) {
                     <li>¡Tu inscripción quedará confirmada!</li>
                 </ol>
                 
-                <div style="background: #9220E1; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
-                    <p style="color: #FDED07; margin: 0 0 10px 0; font-weight: bold;">¿Ya realizaste tu pago?</p>
+                <div style="background: #261B88; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+                    <p style="color: #2DE515; margin: 0 0 10px 0; font-weight: bold;">¿Ya realizaste tu pago?</p>
                     <p style="color: white; margin: 0 0 15px 0;">Envíanos tu comprobante:</p>
                     <a href="https://wa.me/524494699962" style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">WhatsApp</a>
-                    <a href="mailto:contacto@torneojorgecampos.com.mx" style="display: inline-block; background: #F6288D; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">Email</a>
+                    <a href="mailto:contacto@torneojorgecampos.com.mx" style="display: inline-block; background: #E92263; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">Email</a>
                 </div>
                 
                 <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
@@ -325,7 +325,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
         ciudad: inscripcionData.ciudad,
         cp: inscripcionData.cp,
         categoria: inscripcionData.categoria === 'femenil' ? 'Femenil' : 'Varonil',
-        categoriaColor: inscripcionData.categoria === 'femenil' ? '#E6007E' : '#DAA520',
+        categoriaColor: inscripcionData.categoria === 'femenil' ? '#E92263' : '#0A1250',
         añoCategoria: inscripcionData.año_categoria,
         fechaInscripcion: fechaInscripcion,
         ip: inscripcionData.ip || 'No disponible',
@@ -339,12 +339,12 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
     // Fallback HTML para admin
     return `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <div style="background: #9220E1; padding: 20px; border-radius: 10px 10px 0 0;">
+            <div style="background: #261B88; padding: 20px; border-radius: 10px 10px 0 0;">
                 <table style="width: 100%;">
                     <tr>
                         <td><img src="${baseData.logoUrl}" alt="Logo" style="height: 50px;"></td>
                         <td style="text-align: right;">
-                            <span style="background: #21FF04; color: #1a0a2e; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
+                            <span style="background: #2DE515; color: #050B33; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
                         </td>
                     </tr>
                 </table>
@@ -360,9 +360,9 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 </p>
                 
                 <!-- EQUIPO DESTACADO -->
-                <div style="background: #1a1a2e; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #FDED07;">
+                <div style="background: #0A1250; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #2DE515;">
                     <p style="color: #888; margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase;">Equipo</p>
-                    <h2 style="color: #FDED07; margin: 0; font-size: 24px;">${templateData.equipo}</h2>
+                    <h2 style="color: #2DE515; margin: 0; font-size: 24px;">${templateData.equipo}</h2>
                 </div>
                 
                 <h1 style="color: #333; font-size: 24px; margin: 20px 0 10px 0;">
@@ -370,11 +370,11 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 </h1>
                 
                 <div style="background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 20px 0;">
-                    <h3 style="color: #9220E1; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Datos Personales</h3>
+                    <h3 style="color: #261B88; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Datos Personales</h3>
                     <table style="width: 100%;">
                         <tr>
                             <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Email:</td>
-                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee;"><a href="mailto:${templateData.email}" style="color: #9220E1; font-weight: bold;">${templateData.email}</a></td>
+                            <td style="padding: 8px 0; text-align: right; border-bottom: 1px solid #eee;"><a href="mailto:${templateData.email}" style="color: #261B88; font-weight: bold;">${templateData.email}</a></td>
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">Celular:</td>
@@ -392,7 +392,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 </div>
                 
                 <div style="background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 20px 0;">
-                    <h3 style="color: #F6288D; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Ubicación</h3>
+                    <h3 style="color: #E92263; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">Ubicación</h3>
                     <table style="width: 100%;">
                         <tr>
                             <td style="padding: 8px 0; color: #888; border-bottom: 1px solid #eee;">País:</td>
@@ -419,12 +419,12 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                             <a href="https://wa.me/52${(templateData.celular || '').replace(/\D/g, '')}" style="display: block; background: #25D366; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">WhatsApp</a>
                         </td>
                         <td style="padding: 5px; width: 50%;">
-                            <a href="mailto:${templateData.email}" style="display: block; background: #9220E1; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Email</a>
+                            <a href="mailto:${templateData.email}" style="display: block; background: #261B88; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Email</a>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding: 5px;">
-                            <a href="tel:${templateData.celular}" style="display: block; background: #F6288D; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Llamar: ${templateData.celular}</a>
+                            <a href="tel:${templateData.celular}" style="display: block; background: #E92263; color: white; padding: 15px; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold;">Llamar: ${templateData.celular}</a>
                         </td>
                     </tr>
                 </table>
@@ -437,7 +437,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 </p>
             </div>
             
-            <div style="background: #1a1a2e; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
+            <div style="background: #0A1250; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
                 <p style="color: #888; font-size: 11px; margin: 0;">© ${templateData.year} ${templateData.siteName} - Panel de Administración</p>
             </div>
         </div>
@@ -503,7 +503,7 @@ async function sendTestEmail(toEmail) {
         subject: '🧪 Test - Torneo Jorge Campos',
         html: `
             <div style="font-family: Arial; padding: 20px;">
-                <h1 style="color: #9220E1;">Email de Prueba</h1>
+                <h1 style="color: #261B88;">Email de Prueba</h1>
                 <p><strong>Hora del servidor (UTC):</strong> ${new Date().toISOString()}</p>
                 <p><strong>Hora México (Centro):</strong> ${getFechaMexico()}</p>
                 <p><strong>Hora México (corta):</strong> ${getFechaCorta()}</p>
