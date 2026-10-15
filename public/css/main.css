@@ -2,7 +2,7 @@
    TORNEO JORGE CAMPOS 2026 - MAIN CSS
    Colores (paleta cartel 2026):
             Azul índigo #261B88, Azul marino #0A1250,
-            Rosa #E92263, Verde lima #2DE515, Blanco #FFFFFF
+            Rosa #E92263, Amarillo #FDED07, Verde #21FF04, Blanco #FFFFFF
    Fuente: Barlow / Barlow Condensed
    ======================================== */
 
@@ -323,7 +323,7 @@ html {
     left: 0;
     right: 0;
     height: 32px;
-    background: #2DE515;
+    background: #FDED07;
     transform: skewY(-1deg);
 }
 
@@ -363,10 +363,10 @@ html {
 
 @keyframes pulse-glow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(45, 229, 21, 0.5);
+        box-shadow: 0 0 20px rgba(253, 237, 7, 0.5);
     }
     50% {
-        box-shadow: 0 0 40px rgba(45, 229, 21, 0.8);
+        box-shadow: 0 0 40px rgba(253, 237, 7, 0.8);
     }
 }
 
@@ -376,7 +376,7 @@ html {
 
 /* Text gradient animado */
 .text-gradient {
-    background: linear-gradient(90deg, #2DE515, #FFFFFF, #E92263, #2DE515);
+    background: linear-gradient(90deg, #FDED07, #FFFFFF, #E92263, #FDED07);
     background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -443,18 +443,18 @@ html {
 
 .btn-secondary {
     background: transparent;
-    color: #2DE515;
+    color: #FDED07;
     padding: 0.75rem 2rem;
     border-radius: 9999px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
-    border: 2px solid #2DE515;
+    border: 2px solid #FDED07;
 }
 
 .btn-secondary:hover {
-    background: #2DE515;
+    background: #FDED07;
     color: #261B88;
     transform: translateY(-2px);
 }
@@ -473,7 +473,7 @@ html {
 
 .card:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: #2DE515;
+    border-color: #FDED07;
     transform: translateY(-5px);
 }
 
@@ -502,7 +502,7 @@ html {
 .section-divider {
     width: 100px;
     height: 4px;
-    background: #2DE515;
+    background: #FDED07;
     margin: 1rem auto;
     border-radius: 2px;
 }
@@ -622,11 +622,11 @@ html {
 }
 
 .glow-amarillo {
-    box-shadow: 0 0 30px rgba(45, 229, 21, 0.5);
+    box-shadow: 0 0 30px rgba(253, 237, 7, 0.5);
 }
 
 .glow-verde {
-    box-shadow: 0 0 30px rgba(45, 229, 21, 0.5);
+    box-shadow: 0 0 30px rgba(33, 255, 4, 0.5);
 }
 
 /* ========================================

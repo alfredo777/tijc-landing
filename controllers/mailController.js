@@ -243,8 +243,8 @@ async function sendUserConfirmation(inscripcionData) {
                     <p style="margin: 5px 0;"><strong>Fecha:</strong> ${fechaInscripcion}</p>
                 </div>
                 
-                <div style="background: #0A1250; padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #2DE515;">
-                    <h3 style="color: #2DE515; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
+                <div style="background: #0A1250; padding: 25px; border-radius: 10px; margin: 20px 0; border: 2px solid #FDED07;">
+                    <h3 style="color: #FDED07; text-align: center; margin-top: 0;">Datos para realizar tu pago</h3>
                     <table style="width: 100%; color: white;">
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">Banco:</td>
@@ -252,14 +252,14 @@ async function sendUserConfirmation(inscripcionData) {
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">Cuenta:</td>
-                            <td style="padding: 8px 0; font-weight: bold; color: #2DE515; font-family: monospace; font-size: 16px;">387104710202</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">387104710202</td>
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; color: #aaa;">CLABE:</td>
-                            <td style="padding: 8px 0; font-weight: bold; color: #2DE515; font-family: monospace; font-size: 16px;">030010900043613530</td>
+                            <td style="padding: 8px 0; font-weight: bold; color: #FDED07; font-family: monospace; font-size: 16px;">030010900043613530</td>
                         </tr>
                     </table>
-                    <p style="color: #2DE515; font-size: 13px; margin: 15px 0 0 0; padding: 10px; background: rgba(45, 229, 21,0.1); border-radius: 5px;">
+                    <p style="color: #FDED07; font-size: 13px; margin: 15px 0 0 0; padding: 10px; background: rgba(253, 237, 7,0.1); border-radius: 5px;">
                         <strong>Importante:</strong> Al realizar la transferencia, incluye tu nombre completo y nombre del equipo como referencia.
                     </p>
                 </div>
@@ -273,7 +273,7 @@ async function sendUserConfirmation(inscripcionData) {
                 </ol>
                 
                 <div style="background: #261B88; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
-                    <p style="color: #2DE515; margin: 0 0 10px 0; font-weight: bold;">¿Ya realizaste tu pago?</p>
+                    <p style="color: #FDED07; margin: 0 0 10px 0; font-weight: bold;">¿Ya realizaste tu pago?</p>
                     <p style="color: white; margin: 0 0 15px 0;">Envíanos tu comprobante:</p>
                     <a href="https://wa.me/524494699962" style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">WhatsApp</a>
                     <a href="mailto:contacto@torneojorgecampos.com.mx" style="display: inline-block; background: #E92263; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 5px;">Email</a>
@@ -344,7 +344,7 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                     <tr>
                         <td><img src="${baseData.logoUrl}" alt="Logo" style="height: 50px;"></td>
                         <td style="text-align: right;">
-                            <span style="background: #2DE515; color: #050B33; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
+                            <span style="background: #21FF04; color: #050B33; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold;">NUEVA INSCRIPCIÓN</span>
                         </td>
                     </tr>
                 </table>
@@ -360,9 +360,9 @@ function generateAdminHtmlContent(inscripcionData, baseData, template) {
                 </p>
                 
                 <!-- EQUIPO DESTACADO -->
-                <div style="background: #0A1250; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #2DE515;">
+                <div style="background: #0A1250; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #FDED07;">
                     <p style="color: #888; margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase;">Equipo</p>
-                    <h2 style="color: #2DE515; margin: 0; font-size: 24px;">${templateData.equipo}</h2>
+                    <h2 style="color: #FDED07; margin: 0; font-size: 24px;">${templateData.equipo}</h2>
                 </div>
                 
                 <h1 style="color: #333; font-size: 24px; margin: 20px 0 10px 0;">
