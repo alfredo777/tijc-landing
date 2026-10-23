@@ -1,0 +1,38 @@
+<!-- Encabezado de página con el diseño del cartel 2026 -->
+<section class="page-header-v2">
+    <div class="page-header-v2-stage">
+        <div class="page-header-v2-photo page-header-v2-photo--left" aria-hidden="true"></div>
+
+        <div class="page-header-v2-block">
+            <p class="page-header-v2-kicker">Torneo Jorge Campos {{#if torneo.edicion}}{{torneo.edicion}}{{else}}2026{{/if}}</p>
+            <h1 class="page-header-v2-title">{{titulo}}</h1>
+            {{#if subtitulo}}
+            <p class="page-header-v2-subtitle">{{subtitulo}}{{#if fecha}}: {{fecha}}{{/if}}</p>
+            {{/if}}
+            <nav class="page-header-v2-crumb" aria-label="Breadcrumb">
+                <a href="/"><i class="fas fa-home"></i> Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>{{titulo}}</span>
+            </nav>
+        </div>
+
+        <div class="page-header-v2-photo page-header-v2-photo--right" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-v2-bar">
+        <div class="hero-v2-social">
+            <a href="{{site.social.instagram}}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="{{site.social.facebook}}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{site.social.tiktok}}" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="{{site.social.youtube}}" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="hero-v2-cats">
+            <i class="fas fa-play"></i>
+            <span>{{#if barra}}{{barra}}{{else}}Categorías infantiles varonil y femenil{{/if}}</span>
+            <i class="fas fa-play fa-flip-horizontal"></i>
+        </div>
+        <div class="hero-v2-chevrons" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+</section>

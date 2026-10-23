@@ -885,3 +885,93 @@ html {
     .hero-v2-month { font-size: 85px; }
     .hero-v2-city { font-size: 44px; }
 }
+
+/* ========================================
+   ENCABEZADO DE PÁGINAS INTERNAS (cartel 2026)
+   ======================================== */
+
+.page-header-v2 {
+    padding-top: 80px; /* navbar */
+    background: #0A1250;
+    color: #FFFFFF;
+}
+
+.page-header-v2-stage {
+    display: flex;
+    align-items: stretch;
+}
+
+.page-header-v2-photo {
+    display: none;
+    flex: 0 0 22%;
+    background-size: cover;
+    background-position: center top;
+}
+
+.page-header-v2-photo--left  { background-image: url('/images/hero-left.jpg'); }
+.page-header-v2-photo--right { background-image: url('/images/hero-right.jpg'); background-position: center 20%; }
+
+.page-header-v2-block {
+    flex: 1 1 auto;
+    background: #1C1979;
+    text-align: center;
+    padding: 2.5rem 1.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-header-v2-kicker {
+    color: #FFDD2B;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.page-header-v2-title {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+.page-header-v2-subtitle {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    color: #E4286E;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.page-header-v2-crumb {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.page-header-v2-crumb a:hover { color: #FFDD2B; }
+.page-header-v2-crumb i.fa-chevron-right { font-size: 0.6rem; }
+.page-header-v2-crumb span { color: #FFDD2B; }
+
+@media (min-width: 640px) {
+    .page-header-v2-title { font-size: 2.75rem; }
+    .page-header-v2-subtitle { font-size: 1.25rem; }
+}
+
+@media (min-width: 1024px) {
+    .page-header-v2 { padding-top: 96px; }
+    .page-header-v2-photo { display: block; }
+    .page-header-v2-block { min-height: 340px; padding: 3rem 2rem; }
+    .page-header-v2-title { font-size: 3.5rem; }
+    .page-header-v2-subtitle { font-size: 1.5rem; }
+}

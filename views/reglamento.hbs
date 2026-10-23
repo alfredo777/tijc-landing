@@ -13,7 +13,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Archivo+Black&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,23 +56,8 @@
     {{> navbar}}
 
 
-<main class="pt-20">
-    
-    <!-- Header -->
-    <section class="bg-gradient-to-r from-morado to-rosa py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-                Reglamento del Torneo
-            </h1>
-            <p class="text-white/80">
-                Última actualización: {{fechaActualizacion}}
-            </p>
-            <div class="mt-4 inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                <i class="fas fa-futbol"></i>
-                <span class="font-bold">Fútbol 7 y Fútbol 9</span>
-            </div>
-        </div>
-    </section>
+<main>
+    {{> page-header titulo="Reglamento del Torneo" subtitulo="Fútbol 7 y Fútbol 9" barra="Reglamento tentativo, puede sufrir modificaciones"}}
 
     <!-- Aviso tentativo -->
     <section class="bg-amarillo py-3">
@@ -85,7 +70,7 @@
     </section>
 
     <!-- Navegación rápida -->
-    <section class="py-6 bg-gray-100 sticky top-16 z-40 shadow-sm" >
+    <section class="py-6 bg-gray-100 sticky top-20 lg:top-24 z-40 shadow-sm" >
         <div class="max-w-4xl mx-auto px-4">
             <div class="flex flex-wrap justify-center gap-2 text-sm">
                 <a href="#general" class="bg-morado text-white px-3 py-1 rounded-full hover:bg-morado/80 transition-colors">General</a>

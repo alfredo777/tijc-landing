@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Archivo+Black&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,19 +53,8 @@
 <body class="font-body bg-gray-900 text-white">
 
     {{> navbar}}
-<main class="pt-20">
-    
-    <!-- Header -->
-    <section class="bg-gradient-to-r from-morado to-rosa py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-                Aviso de Privacidad
-            </h1>
-            <p class="text-white/80">
-                Última actualización: {{fechaActualizacion}}
-            </p>
-        </div>
-    </section>
+<main>
+    {{> page-header titulo="Aviso de Privacidad" subtitulo="Última actualización" fecha=fechaActualizacion barra="Protegemos tus datos y los de tu equipo"}}
 
     <!-- Contenido -->
     <section class="py-12 bg-white">

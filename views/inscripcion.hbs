@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Archivo+Black&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,48 +53,7 @@
 
     {{> navbar}}
 
-    <!-- Hero Inscripción -->
-    <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
-        <!-- Background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-rosa via-rosa-dark to-morado-dark"></div>
-        <div class="absolute inset-0 bg-[url('/images/hero-portrait.png')] bg-cover bg-center opacity-20"></div>
-        
-        <!-- Contenido -->
-        <div class="relative z-10 text-center px-4 py-16">
-            <!-- Logo con link al home -->
-            <a href="/" class="inline-block mb-8 transition-transform hover:scale-105">
-                <img src="/images/logo.png" 
-                     alt="Copa Jorge Campos" 
-                     class="h-24 sm:h-32 lg:h-40 w-auto mx-auto drop-shadow-2xl">
-            </a>
-            
-            <p class="text-dorado font-bold uppercase tracking-widest text-sm mb-4">Torneo Jorge Campos 2026</p>
-            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-4">Inscripción</h1>
-            <p class="text-xl text-white/80 max-w-2xl mx-auto">
-                ¡Vive el mejor torneo del mundo mundial!
-            </p>
-            
-            <!-- Breadcrumb -->
-            <nav class="mt-8" aria-label="Breadcrumb">
-                <ol class="flex items-center justify-center gap-2 text-sm text-white/60">
-                    <li>
-                        <a href="/" class="hover:text-dorado transition-colors flex items-center gap-1">
-                            <i class="fas fa-home"></i>
-                            Inicio
-                        </a>
-                    </li>
-                    <li><i class="fas fa-chevron-right text-xs"></i></li>
-                    <li class="text-dorado font-semibold">Inscripción</li>
-                </ol>
-            </nav>
-        </div>
-
-        <!-- Decoración inferior -->
-        <div class="absolute bottom-0 left-0 right-0 h-16 overflow-hidden">
-            <div class="absolute bottom-0 left-0 w-full h-4 bg-dorado transform -skew-y-1"></div>
-            <div class="absolute bottom-4 left-0 w-full h-2 bg-green-500 transform -skew-y-1"></div>
-        </div>
-    </section>
+    {{> page-header titulo="Inscripción" subtitulo="¡Vive el mejor torneo del mundo mundial!" barra="Inscripciones abiertas hasta el 16 de Octubre"}}
 
     <!-- Formulario de Inscripción -->
     <section class="py-16 lg:py-24 bg-white text-gray-900">

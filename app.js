@@ -273,6 +273,15 @@ function getSiteData() {
 }
 
 // ========== RUTAS ==========
+const NAV_INTERNO = [
+    { href: '/#inicio', texto: 'Inicio' },
+    { href: '/#info', texto: 'Información' },
+    { href: '/#categorias', texto: 'Categorías' },
+    { href: '/#experiencia', texto: 'Experiencia' },
+    { href: '/#galeria', texto: 'Galería' },
+    { href: '/#ubicacion', texto: 'Ubicación' }
+];
+
 app.get('/', (req, res) => {
     const data = getSiteData();
     res.render('index', data);
@@ -281,6 +290,7 @@ app.get('/', (req, res) => {
 // Aviso de Privacidad
 app.get('/privacidad', (req, res) => {
     res.render('privacidad', {
+        nav: NAV_INTERNO,
         title: 'Aviso de Privacidad - Torneo Jorge Campos',
         currentPage: 'privacidad',
         fechaActualizacion: '28 de mayo de 2025',
@@ -313,6 +323,7 @@ app.get('/privacidad', (req, res) => {
 
 app.get('/terminosycondiciones', (req, res) => {
     res.render('terminosycondiciones', {
+        nav: NAV_INTERNO,
         title: 'Términos y Condiciones - Torneo Jorge Campos',
         currentPage: 'terminosycondiciones',
         fechaActualizacion: '28 de mayo de 2025',
@@ -365,6 +376,7 @@ app.get('/api/refresh', (req, res) => {
 // Página de Inscripción
 app.get('/inscripcion', (req, res) => {
     res.render('inscripcion', {
+        nav: NAV_INTERNO,
         title: 'Inscripción - Torneo Jorge Campos',
         site: {
             social: {
