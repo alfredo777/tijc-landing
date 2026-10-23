@@ -50,9 +50,9 @@
 
         handleScroll: function() {
             if (window.scrollY > 50) {
-                this.navbar.classList.add('bg-rosa-dark/95', 'backdrop-blur', 'shadow-lg');
+                this.navbar.classList.add('shadow-lg', 'backdrop-blur', 'shadow-lg');
             } else {
-                this.navbar.classList.remove('bg-rosa-dark/95', 'backdrop-blur', 'shadow-lg');
+                this.navbar.classList.remove('shadow-lg', 'backdrop-blur', 'shadow-lg');
             }
         },
 

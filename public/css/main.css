@@ -651,3 +651,237 @@ html {
         min-height: 100%;
     }
 }
+
+/* ========================================
+   NAVBAR V2 (diseño cartel 2026)
+   ======================================== */
+
+.navbar-v2 {
+    background: linear-gradient(180deg, #101667 0%, #241B85 100%);
+}
+
+.navbar-v2-cta {
+    background: #2DE515;
+    color: #0A1250;
+    padding: 0.7rem 1.75rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-v2-cta:hover {
+    background: #FDED07;
+}
+
+/* ========================================
+   HERO V2 (diseño cartel 2026)
+   ======================================== */
+
+.hero-v2 {
+    position: relative;
+    width: 100%;
+    padding-top: 80px; /* navbar */
+    background: #0A1250;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.hero-v2-stage {
+    position: relative;
+    width: 100%;
+}
+
+/* --- Bloque frase --- */
+.hero-v2-title {
+    background: #1C1979;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.12;
+}
+
+.hero-v2-line1 { color: #FFFFFF; font-size: 1.75rem; }
+.hero-v2-line2 { color: #E4286E; font-size: 1.75rem; }
+
+/* --- Logo (mobile) --- */
+.hero-v2-logo {
+    background: #FFFFFF;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+}
+
+.hero-v2-logo img {
+    height: 72px;
+    width: auto;
+    margin: 0 auto;
+    filter: invert(1) brightness(0.15); /* blanco -> azul marino */
+}
+
+/* --- Foto (mobile) --- */
+.hero-v2-photo img {
+    width: 100%;
+    height: 68vw;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* --- Bloque fecha --- */
+.hero-v2-date {
+    background: #FFFFFF;
+    text-align: center;
+    padding: 1.5rem 1rem 2rem;
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.hero-v2-days  { color: #261B88; font-size: 4.5rem; letter-spacing: -0.02em; }
+.hero-v2-month { color: #E4286E; font-size: 2.4rem; margin-top: 0.35rem; }
+.hero-v2-city  { color: #261B88; font-size: 1.3rem; margin-top: 0.6rem; }
+
+/* --- Barra inferior --- */
+.hero-v2-bar {
+    position: relative;
+    background: #261B88;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    overflow: hidden;
+}
+
+.hero-v2-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.hero-v2-social a {
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    background: #FFDD2B;
+    color: #261B88;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-v2-social a:hover {
+    background: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.hero-v2-cats {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-v2-cats i { color: #E4286E; font-size: 1.1rem; }
+
+.hero-v2-chevrons {
+    display: none;
+    gap: 0.35rem;
+    margin-left: auto;
+}
+
+.hero-v2-chevrons span {
+    display: block;
+    width: 48px;
+    height: 56px;
+    background: #E4286E;
+    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
+}
+
+/* --- Tablet --- */
+@media (min-width: 640px) {
+    .hero-v2-line1, .hero-v2-line2 { font-size: 2.4rem; }
+    .hero-v2-photo img { height: 55vw; }
+    .hero-v2-days { font-size: 6rem; }
+    .hero-v2-month { font-size: 3.2rem; }
+    .hero-v2-city { font-size: 1.7rem; }
+    .hero-v2-chevrons { display: flex; }
+}
+
+/* --- Desktop: escenario proporcional al mockup (1710 x 877) --- */
+@media (min-width: 1024px) {
+    .hero-v2 { padding-top: 96px; }
+
+    .hero-v2-stage {
+        aspect-ratio: 1710 / 877;
+        background-image: url('/images/hero-bg.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .hero-v2-title {
+        position: absolute;
+        left: 22.57%;
+        width: 53.74%;
+        top: 0;
+        height: 29.4%;
+        padding: 0 2%;
+        background: transparent;
+        line-height: 1.15;
+    }
+
+    .hero-v2-line1, .hero-v2-line2 { font-size: 3.05vw; white-space: nowrap; }
+
+    .hero-v2-date {
+        position: absolute;
+        left: 22.57%;
+        width: 42%;
+        top: 56.8%;
+        bottom: 0;
+        padding: 0;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-v2-days  { font-size: 9.5vw; margin-top: -1%; }
+    .hero-v2-month { font-size: 5vw; margin-top: 0.4vw; }
+    .hero-v2-city  { font-size: 2.6vw; margin-top: 1vw; }
+
+    .hero-v2-bar {
+        flex-wrap: nowrap;
+        gap: 2rem;
+        padding: 0 0 0 3.5%;
+        height: 5vw;
+        min-height: 72px;
+    }
+
+    .hero-v2-social { gap: 1rem; }
+    .hero-v2-social a { width: 3.3vw; height: 3.3vw; font-size: 1.6vw; }
+
+    .hero-v2-cats { font-size: 1.35vw; gap: 1.5vw; flex: 0 1 auto; margin: 0 auto; }
+    .hero-v2-cats i { font-size: 1.6vw; }
+
+    .hero-v2-chevrons { gap: 0.3vw; margin-right: 2%; }
+    .hero-v2-chevrons span { width: 4.2vw; height: 5vw; }
+}
+
+@media (min-width: 1700px) {
+    .hero-v2-line1, .hero-v2-line2 { font-size: 52px; }
+    .hero-v2-days { font-size: 162px; }
+    .hero-v2-month { font-size: 85px; }
+    .hero-v2-city { font-size: 44px; }
+}

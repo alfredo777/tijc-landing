@@ -1,163 +1,49 @@
-<section id="inicio" class="hero-container">
-    
-    <!-- Fondo degradado base -->
-    <div class="hero-gradient-bg"></div>
-    
-    <!-- MOBILE: Imagen única centrada -->
-    <div class="hero-image-mobile"></div>
-    
-    <!-- DESKTOP: Imagen 1 - Izquierda -->
-    <div class="hero-image-back1"></div>
-    
-    <!-- DESKTOP: Imagen 2 - Derecha -->
-    <div class="hero-image-back2"></div>
-    
-    <!-- Overlay sutil -->
-    <div class="hero-overlay"></div>
-    
-    <!-- Barra decorativa inferior -->
-    <div class="hero-bottom-bar"></div>
+<section id="inicio" class="hero-v2">
 
-    <!-- Contenido Principal MOBILE -->
-    <div class="hero-main-content lg:hidden px-4">
-        
-        <!-- Texto Superior -->
-        <div class="hero-text-top mb-4">
-            <p class="text-amarillo font-display text-3xl font-bold uppercase tracking-wide leading-none">
-                ¡Vive el mejor torneo
-            </p>
-            <p class="text-white font-display text-3xl font-bold uppercase tracking-wide leading-none">
-                del mundo mundial!
-            </p>
+    <!-- ESCENARIO (desktop): imagen de fondo con bloques + textos HTML encima -->
+    <div class="hero-v2-stage">
+
+        <!-- Bloque superior: frase -->
+        <div class="hero-v2-title">
+            <p class="hero-v2-line1">¡Vive el mejor torneo</p>
+            <p class="hero-v2-line2">del mundo mundial!</p>
         </div>
 
-        <!-- Espacio flexible para la imagen -->
-        <div class="hero-image-spacer"></div>
+        <!-- Logo (solo mobile; en desktop viene en la imagen de fondo) -->
+        <div class="hero-v2-logo lg:hidden">
+            <img src="/images/logo-presentado.png?v={{timestamp}}" alt="Torneo Jorge Campos presentado por Nike">
+        </div>
 
-        <!-- Contenido Inferior -->
-        <div class="hero-content-mobile">
-            
-            <!-- Flecha amarilla -->
-            <div class="mb-2">
-                <span class="text-amarillo text-2xl font-bold">▼</span>
-            </div>
-            
-            <!-- Categorías Infantiles -->
-            <p class="font-display text-2xl font-bold uppercase tracking-wider text-amarillo mb-0 leading-tight">
-                Categorías Infantiles
-            </p>
-            
-            <!-- Femenil y Varonil -->
-            <p class="font-display text-xl uppercase tracking-widest text-white/90 mb-2">
-                Femenil y Varonil
-            </p>
-            
-            <!-- Mes y Año -->
-            <p class="font-display text-4xl font-bold text-white mb-1 leading-none">
-                12 al 16 de {{torneo.mes}} {{torneo.año}}
-            </p>
+        <!-- Foto (solo mobile) -->
+        <div class="hero-v2-photo lg:hidden">
+            <img src="/images/hero-left.jpg?v={{timestamp}}" alt="Niños jugando futbol">
+        </div>
 
-            <!-- Ubicación -->
-            <p class="font-display text-xl font-semibold text-white/90 mb-4">
-                {{torneo.sede.ciudad}}, {{torneo.sede.estado}}
-            </p>
-
-            <!-- Redes Sociales -->
-            <div class="flex items-center justify-center gap-4 bg-morado/50 py-2 px-4 rounded-lg">
-                <span class="text-xs font-medium text-white/80">{{site.social.handle}}</span>
-                <div class="flex gap-3">
-                    <a href="{{site.social.facebook}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="{{site.social.instagram}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="{{site.social.tiktok}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="{{site.social.youtube}}" target="_blank" class="text-xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-            
+        <!-- Bloque blanco: fecha y sede -->
+        <div class="hero-v2-date">
+            <p class="hero-v2-days">{{torneo.fechaInicio}}-{{torneo.fechaFin}}</p>
+            <p class="hero-v2-month">Nov.{{torneo.año}}</p>
+            <p class="hero-v2-city">{{torneo.sede.ciudad}}, Jal</p>
         </div>
 
     </div>
 
-    <!-- Contenido Principal DESKTOP -->
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32 hidden lg:block">
-        <div class="text-center">
-            
-            <!-- Frase destacada -->
-            <div class="hero-text-top mb-10">
-                <p class="text-amarillo font-display text-7xl font-bold uppercase tracking-wide leading-none">
-                    ¡Vive el mejor torneo
-                </p>
-                <p class="text-white font-display text-7xl font-bold uppercase tracking-wide leading-none">
-                    del mundo mundial!
-                </p>
-                <div class="w-40 h-1 bg-amarillo mt-4 mx-auto"></div>
-            </div>
-
-            <!-- Logo -->
-            <div class="mb-8">
-                <img src="/images/logo.png?v={{timestamp}}" alt="Logo Torneo" class="h-28 mx-auto drop-shadow-2xl">
-            </div>
-
-            <!-- Edición -->
-            <p class="font-display text-xl tracking-[0.3em] text-amarillo mb-1">EDICIÓN</p>
-            
-            <!-- Año grande -->
-            <h1 class="font-display text-9xl font-bold text-amarillo leading-none mb-4 hero-year">
-                {{torneo.edicion}}
-            </h1>
-            
-            <!-- Próximamente -->
-            <p class="text-lg tracking-widest mb-2 text-verde">PRÓXIMAMENTE</p>
-            
-            <!-- Mes y Año -->
-            <p class="font-display text-5xl font-bold mb-6 text-white">
-               12 al 16 de {{torneo.mes}} {{torneo.año}}
-            </p>
-
-            <!-- Ubicación -->
-            <div class="flex items-center justify-center gap-2 text-lg mb-8">
-                <i class="fas fa-map-marker-alt text-amarillo"></i>
-                <span class="font-semibold text-white">{{torneo.sede.ciudad}}, {{torneo.sede.estado}}</span>
-            </div>
-
-            <!-- Categorías -->
-            <div class="flex items-center justify-center gap-4 mb-8">
-                <span class="text-amarillo text-lg">◀</span>
-                <p class="uppercase tracking-wider text-sm text-white">Categorías Infantiles Femenil y Varonil</p>
-                <span class="text-amarillo text-lg">▶</span>
-            </div>
-
-            <!-- Redes Sociales -->
-            <div class="flex items-center justify-center gap-6">
-                <span class="text-sm font-medium text-white/80">{{site.social.handle}}</span>
-                <div class="flex gap-4">
-                    <a href="{{site.social.facebook}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="{{site.social.instagram}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="{{site.social.tiktok}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="{{site.social.youtube}}" target="_blank" class="text-2xl text-white hover:text-amarillo transition-colors">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-
+    <!-- BARRA INFERIOR -->
+    <div class="hero-v2-bar">
+        <div class="hero-v2-social">
+            <a href="{{site.social.instagram}}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="{{site.social.facebook}}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{site.social.tiktok}}" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="{{site.social.youtube}}" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="hero-v2-cats">
+            <i class="fas fa-play"></i>
+            <span>Categorías infantiles varonil y femenil</span>
+            <i class="fas fa-play fa-flip-horizontal"></i>
+        </div>
+        <div class="hero-v2-chevrons" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
         </div>
     </div>
 
-    <!-- Flecha scroll - Solo desktop -->
-    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce z-10 hidden lg:block">
-        <i class="fas fa-chevron-down text-2xl text-amarillo"></i>
-    </div>
 </section>

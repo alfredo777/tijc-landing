@@ -1,15 +1,15 @@
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex items-center gap-3">
-              <a href="/"><img src="/images/logo.png?v={{timestamp}}" alt="Logo" class="h-12 w-auto"></a>
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 navbar-v2">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div class="flex justify-between items-center h-20 lg:h-24">
+            <div class="flex items-center">
+              <a href="/"><img src="/images/logo-presentado.png?v={{timestamp}}" alt="Torneo Jorge Campos presentado por Nike" class="h-12 lg:h-16 w-auto"></a>
             </div>
             
-            <div class="hidden lg:flex items-center gap-8">
+            <div class="hidden lg:flex items-center gap-9">
                 {{#each nav}}
-                <a href="{{this.href}}" class="text-sm font-medium hover:text-amarillo transition-colors">{{this.texto}}</a>
+                <a href="{{this.href}}" class="text-xs font-bold uppercase tracking-wider hover:text-amarillo transition-colors">{{this.texto}}</a>
                 {{/each}}
-                <a href="/inscripcion" class="bg-amarillo text-morado-dark px-6 py-2 font-bold uppercase text-sm hover:bg-white transition-colors">
+                <a href="/inscripcion" class="navbar-v2-cta">
                     Inscríbete
                 </a>
             </div>
@@ -23,9 +23,9 @@
     <div id="mobileMenu" class="hidden lg:hidden bg-morado-dark">
         <div class="px-4 py-4 space-y-3">
             {{#each nav}}
-            <a href="{{this.href}}" class="block py-2 hover:text-amarillo">{{this.texto}}</a>
+            <a href="{{this.href}}" class="block py-2 uppercase text-sm font-bold tracking-wider hover:text-amarillo">{{this.texto}}</a>
             {{/each}}
-            <a href="/inscripcion" class="block bg-amarillo text-morado-dark text-center py-3 font-bold mt-4">Inscríbete</a>
+            <a href="/inscripcion" class="navbar-v2-cta block text-center mt-4">Inscríbete</a>
         </div>
     </div>
 </nav>
