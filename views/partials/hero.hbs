@@ -1,22 +1,80 @@
 <section id="inicio" class="hero-v2">
 
-    <!-- ESCENARIO (desktop): imagen de fondo con bloques + textos HTML encima -->
-    <div class="hero-v2-stage">
+    <!-- ============ MOBILE: diseño original con paleta cartel 2026 ============ -->
+    <div class="hero-mobile lg:hidden">
+
+        <!-- Fondo degradado base -->
+        <div class="hero-mobile-gradient"></div>
+
+        <!-- Imagen central (Jorge Campos + niños + escudo) -->
+        <div class="hero-mobile-image"></div>
+
+        <!-- Contenido -->
+        <div class="hero-mobile-content px-4">
+
+            <!-- Texto Superior -->
+            <div class="hero-mobile-text-top mb-4">
+                <p class="hero-mobile-line1">¡Vive el mejor torneo</p>
+                <p class="hero-mobile-line2">del mundo mundial!</p>
+            </div>
+
+            <!-- Logo -->
+            <div class="hero-mobile-logo">
+                <img src="/images/logo-presentado.png?v={{timestamp}}" alt="Torneo Jorge Campos presentado por Nike">
+            </div>
+
+            <!-- Espacio flexible para la imagen -->
+            <div class="hero-mobile-spacer"></div>
+
+            <!-- Contenido Inferior -->
+            <div class="hero-mobile-bottom">
+
+                <!-- Flecha amarilla -->
+                <div class="mb-2">
+                    <span class="text-amarillo text-2xl font-bold">▼</span>
+                </div>
+
+                <!-- Categorías Infantiles -->
+                <p class="hero-mobile-cats1 mb-0">
+                    Categorías Infantiles
+                </p>
+
+                <!-- Femenil y Varonil -->
+                <p class="font-display text-xl uppercase tracking-widest text-white/90 mb-2">
+                    Femenil y Varonil
+                </p>
+
+                <!-- Fechas -->
+                <p class="hero-mobile-date mb-1">
+                    {{torneo.fechaInicio}} al {{torneo.fechaFin}} de {{torneo.mes}} {{torneo.año}}
+                </p>
+
+                <!-- Ubicación -->
+                <p class="font-display text-xl font-semibold text-white/90 mb-5">
+                    {{torneo.sede.ciudad}}, {{torneo.sede.estado}}
+                </p>
+
+                <!-- Redes Sociales (estilo web: círculos amarillos) -->
+                <div class="hero-v2-social justify-center">
+                    <a href="{{site.social.instagram}}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="{{site.social.facebook}}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{site.social.tiktok}}" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="{{site.social.youtube}}" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============ DESKTOP: escenario del cartel 2026 ============ -->
+    <div class="hero-v2-stage hidden lg:block">
 
         <!-- Bloque superior: frase -->
         <div class="hero-v2-title">
             <p class="hero-v2-line1">¡Vive el mejor torneo</p>
             <p class="hero-v2-line2">del mundo mundial!</p>
-        </div>
-
-        <!-- Logo (solo mobile; en desktop viene en la imagen de fondo) -->
-        <div class="hero-v2-logo lg:hidden">
-            <img src="/images/logo-presentado.png?v={{timestamp}}" alt="Torneo Jorge Campos presentado por Nike">
-        </div>
-
-        <!-- Foto (solo mobile) -->
-        <div class="hero-v2-photo lg:hidden">
-            <img src="/images/hero-left.jpg?v={{timestamp}}" alt="Niños jugando futbol">
         </div>
 
         <!-- Bloque blanco: fecha y sede -->
@@ -28,8 +86,8 @@
 
     </div>
 
-    <!-- BARRA INFERIOR -->
-    <div class="hero-v2-bar">
+    <!-- BARRA INFERIOR (solo desktop) -->
+    <div class="hero-v2-bar hidden lg:flex">
         <div class="hero-v2-social">
             <a href="{{site.social.instagram}}" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="{{site.social.facebook}}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

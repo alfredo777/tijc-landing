@@ -395,6 +395,7 @@ html {
 .marquee-container {
     overflow: hidden;
     width: 100%;
+    padding: 0.75rem 0;
     background: linear-gradient(90deg, #261B88, #E92263);
 }
 
@@ -700,7 +701,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
     line-height: 1.12;
@@ -709,34 +710,153 @@ html {
 .hero-v2-line1 { color: #FFFFFF; font-size: 1.75rem; }
 .hero-v2-line2 { color: #E4286E; font-size: 1.75rem; }
 
-/* --- Logo (mobile) --- */
-.hero-v2-logo {
-    background: #FFFFFF;
-    padding: 1.5rem 1rem 1rem;
-    text-align: center;
+/* ========================================
+   HERO MOBILE (diseño original, paleta cartel 2026)
+   ======================================== */
+
+.hero-mobile {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    overflow: hidden;
 }
 
-.hero-v2-logo img {
-    height: 72px;
+/* Fondo azul como el escenario desktop del cartel */
+.hero-mobile-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+        180deg,
+        #0A1250 0%,
+        #1C1979 55%,
+        #261B88 100%
+    );
+}
+
+/* Imagen central: Jorge Campos + niños + escudo */
+.hero-mobile-image {
+    position: absolute;
+    z-index: 1;
+    background-image: url('/images/heroback3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    pointer-events: none;
+    width: 100%;
+    height: 45%;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 380px) {
+    .hero-mobile-image { width: 110%; height: 38%; }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-mobile-image { width: 105%; height: 42%; }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+    .hero-mobile-image { width: 85%; height: 48%; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-mobile-image { width: 75%; height: 50%; }
+}
+
+/* Contenido */
+.hero-mobile-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+.hero-mobile-text-top {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Tipografía del cartel (Archivo Black), tamaños fluidos para no desbordar */
+.hero-mobile-line1,
+.hero-mobile-line2 {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.2rem, 5.3vw, 1.9rem);
+    line-height: 1.15;
+}
+
+.hero-mobile-line1 { color: #FFFFFF; }
+.hero-mobile-line2 { color: #E4286E; }
+
+.hero-mobile-cats1 {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    color: #FDED07;
+    font-size: clamp(1rem, 4.3vw, 1.5rem);
+    line-height: 1.2;
+}
+
+.hero-mobile-date {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: clamp(1rem, 4.4vw, 1.55rem);
+    line-height: 1.1;
+}
+
+/* Logo bajo la frase */
+.hero-mobile-logo {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.hero-mobile-logo img {
+    height: clamp(64px, 18vw, 96px);
     width: auto;
     margin: 0 auto;
-    filter: invert(1) brightness(0.15); /* blanco -> azul marino */
 }
 
-/* --- Foto (mobile) --- */
-.hero-v2-photo img {
-    width: 100%;
-    height: 68vw;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
+.hero-mobile-spacer {
+    flex: 1;
+    min-height: 200px;
 }
 
-/* --- Bloque fecha --- */
+@media (max-width: 380px) {
+    .hero-mobile-spacer { min-height: 150px; }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .hero-mobile-spacer { min-height: 180px; }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-mobile-spacer { min-height: 220px; }
+}
+
+.hero-mobile-bottom {
+    text-align: center;
+    flex-shrink: 0;
+    padding-bottom: 1.75rem;
+}
+
+@media (max-width: 380px) {
+    .hero-mobile-bottom .text-xl { font-size: 0.95rem !important; }
+}
+
+
+/* --- Bloque fecha: cierra el panel blanco iniciado por el logo --- */
 .hero-v2-date {
     background: #FFFFFF;
     text-align: center;
-    padding: 1.5rem 1rem 2rem;
+    padding: 0.75rem 1rem 1.75rem;
     font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
     line-height: 1;
@@ -746,15 +866,15 @@ html {
 .hero-v2-month { color: #E4286E; font-size: 2.4rem; margin-top: 0.35rem; }
 .hero-v2-city  { color: #261B88; font-size: 1.3rem; margin-top: 0.6rem; }
 
-/* --- Barra inferior --- */
+/* --- Barra inferior: en mobile apila redes y categorías centradas --- */
 .hero-v2-bar {
     position: relative;
     background: #261B88;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0.9rem 1rem;
+    gap: 0.75rem;
+    padding: 1rem;
     overflow: hidden;
 }
 
@@ -764,8 +884,8 @@ html {
 }
 
 .hero-v2-social a {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 9999px;
     background: #FFDD2B;
     color: #261B88;
@@ -784,17 +904,20 @@ html {
 .hero-v2-cats {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     letter-spacing: 0.04em;
-    flex: 1 1 auto;
     justify-content: center;
     text-align: center;
+    max-width: 100%;
+    padding: 0 0.5rem;
 }
 
-.hero-v2-cats i { color: #E4286E; font-size: 1.1rem; }
+.hero-v2-cats span { min-width: 0; }
+
+.hero-v2-cats i { color: #E4286E; font-size: 1rem; flex-shrink: 0; }
 
 .hero-v2-chevrons {
     display: none;
@@ -817,7 +940,7 @@ html {
     .hero-v2-days { font-size: 6rem; }
     .hero-v2-month { font-size: 3.2rem; }
     .hero-v2-city { font-size: 1.7rem; }
-    .hero-v2-chevrons { display: flex; }
+    .hero-v2-cats { font-size: 0.85rem; }
 }
 
 /* --- Desktop: escenario proporcional al mockup (1710 x 877) --- */
@@ -862,6 +985,7 @@ html {
     .hero-v2-city  { font-size: 2.6vw; margin-top: 1vw; }
 
     .hero-v2-bar {
+        flex-direction: row;
         flex-wrap: nowrap;
         gap: 2rem;
         padding: 0 0 0 3.5%;
@@ -875,7 +999,7 @@ html {
     .hero-v2-cats { font-size: 1.35vw; gap: 1.5vw; flex: 0 1 auto; margin: 0 auto; }
     .hero-v2-cats i { font-size: 1.6vw; }
 
-    .hero-v2-chevrons { gap: 0.3vw; margin-right: 2%; }
+    .hero-v2-chevrons { display: flex; gap: 0.3vw; margin-right: 2%; }
     .hero-v2-chevrons span { width: 4.2vw; height: 5vw; }
 }
 

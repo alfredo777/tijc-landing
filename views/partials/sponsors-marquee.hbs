@@ -1,17 +1,17 @@
-<section class="bg-white py-6 border-b-4 border-amarillo">
-    <div class="max-w-7xl mx-auto px-4 mb-3">
-        <p class="text-center text-gray-500 text-xs uppercase tracking-widest font-semibold">Patrocinadores Oficiales</p>
+<section class="bg-morado-dark border-y-4 border-amarillo py-5 sm:py-6">
+    <div class="max-w-7xl mx-auto px-4 mb-3 sm:mb-4">
+        <p class="text-center text-white/60 text-xs uppercase tracking-widest font-semibold">Patrocinadores Oficiales</p>
     </div>
-    <div class="marquee-container bg-white">
-        <div class="marquee-content" id="sponsorsMarquee">
+    <div class="marquee-container">
+        <div class="marquee-content">
             <div class="flex items-center shrink-0">
                 {{#each sponsors}}
-                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="h-12 w-auto object-contain mx-8 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="h-9 sm:h-12 w-auto object-contain mx-5 sm:mx-8 opacity-80 hover:opacity-100 transition-opacity duration-300">
                 {{/each}}
             </div>
-            <div class="flex items-center shrink-0">
+            <div class="flex items-center shrink-0" aria-hidden="true">
                 {{#each sponsors}}
-                <img src="{{this.src}}?v={{../timestamp}}" alt="{{this.alt}}" class="h-12 w-auto object-contain mx-8 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="{{this.src}}?v={{../timestamp}}" alt="" class="h-9 sm:h-12 w-auto object-contain mx-5 sm:mx-8 opacity-80 hover:opacity-100 transition-opacity duration-300">
                 {{/each}}
             </div>
         </div>
