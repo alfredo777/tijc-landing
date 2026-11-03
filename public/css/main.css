@@ -676,6 +676,23 @@ html {
     background: #FDED07;
 }
 
+/* Botón secundario: enlace externo a resultados (RefereePro) */
+.navbar-v2-results {
+    border: 2px solid #FDED07;
+    color: #FDED07;
+    padding: calc(0.7rem - 2px) 1.5rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-v2-results:hover {
+    background: #FDED07;
+    color: #0A1250;
+}
+
 /* ========================================
    HERO V2 (diseño cartel 2026)
    ======================================== */

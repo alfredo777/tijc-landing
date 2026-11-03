@@ -9,9 +9,14 @@
                 {{#each nav}}
                 <a href="{{this.href}}" class="text-xs font-bold uppercase tracking-wider hover:text-amarillo transition-colors">{{this.texto}}</a>
                 {{/each}}
-                <a href="/inscripcion" class="navbar-v2-cta">
-                    Inscríbete
-                </a>
+                <div class="flex items-center gap-3">
+                    <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-results">
+                        Resultados
+                    </a>
+                    <a href="/inscripcion" class="navbar-v2-cta">
+                        Inscríbete
+                    </a>
+                </div>
             </div>
 
             <button id="menuBtn" class="lg:hidden text-2xl">
@@ -25,7 +30,8 @@
             {{#each nav}}
             <a href="{{this.href}}" class="block py-2 uppercase text-sm font-bold tracking-wider hover:text-amarillo">{{this.texto}}</a>
             {{/each}}
-            <a href="/inscripcion" class="navbar-v2-cta block text-center mt-4">Inscríbete</a>
+            <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-results block text-center mt-4">Resultados</a>
+            <a href="/inscripcion" class="navbar-v2-cta block text-center">Inscríbete</a>
         </div>
     </div>
 </nav>
