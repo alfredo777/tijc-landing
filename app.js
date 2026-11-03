@@ -143,7 +143,9 @@ function getSponsors() {
             imageFiles.sort();
             
             imageFiles.forEach((file) => {
+                // El prefijo numérico (01-, 02-...) solo fija el orden
                 const nombre = path.basename(file, path.extname(file))
+                    .replace(/^\d+[-_ ]*/, '')
                     .replace(/[-_]+/g, ' ')
                     .replace(/\b\w/g, c => c.toUpperCase());
                 sponsors.push({
