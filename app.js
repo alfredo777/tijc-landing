@@ -263,7 +263,7 @@ function getSiteData() {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '/inscripcion', texto: 'Inscripción' }
+                { href: 'https://registro-torneojorgecampos.lovable.app', texto: 'Registro de acceso' }
             ],
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
@@ -315,7 +315,7 @@ app.get('/privacidad', (req, res) => {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '/inscripcion', texto: 'Inscripción' }
+                { href: 'https://registro-torneojorgecampos.lovable.app', texto: 'Registro de acceso' }
             ],
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
@@ -348,7 +348,7 @@ app.get('/terminosycondiciones', (req, res) => {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '/inscripcion', texto: 'Inscripción' }
+                { href: 'https://registro-torneojorgecampos.lovable.app', texto: 'Registro de acceso' }
             ],
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
@@ -378,7 +378,12 @@ app.get('/api/refresh', (req, res) => {
     res.json({ status: 'ok', timestamp: Date.now() });
 });
 
-// Página de Inscripción
+// Inscripción (oculta - inscripciones cerradas, el registro de acceso vive en Lovable)
+app.get('/inscripcion', (req, res) => {
+    res.redirect('/');
+});
+
+/*
 app.get('/inscripcion', (req, res) => {
     res.render('inscripcion', {
         nav: NAV_INTERNO,
@@ -399,7 +404,7 @@ app.get('/inscripcion', (req, res) => {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
-                { href: '/inscripcion', texto: 'Inscripción' }
+                { href: 'https://registro-torneojorgecampos.lovable.app', texto: 'Registro de acceso' }
             ],
             legal: [
                 { href: '/terminosycondiciones', texto: 'Términos y Condiciones' },
@@ -409,6 +414,7 @@ app.get('/inscripcion', (req, res) => {
         },
     });
 });
+*/
 
 // Ruta de prueba para emails (SOLO DESARROLLO)
 if (isDevelopment) {
