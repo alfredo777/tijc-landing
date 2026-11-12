@@ -1,25 +1,29 @@
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 navbar-v2">
     <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex justify-between items-center h-20 lg:h-24">
-            <div class="flex items-center">
+            <div class="flex items-center shrink-0">
               <a href="/"><img src="/images/logo-presentado.png?v={{timestamp}}" alt="Torneo Jorge Campos presentado por Nike" class="h-12 lg:h-16 w-auto"></a>
             </div>
             
-            <div class="hidden lg:flex items-center gap-9">
+            <div class="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-9">
                 {{#each nav}}
-                <a href="{{this.href}}" class="text-xs font-bold uppercase tracking-wider hover:text-amarillo transition-colors">{{this.texto}}</a>
+                <a href="{{this.href}}" class="text-xs font-bold uppercase tracking-wider whitespace-nowrap hover:text-amarillo transition-colors">{{this.texto}}</a>
                 {{/each}}
-                <div class="flex items-center gap-3">
-                    <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-results">
-                        Resultados
+                {{!-- Debajo de 1440px los botones quedan como íconos con tooltip --}}
+                <div class="navbar-v2-actions">
+                    <a href="/calendario-de-actividades" class="navbar-v2-btn navbar-v2-agenda" data-tooltip="Calendario de actividades" aria-label="Calendario de actividades">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i><span class="navbar-v2-label">Actividades</span>
                     </a>
-                    <a href="https://registro-torneojorgecampos.lovable.app" target="_blank" rel="noopener" class="navbar-v2-cta">
-                        Registro de acceso
+                    <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-btn navbar-v2-results" data-tooltip="Resultados" aria-label="Resultados">
+                        <i class="fas fa-trophy" aria-hidden="true"></i><span class="navbar-v2-label">Resultados</span>
+                    </a>
+                    <a href="https://registro-torneojorgecampos.lovable.app" target="_blank" rel="noopener" class="navbar-v2-btn navbar-v2-cta" data-tooltip="Registro de acceso" aria-label="Registro de acceso">
+                        <i class="fas fa-id-card" aria-hidden="true"></i><span class="navbar-v2-label">Registro de acceso</span>
                     </a>
                 </div>
             </div>
 
-            <button id="menuBtn" class="lg:hidden text-2xl">
+            <button id="menuBtn" class="lg:hidden text-2xl" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -30,7 +34,8 @@
             {{#each nav}}
             <a href="{{this.href}}" class="block py-2 uppercase text-sm font-bold tracking-wider hover:text-amarillo">{{this.texto}}</a>
             {{/each}}
-            <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-results block text-center mt-4">Resultados</a>
+            <a href="/calendario-de-actividades" class="navbar-v2-agenda flex justify-center mt-4"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Calendario de actividades</a>
+            <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="navbar-v2-results block text-center">Resultados</a>
             <a href="https://registro-torneojorgecampos.lovable.app" target="_blank" rel="noopener" class="navbar-v2-cta block text-center">Registro de acceso</a>
         </div>
     </div>

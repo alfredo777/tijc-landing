@@ -1,0 +1,31 @@
+{{!-- Tarjeta "minuto a minuto" de un día. Contexto: un día de calendario.dias --}}
+<article id="dia-{{numero}}" class="agenda-dia{{#if esActual}} is-actual{{/if}}" data-fecha="{{fecha}}">
+    <header class="agenda-dia-head">
+        {{#if esHoy}}<span class="agenda-badge-hoy">Hoy</span>{{/if}}
+        <h3 class="agenda-dia-titulo">{{dia}} {{numero}}</h3>
+        <p class="agenda-dia-mes">{{mes}}</p>
+        <p class="agenda-tag">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Minuto a minuto</span>
+            <i class="fas fa-play fa-flip-horizontal" aria-hidden="true"></i>
+        </p>
+    </header>
+
+    <ol class="agenda-lista">
+        {{#each actividades}}
+        <li class="agenda-item{{#if destacado}} is-destacado{{/if}}" data-inicio="{{inicio}}"{{#if fin}} data-fin="{{fin}}"{{/if}}>
+            <div class="agenda-hora">
+                <span class="agenda-hora-num">{{hora}}</span>
+                <span class="agenda-hora-rango">{{rango}}</span>
+            </div>
+            <span class="agenda-rombo" aria-hidden="true"></span>
+            <div class="agenda-info">
+                <p class="agenda-titulo">{{titulo}}</p>
+                {{#if detalle}}<p class="agenda-detalle">{{detalle}}</p>{{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ol>
+
+    <p class="agenda-sede">Altium Sports Complex · Zapopan</p>
+</article>

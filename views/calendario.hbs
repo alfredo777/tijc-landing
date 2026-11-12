@@ -1,0 +1,38 @@
+{{> navbar}}
+
+<main>
+    {{> page-header titulo="Calendario de actividades" subtitulo="Minuto a minuto" fecha=torneo.fechaCompleta barra="Altium Sports Complex · Zapopan, Jalisco"}}
+
+    <section class="agenda-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+
+            <nav class="agenda-dias-nav" aria-label="Ir a un día">
+                {{#each calendario.dias}}
+                <a href="#dia-{{numero}}" class="agenda-dia-mini{{#if esActual}} is-actual{{/if}}">
+                    <span>{{dia}}</span>
+                    <strong>{{numero}}</strong>
+                </a>
+                {{/each}}
+            </nav>
+
+            <div class="agenda-grid">
+                {{#each calendario.dias}}
+                {{> agenda-dia}}
+                {{/each}}
+            </div>
+
+            <div class="agenda-acciones justify-center mt-10">
+                <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="agenda-btn agenda-btn--primario">
+                    <i class="fas fa-trophy"></i> Ver resultados
+                </a>
+                <a href="/" class="agenda-btn agenda-btn--secundario">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+{{> footer}}
+{{> whatsapp-float}}
+{{> back-to-top}}

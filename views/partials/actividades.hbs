@@ -1,0 +1,39 @@
+{{!-- Agenda del día en la home: antes del torneo el día 1, luego el día en curso --}}
+<section id="actividades" class="agenda-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div class="agenda-home">
+
+            <div class="agenda-intro">
+                <p class="agenda-kicker">{{#if calendario.diaActual.esHoy}}Hoy en el torneo{{else}}Arranca el torneo{{/if}}</p>
+                <h2 class="agenda-intro-titulo">Calendario de<br><span>actividades</span></h2>
+                <p class="agenda-intro-texto">
+                    Shows de FreeStyle, Meet &amp; Greet con leyendas, conferencias y la gran inauguración con Jorge Campos.
+                    Consulta el minuto a minuto de cada día del {{torneo.fechaInicio}} al {{torneo.fechaFin}} de {{torneo.mes}}.
+                </p>
+
+                <div class="agenda-dias-mini" aria-label="Días del torneo">
+                    {{#each calendario.dias}}
+                    <a href="/calendario-de-actividades#dia-{{numero}}" class="agenda-dia-mini{{#if esActual}} is-actual{{/if}}">
+                        <span>{{dia}}</span>
+                        <strong>{{numero}}</strong>
+                    </a>
+                    {{/each}}
+                </div>
+
+                <div class="agenda-acciones">
+                    <a href="/calendario-de-actividades" class="agenda-btn agenda-btn--primario">
+                        <i class="fas fa-calendar-alt"></i> Ver calendario completo
+                    </a>
+                    <a href="https://torneojorgecampos.refereepro.com/" target="_blank" rel="noopener" class="agenda-btn agenda-btn--secundario">
+                        Resultados <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            {{#with calendario.diaActual}}
+            {{> agenda-dia}}
+            {{/with}}
+
+        </div>
+    </div>
+</section>

@@ -1116,3 +1116,412 @@ html {
     .page-header-v2-title { font-size: 3.5rem; }
     .page-header-v2-subtitle { font-size: 1.5rem; }
 }
+
+/* ========================================
+   NAVBAR: botón Calendario de actividades
+   ======================================== */
+
+.navbar-v2-agenda {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #E4286E;
+    color: #FFFFFF;
+    padding: 0.7rem calc(1.25rem + 6px) 0.7rem 1.25rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-v2-agenda i { color: #FDED07; transition: color 0.2s ease; }
+
+.navbar-v2-agenda:hover { background: #FDED07; color: #0A1250; }
+.navbar-v2-agenda:hover i { color: #0A1250; }
+
+#mobileMenu .navbar-v2-agenda { clip-path: none; padding: 0.7rem 1.25rem; }
+
+/* --- Botones del navbar desktop: texto completo desde 1440px --- */
+.navbar-v2-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar-v2-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+/* --- Entre 1024 y 1439px: solo íconos con tooltip --- */
+@media (max-width: 1439px) {
+    .navbar-v2-actions { gap: 0.5rem; }
+
+    .navbar-v2-btn {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        font-size: 1rem;
+        clip-path: none;
+    }
+
+    .navbar-v2-btn .navbar-v2-label { display: none; }
+
+    .navbar-v2-btn::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translate(-50%, -4px);
+        background: #0A1250;
+        color: #FFFFFF;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        padding: 0.45rem 0.7rem;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    /* El último se alinea a la derecha para no salirse de la pantalla */
+    .navbar-v2-btn:last-child::after { left: auto; right: 0; transform: translateY(-4px); }
+
+    .navbar-v2-btn:hover::after,
+    .navbar-v2-btn:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+
+    .navbar-v2-btn:last-child:hover::after,
+    .navbar-v2-btn:last-child:focus-visible::after { transform: translateY(0); }
+}
+
+/* ========================================
+   CALENDARIO DE ACTIVIDADES (cartel "minuto a minuto")
+   ======================================== */
+
+.agenda-section {
+    position: relative;
+    background-color: #E4286E;
+    /* Chevrones del cartel */
+    background-image:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(10, 18, 80, 0.06) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(10, 18, 80, 0.06) 25%, transparent 25%);
+    background-size: 140px 140px;
+    background-position: -70px 0, -70px 0, 0 0, 0 0;
+    color: #FFFFFF;
+}
+
+/* --- Home: intro + tarjeta del día --- */
+.agenda-home {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.agenda-intro { text-align: center; }
+
+.agenda-kicker {
+    display: inline-block;
+    background: #0A1250;
+    color: #FDED07;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.agenda-intro-titulo {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 8vw, 3.75rem);
+    line-height: 1;
+    color: #FFFFFF;
+}
+
+.agenda-intro-titulo span { color: #FDED07; }
+
+.agenda-intro-texto {
+    margin: 1.25rem auto 0;
+    max-width: 34rem;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* Selector de días (home y página) */
+.agenda-dias-mini,
+.agenda-dias-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1.75rem auto 0;
+    max-width: 28rem;
+}
+
+.agenda-dias-nav {
+    position: sticky;
+    top: 88px;
+    z-index: 20;
+    max-width: 36rem;
+    margin: 0 auto 2.5rem;
+}
+
+.agenda-dia-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.55rem 0.25rem;
+    background: rgba(10, 18, 80, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.agenda-dia-mini span {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.agenda-dia-mini strong {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+.agenda-dia-mini:hover { border-color: #FDED07; transform: translateY(-2px); }
+
+.agenda-dia-mini.is-actual { background: #0A1250; border-color: #FDED07; }
+.agenda-dia-mini.is-actual strong { color: #FDED07; }
+
+.agenda-dias-nav .agenda-dia-mini { background: #0A1250; border-color: #0A1250; }
+.agenda-dias-nav .agenda-dia-mini.is-actual { border-color: #FDED07; }
+
+/* Botones */
+.agenda-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.agenda-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.5rem;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.agenda-btn:hover { transform: translateY(-2px); }
+
+.agenda-btn--primario { background: #0A1250; color: #FDED07; }
+.agenda-btn--primario:hover { background: #FDED07; color: #0A1250; }
+
+.agenda-btn--secundario { border: 2px solid #FFFFFF; color: #FFFFFF; padding: calc(0.95rem - 2px) 1.5rem; }
+.agenda-btn--secundario:hover { background: #FFFFFF; color: #E4286E; }
+
+/* --- Tarjeta de un día --- */
+.agenda-dia {
+    position: relative;
+    background: rgba(10, 18, 80, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    padding: 1.75rem 1rem 1.25rem;
+    scroll-margin-top: 190px;
+}
+
+.agenda-dia.is-actual { border-color: #FDED07; }
+
+.agenda-dia-head { text-align: center; }
+
+.agenda-badge-hoy {
+    position: absolute;
+    top: -0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2DE515;
+    color: #0A1250;
+    font-weight: 900;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+}
+
+.agenda-dia-titulo {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(2.1rem, 10vw, 3.4rem);
+    line-height: 1;
+    color: #FFFFFF;
+}
+
+.agenda-dia-mes {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FDED07;
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+    margin-top: 0.3rem;
+}
+
+.agenda-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1.1rem;
+    background: #1C1979;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+.agenda-tag i { color: #E4286E; font-size: 0.7rem; }
+
+/* Lista minuto a minuto */
+.agenda-lista {
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+}
+
+.agenda-item {
+    display: grid;
+    grid-template-columns: 5.4rem 1rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    align-items: center;
+    padding: 0.7rem 0.25rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.22);
+}
+
+.agenda-item:last-child { border-bottom: 0; }
+
+.agenda-hora { text-align: right; line-height: 1; }
+
+.agenda-hora-num {
+    display: block;
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    color: #FDED07;
+    font-size: clamp(1.45rem, 6vw, 2rem);
+}
+
+.agenda-hora-rango {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.agenda-rombo {
+    width: 0.8rem;
+    height: 0.8rem;
+    background: #FFFFFF;
+    transform: rotate(45deg);
+    justify-self: center;
+}
+
+.agenda-titulo {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    color: #FFFFFF;
+    font-size: clamp(1.05rem, 4.6vw, 1.45rem);
+    line-height: 1.12;
+}
+
+.agenda-detalle {
+    margin-top: 0.2rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.agenda-item.is-destacado .agenda-titulo { color: #FDED07; }
+.agenda-item.is-destacado .agenda-rombo { background: #2DE515; }
+
+/* Actividad en curso (la marca main.js con la hora de Zapopan) */
+.agenda-item.is-envivo { background: rgba(10, 18, 80, 0.45); }
+
+.agenda-item.is-envivo .agenda-rombo {
+    background: #2DE515;
+    animation: agenda-pulso 1.6s ease-in-out infinite;
+}
+
+.agenda-envivo {
+    display: inline-block;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    background: #2DE515;
+    color: #0A1250;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.45rem;
+}
+
+@keyframes agenda-pulso {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(45, 229, 21, 0.35); }
+    50% { box-shadow: 0 0 0 7px rgba(45, 229, 21, 0.1); }
+}
+
+.agenda-sede {
+    margin-top: 1.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Página: los 4 días --- */
+.agenda-grid {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (max-width: 479px) {
+    .agenda-btn { width: 100%; }
+    .agenda-tag { letter-spacing: 0.15em; }
+}
+
+@media (min-width: 640px) {
+    .agenda-dia { padding: 2.25rem 2rem 1.5rem; }
+    .agenda-item { grid-template-columns: 7rem 1rem minmax(0, 1fr); column-gap: 1.1rem; }
+}
+
+@media (min-width: 1024px) {
+    .agenda-home { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4rem; }
+    .agenda-intro { text-align: left; }
+    .agenda-intro-texto { margin-left: 0; }
+    .agenda-dias-mini { margin-left: 0; }
+    .agenda-intro .agenda-acciones { justify-content: flex-start; }
+    .agenda-dias-nav { top: 104px; }
+    .agenda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}

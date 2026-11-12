@@ -170,6 +170,92 @@ function getSponsors() {
     return sponsors;
 }
 
+// ========== CALENDARIO DE ACTIVIDADES (minuto a minuto) ==========
+// Horas en formato 24h; "fin" es opcional. La hora local es la de Zapopan.
+const ZONA_HORARIA = 'America/Mexico_City';
+
+const CALENDARIO = [
+    {
+        fecha: '2026-11-13', dia: 'Viernes', numero: '13',
+        actividades: [
+            { inicio: '08:00', titulo: 'Jornada 1', detalle: 'Inicio de actividades' },
+            { inicio: '10:00', fin: '10:30', titulo: 'Show FreeStyle' },
+            { inicio: '10:30', fin: '11:30', titulo: 'Actividades FreeStyle' },
+            { inicio: '12:00', fin: '13:00', titulo: '¡Inauguración!', detalle: 'Con Jorge Campos y todos los equipos', destacado: true },
+            { inicio: '13:00', fin: '14:00', titulo: 'Encuentro con medios', detalle: 'Jorge Campos' },
+            { inicio: '14:00', fin: '15:00', titulo: 'Meet & Greet', detalle: 'Isaác "Conejo" Brizuela' },
+            { inicio: '15:00', fin: '15:45', titulo: '"Solo para Porteros Brodys"', detalle: 'Conferencia' },
+            { inicio: '21:00', titulo: 'Cierre de actividades' }
+        ]
+    },
+    {
+        fecha: '2026-11-14', dia: 'Sábado', numero: '14',
+        actividades: [
+            { inicio: '08:00', titulo: 'Jornada 2', detalle: 'Inicio de actividades' },
+            { inicio: '11:00', fin: '11:30', titulo: 'Sesión de Networking', detalle: 'Thompson Rivers University' },
+            { inicio: '13:00', fin: '13:45', titulo: 'Meet & Greet', detalle: 'Reinaldo Navia' },
+            { inicio: '15:00', fin: '16:00', titulo: 'Plática con Entrenadores', detalle: 'Torres Servín' },
+            { inicio: '20:00', titulo: 'Cierre de actividades' }
+        ]
+    },
+    {
+        fecha: '2026-11-15', dia: 'Domingo', numero: '15',
+        actividades: [
+            { inicio: '08:00', titulo: 'Jornada 3', detalle: 'Inicio de actividades' },
+            { inicio: '15:00', fin: '15:45', titulo: 'Pasaporte Brody', detalle: 'Tómbola' },
+            { inicio: '17:00', titulo: 'Cierre de actividades' }
+        ]
+    },
+    {
+        fecha: '2026-11-16', dia: 'Lunes', numero: '16',
+        actividades: [
+            { inicio: '08:00', titulo: 'Finales', detalle: 'Inicio de actividades' },
+            { inicio: '10:00', fin: '10:30', titulo: 'Show FreeStyle' },
+            { inicio: '10:30', fin: '11:30', titulo: 'Torneo FreeStyle' },
+            { inicio: '11:00', fin: '12:00', titulo: 'Jorge Campos', detalle: 'Plática para entrenadores' },
+            { inicio: '15:00', titulo: 'Cierre de actividades' }
+        ]
+    }
+];
+
+function formatoHora(hhmm) {
+    const [h, m] = hhmm.split(':').map(Number);
+    const h12 = h % 12 === 0 ? 12 : h % 12;
+    return { hora: `${h12}:${String(m).padStart(2, '0')}`, periodo: h < 12 ? 'A.M.' : 'P.M.' };
+}
+
+function fechaLocalHoy() {
+    // en-CA devuelve AAAA-MM-DD
+    return new Intl.DateTimeFormat('en-CA', { timeZone: ZONA_HORARIA }).format(new Date());
+}
+
+// Antes del torneo muestra el día 1; durante, el día en curso; después, el último
+function getCalendario() {
+    const hoy = fechaLocalHoy();
+    let indiceActual = CALENDARIO.findIndex(d => d.fecha === hoy);
+    if (indiceActual === -1) {
+        indiceActual = hoy > CALENDARIO[CALENDARIO.length - 1].fecha ? CALENDARIO.length - 1 : 0;
+    }
+
+    const dias = CALENDARIO.map((d, i) => ({
+        ...d,
+        mes: 'Noviembre',
+        esHoy: d.fecha === hoy,
+        esActual: i === indiceActual,
+        actividades: d.actividades.map(a => {
+            const ini = formatoHora(a.inicio);
+            const fin = a.fin ? formatoHora(a.fin) : null;
+            return {
+                ...a,
+                hora: ini.hora,
+                rango: fin ? `a ${fin.hora} ${fin.periodo}` : ini.periodo
+            };
+        })
+    }));
+
+    return { dias, diaActual: dias[indiceActual] };
+}
+
 function getSiteData() {
     const timestamp = Date.now();
     
@@ -263,6 +349,7 @@ function getSiteData() {
                 { href: '#categorias', texto: 'Categorías' },
                 { href: '#experiencia', texto: 'Experiencia' },
                 { href: '#galeria', texto: 'Galería' },
+                { href: '/calendario-de-actividades', texto: 'Calendario de actividades' },
                 { href: 'https://registro-torneojorgecampos.lovable.app', texto: 'Registro de acceso' }
             ],
             legal: [
@@ -271,6 +358,7 @@ function getSiteData() {
                 { href: '#', texto: 'Reglamento (Próximamente)' }
             ]
         },
+        calendario: getCalendario(),
         gallery: getGalleryImages(),
         sponsors: getSponsors(),
         timestamp: timestamp
@@ -290,6 +378,20 @@ const NAV_INTERNO = [
 app.get('/', (req, res) => {
     const data = getSiteData();
     res.render('index', data);
+});
+
+// Calendario de actividades (minuto a minuto de los 4 días)
+app.get('/calendario-de-actividades', (req, res) => {
+    const data = getSiteData();
+    // Las anclas del footer apuntan a secciones de la home
+    data.footerLinks.enlaces = data.footerLinks.enlaces.map(l =>
+        l.href.startsWith('#') ? { ...l, href: '/' + l.href } : l
+    );
+    res.render('calendario', {
+        ...data,
+        nav: NAV_INTERNO,
+        title: 'Calendario de actividades - Torneo Jorge Campos'
+    });
 });
 
 // Aviso de Privacidad

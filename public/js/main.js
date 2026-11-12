@@ -368,19 +368,63 @@
         }
     };
 
+    // Calendario de actividades: marca "En vivo" la actividad en curso (hora de Zapopan)
+    const Agenda = {
+        zona: 'America/Mexico_City',
+
+        init: function() {
+            if (!document.querySelector('.agenda-dia')) return;
+            this.update();
+            setInterval(this.update.bind(this), 60000);
+        },
+
+        ahora: function() {
+            const partes = {};
+            new Intl.DateTimeFormat('en-CA', {
+                timeZone: this.zona, year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+            }).formatToParts(new Date()).forEach(p => { partes[p.type] = p.value; });
+            return {
+                fecha: `${partes.year}-${partes.month}-${partes.day}`,
+                hora: `${partes.hour}:${partes.minute}`
+            };
+        },
+
+        update: function() {
+            const { fecha, hora } = this.ahora();
+            document.querySelectorAll('.agenda-item').forEach(item => {
+                const dia = item.closest('.agenda-dia');
+                const fin = item.dataset.fin;
+                // Formato HH:MM, se comparan como texto
+                const enVivo = dia.dataset.fecha === fecha && !!fin &&
+                    item.dataset.inicio <= hora && hora < fin;
+
+                item.classList.toggle('is-envivo', enVivo);
+                const badge = item.querySelector('.agenda-envivo');
+                if (enVivo && !badge) {
+                    item.querySelector('.agenda-titulo').insertAdjacentHTML('beforeend', '<span class="agenda-envivo">En vivo</span>');
+                } else if (!enVivo && badge) {
+                    badge.remove();
+                }
+            });
+        }
+    };
+
     // Keyboard Navigation
     const Keyboard = {
         init: function() {
+            // Las páginas internas no tienen lightbox ni modales
+            const isActive = id => !!document.getElementById(id)?.classList.contains('active');
             document.addEventListener('keydown', (e) => {
-                if (document.getElementById('galleryLightbox').classList.contains('active')) {
+                if (isActive('galleryLightbox')) {
                     if (e.key === 'Escape') Gallery.close();
                     if (e.key === 'ArrowLeft') Gallery.changeImage(-1);
                     if (e.key === 'ArrowRight') Gallery.changeImage(1);
                 }
-                if (document.getElementById('infoModal').classList.contains('active')) {
+                if (isActive('infoModal')) {
                     if (e.key === 'Escape') Modals.closeInfo();
                 }
-                if (document.getElementById('expModal').classList.contains('active')) {
+                if (isActive('expModal')) {
                     if (e.key === 'Escape') Modals.closeExp();
                 }
             });
@@ -406,6 +450,7 @@
         Modals.init();
         SmoothScroll.init();
         Keyboard.init();
+        Agenda.init();
     });
 
 })();
