@@ -1530,11 +1530,13 @@ html {
    CONTADOR EN CERO: mensaje del torneo
    ======================================== */
 
+/* Con el torneo en marcha toda la sección se vuelve azul, de lado a lado */
+.countdown-section.is-live { background: #261B88; }
+.countdown-section.is-live .countdown-fecha { color: #FFFFFF; }
+.countdown-section.is-live .countdown-kicker { color: #FDED07; }
+
 .countdown-live {
-    max-width: 48rem;
-    margin: 0 auto;
-    padding: 2.5rem 1.25rem;
-    background: #261B88;
+    padding: 0.5rem 0 0;
     text-align: center;
     display: flex;
     flex-direction: column;

@@ -124,6 +124,7 @@
             if (!grid || !live) return;
             grid.classList.add('hidden');
             live.classList.remove('hidden');
+            document.getElementById('countdown')?.classList.add('is-live');
         }
     };
 
