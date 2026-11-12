@@ -1525,3 +1525,51 @@ html {
     .agenda-dias-nav { top: 104px; }
     .agenda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 }
+
+/* ========================================
+   CONTADOR EN CERO: mensaje del torneo
+   ======================================== */
+
+.countdown-live {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem;
+    background: #261B88;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: countdown-live-in 0.6s ease-out;
+}
+
+.countdown-live.hidden { display: none; }
+
+.countdown-live-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #2DE515;
+    color: #0A1250;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.countdown-live-line1,
+.countdown-live-line2 {
+    font-family: 'Archivo Black', 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 7vw, 3.25rem);
+    line-height: 1.1;
+}
+
+.countdown-live-line1 { color: #FFFFFF; }
+.countdown-live-line2 { color: #FDED07; }
+
+@keyframes countdown-live-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}

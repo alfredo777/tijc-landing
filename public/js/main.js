@@ -6,7 +6,7 @@
     'use strict';
 
     const CONFIG = {
-        countdownDate: new Date('November 13, 2026 08:00:00').getTime(),
+        countdownDate: new Date('2026-11-13T08:00:00-06:00').getTime(), // 8:00 a.m. hora de Zapopan
         galleryPath: '/images/gallery/',
         timestamp: Date.now()
     };
@@ -102,6 +102,7 @@
                 Object.values(this.elements).forEach(el => {
                     if (el) el.textContent = '00';
                 });
+                this.showLive();
                 return;
             }
 
@@ -114,6 +115,15 @@
             if (this.elements.hours) this.elements.hours.textContent = Utils.padZero(hours);
             if (this.elements.minutes) this.elements.minutes.textContent = Utils.padZero(minutes);
             if (this.elements.seconds) this.elements.seconds.textContent = Utils.padZero(seconds);
+        },
+
+        // Al llegar a cero cambia los números por el mensaje del torneo
+        showLive: function() {
+            const grid = document.getElementById('countdownGrid');
+            const live = document.getElementById('countdownLive');
+            if (!grid || !live) return;
+            grid.classList.add('hidden');
+            live.classList.remove('hidden');
         }
     };
 

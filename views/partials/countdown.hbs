@@ -8,7 +8,7 @@
             </h2>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div id="countdownGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             <div class="bg-morado text-white p-6 text-center">
                 <span id="days" class="font-display text-5xl font-bold block">00</span>
                 <span class="text-sm uppercase tracking-wider opacity-80">Días</span>
@@ -25,6 +25,16 @@
                 <span id="seconds" class="font-display text-5xl font-bold block">00</span>
                 <span class="text-sm uppercase tracking-wider opacity-80">Segundos</span>
             </div>
+        </div>
+
+        {{!-- Se muestra cuando el contador llega a cero --}}
+        <div id="countdownLive" class="countdown-live hidden">
+            <p class="countdown-live-kicker"><i class="fas fa-futbol"></i> En vivo</p>
+            <p class="countdown-live-line1">El mejor torneo del mundo mundial</p>
+            <p class="countdown-live-line2">¡se está jugando!</p>
+            <a href="/calendario-de-actividades" class="agenda-btn agenda-btn--primario mt-6">
+                <i class="fas fa-calendar-alt"></i> Ver actividades
+            </a>
         </div>
     </div>
 </section>
